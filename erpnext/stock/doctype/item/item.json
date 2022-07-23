@@ -14,8 +14,10 @@
   "details",
   "naming_series",
   "item_code",
-  "item_name",
   "item_group",
+  "product_code_prefix",
+  "item_name",
+  "brand",
   "stock_uom",
   "column_break0",
   "disabled",
@@ -25,6 +27,9 @@
   "include_item_in_manufacturing",
   "opening_stock",
   "valuation_rate",
+  "wholesale_price",
+  "wholesale_price_id",
+  "price_id",
   "standard_rate",
   "is_fixed_asset",
   "auto_create_assets",
@@ -34,9 +39,17 @@
   "over_delivery_receipt_allowance",
   "over_billing_allowance",
   "image",
+  "pos_setting_section",
+  "allow_change_price",
+  "is_favorite",
+  "column_break_32",
+  "allow_discount",
+  "column_break_34",
+  "allow_free",
+  "availability_section",
+  "branches",
   "section_break_11",
   "description",
-  "brand",
   "dashboard_tab",
   "inventory_section",
   "inventory_settings_section",
@@ -51,6 +64,8 @@
   "allow_negative_stock",
   "sb_barcodes",
   "barcodes",
+  "section_default_warehouse_in_pos",
+  "pos_default_warehouses",
   "reorder_section",
   "reorder_levels",
   "unit_of_measure_conversion",
@@ -119,7 +134,9 @@
   "default_item_manufacturer",
   "default_manufacturer_part_no",
   "published_in_website",
-  "total_projected_qty"
+  "total_projected_qty",
+  "id",
+  "keyword"
  ],
  "fields": [
   {
@@ -200,6 +217,7 @@
    "default": "0",
    "fieldname": "allow_alternative_item",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Allow Alternative Item"
   },
   {
@@ -217,6 +235,7 @@
    "depends_on": "eval:!doc.is_fixed_asset",
    "fieldname": "include_item_in_manufacturing",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Include Item In Manufacturing"
   },
   {
@@ -230,19 +249,19 @@
    "depends_on": "is_stock_item",
    "fieldname": "valuation_rate",
    "fieldtype": "Currency",
-   "label": "Valuation Rate"
+   "label": "Cost"
   },
   {
    "bold": 1,
-   "depends_on": "eval:doc.__islocal",
    "fieldname": "standard_rate",
    "fieldtype": "Currency",
-   "label": "Standard Selling Rate"
+   "label": "Price"
   },
   {
    "default": "0",
    "fieldname": "is_fixed_asset",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Fixed Asset",
    "set_only_once": 1
   },
@@ -316,6 +335,7 @@
   {
    "fieldname": "shelf_life_in_days",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Shelf Life In Days",
    "mandatory_depends_on": "eval:doc.has_batch_no && doc.has_expiry_date"
   },
@@ -324,6 +344,7 @@
    "depends_on": "is_stock_item",
    "fieldname": "end_of_life",
    "fieldtype": "Date",
+   "hidden": 1,
    "label": "End of Life",
    "oldfieldname": "end_of_life",
    "oldfieldtype": "Date"
@@ -339,6 +360,7 @@
    "depends_on": "is_stock_item",
    "fieldname": "valuation_method",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Valuation Method",
    "options": "\nFIFO\nMoving Average\nLIFO"
   },
@@ -353,6 +375,7 @@
    "depends_on": "eval:doc.is_stock_item",
    "fieldname": "warranty_period",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Warranty Period (in days)",
    "oldfieldname": "warranty_period",
    "oldfieldtype": "Data"
@@ -549,6 +572,7 @@
    "description": "Average time taken by the supplier to deliver",
    "fieldname": "lead_time_days",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Lead Time in days",
    "oldfieldname": "lead_time_days",
    "oldfieldtype": "Int"
@@ -566,6 +590,7 @@
    "default": "0",
    "fieldname": "is_customer_provided_item",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Customer Provided Item"
   },
   {
@@ -605,6 +630,7 @@
    "collapsible": 1,
    "fieldname": "foreign_trade_details",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Foreign Trade Details"
   },
   {
@@ -660,6 +686,7 @@
    "collapsible": 1,
    "fieldname": "deferred_revenue",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Deferred Revenue"
   },
   {
@@ -686,6 +713,7 @@
    "collapsible": 1,
    "fieldname": "deferred_expense_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Deferred Expense"
   },
   {
@@ -713,6 +741,7 @@
    "depends_on": "eval:!doc.is_fixed_asset",
    "fieldname": "customer_details",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Customer Details"
   },
   {
@@ -726,6 +755,7 @@
    "collapsible_depends_on": "taxes",
    "fieldname": "item_tax_section_break",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Tax",
    "oldfieldtype": "Section Break",
    "options": "fa fa-money"
@@ -765,6 +795,7 @@
    "depends_on": "is_stock_item",
    "fieldname": "manufacturing",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Manufacturing",
    "oldfieldtype": "Section Break",
    "options": "fa fa-cogs"
@@ -855,6 +886,7 @@
    "default": "1",
    "fieldname": "grant_commission",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Grant Commission"
   },
   {
@@ -883,6 +915,7 @@
   {
    "fieldname": "quality_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Quality"
   },
   {
@@ -903,6 +936,101 @@
    "fieldname": "accounting",
    "fieldtype": "Tab Break",
    "label": "Accounting"
+  },
+  {
+   "fetch_from": "item_group.product_code_prefix",
+   "fieldname": "product_code_prefix",
+   "fieldtype": "Data",
+   "label": "Product Code Prefix"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "wholesale_price",
+   "fieldtype": "Currency",
+   "label": "Wholesale Price"
+  },
+  {
+   "fieldname": "wholesale_price_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "wholesale_price_id"
+  },
+  {
+   "fieldname": "price_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "price_id"
+  },
+  {
+   "fieldname": "pos_setting_section",
+   "fieldtype": "Section Break",
+   "label": "POS Setting"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_change_price",
+   "fieldtype": "Check",
+   "label": "Allow Change Price"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_favorite",
+   "fieldtype": "Check",
+   "label": "Show in Favorite Menu"
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_discount",
+   "fieldtype": "Check",
+   "label": "Allow Discount"
+  },
+  {
+   "fieldname": "column_break_34",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_free",
+   "fieldtype": "Check",
+   "label": "Allow Free",
+   "length": 1
+  },
+  {
+   "fieldname": "availability_section",
+   "fieldtype": "Section Break",
+   "label": "Availability"
+  },
+  {
+   "fieldname": "branches",
+   "fieldtype": "Table MultiSelect",
+   "label": "Companies",
+   "options": "Branch Items"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "id"
+  },
+  {
+   "fieldname": "keyword",
+   "fieldtype": "Data",
+   "label": "keyword"
+  },
+  {
+   "fieldname": "section_default_warehouse_in_pos",
+   "fieldtype": "Section Break",
+   "label": "Default Warehouse in POS"
+  },
+  {
+   "fieldname": "pos_default_warehouses",
+   "fieldtype": "Table",
+   "label": "Default warehouses",
+   "options": "POS Item Warehouse Default"
   }
  ],
  "icon": "fa fa-tag",
@@ -910,7 +1038,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-06-15 09:02:06.177691",
+ "modified": "2022-07-23 18:39:33.886712",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
