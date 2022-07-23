@@ -13,8 +13,13 @@
   "item_group_name",
   "parent_item_group",
   "is_group",
+  "is_favorite",
   "image",
   "column_break_5",
+  "product_code_prefix",
+  "max_discount_on_customer_birthday_section",
+  "max_birthday_discount_by_branch",
+  "item_group_discount",
   "defaults",
   "item_group_defaults",
   "sec_break_taxes",
@@ -87,6 +92,7 @@
   {
    "fieldname": "defaults",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Defaults"
   },
   {
@@ -98,6 +104,7 @@
   {
    "fieldname": "sec_break_taxes",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Item Tax"
   },
   {
@@ -109,6 +116,7 @@
   {
    "fieldname": "sb9",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Website Settings"
   },
   {
@@ -224,6 +232,34 @@
    "fieldname": "include_descendants",
    "fieldtype": "Check",
    "label": "Include Descendants"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_favorite",
+   "fieldtype": "Check",
+   "label": "Is Favorite"
+  },
+  {
+   "fieldname": "item_group_discount",
+   "fieldtype": "Text",
+   "hidden": 1,
+   "label": "Item Group Discountt"
+  },
+  {
+   "fieldname": "product_code_prefix",
+   "fieldtype": "Data",
+   "label": "Product Code Prefix"
+  },
+  {
+   "fieldname": "max_discount_on_customer_birthday_section",
+   "fieldtype": "Section Break",
+   "label": "Max discount on customer birthday"
+  },
+  {
+   "fieldname": "max_birthday_discount_by_branch",
+   "fieldtype": "Table",
+   "label": "Discount",
+   "options": "Item Group Birthday Discount"
   }
  ],
  "icon": "fa fa-sitemap",
@@ -232,7 +268,7 @@
  "is_tree": 1,
  "links": [],
  "max_attachments": 3,
- "modified": "2022-03-09 12:27:11.055782",
+ "modified": "2022-07-23 17:09:07.602533",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Item Group",
@@ -305,5 +341,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

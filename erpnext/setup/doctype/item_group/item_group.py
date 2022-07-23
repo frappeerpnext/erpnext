@@ -38,6 +38,10 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 		self.validate_item_group_defaults()
 		ECommerceSettings.validate_field_filters(self.filter_fields, enable_field_filters=True)
 
+	def after_insert(self):
+		frappe.get_doc({"doctype":"Version","ref_doctype":self.doctype, "docname": self.name}).insert()
+
+
 	def on_update(self):
 		NestedSet.on_update(self)
 		invalidate_cache_for(self)
@@ -108,6 +112,16 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 
 		validate_item_default_company_links(self.item_group_defaults)
 
+	def before_save(self):
+			# check if item price has price range 
+			
+			if len(self.max_birthday_discount_by_branch)>0:
+				branch_list = self.max_birthday_discount_by_branch
+				str_json = ""
+				for x in branch_list:
+					str_json += str(MaxBirthdayDiscountByBranchModel(x.branch,x.discount).__dict__)+ ","
+				str_json ="[" + str_json[0:len(str_json)-1] + "]"
+				self.item_group_discount = str_json
 
 def get_child_groups_for_website(item_group_name, immediate=False, include_self=False):
 	"""Returns child item groups *excluding* passed group."""
@@ -203,3 +217,9 @@ def get_item_group_defaults(item, company):
 			return row
 
 	return frappe._dict()
+
+
+class MaxBirthdayDiscountByBranchModel:
+	def __init__(self, branch,discount):
+		self.branch =branch
+		self.discount =discount
