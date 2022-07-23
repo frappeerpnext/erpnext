@@ -9,7 +9,7 @@ app_color = "#e74c3c"
 app_email = "info@erpnext.com"
 app_license = "GNU General Public License (v3)"
 source_link = "https://github.com/frappe/erpnext"
-app_logo_url = "/assets/erpnext/images/erpnext-logo.svg"
+app_logo_url = "/assets/frappe/images/estc_retail_logo.png"
 
 
 develop_version = "14.x.x-develop"
@@ -19,7 +19,7 @@ app_include_css = "erpnext.bundle.css"
 web_include_js = "erpnext-web.bundle.js"
 web_include_css = "erpnext-web.bundle.css"
 email_css = "email_erpnext.bundle.css"
-
+app_include_css = "/assets/frappe/css/custom.css"
 doctype_js = {
 	"Address": "public/js/address.js",
 	"Communication": "public/js/communication.js",
