@@ -148,6 +148,7 @@
    "set_only_once": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "bold": 1,
    "fieldname": "item_code",
    "fieldtype": "Data",
@@ -172,6 +173,7 @@
    "set_only_once": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "bold": 1,
    "fieldname": "item_name",
    "fieldtype": "Data",
@@ -296,6 +298,7 @@
    "label": "Description"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "brand",
    "fieldtype": "Link",
    "label": "Brand",
@@ -845,6 +848,7 @@
    "depends_on": "eval:!doc.__islocal && !doc.is_fixed_asset",
    "fieldname": "over_delivery_receipt_allowance",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Over Delivery/Receipt Allowance (%)",
    "oldfieldname": "tolerance",
    "oldfieldtype": "Currency"
@@ -853,6 +857,7 @@
    "depends_on": "eval:!doc.__islocal && !doc.is_fixed_asset",
    "fieldname": "over_billing_allowance",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Over Billing Allowance (%)"
   },
   {
@@ -939,6 +944,7 @@
    "label": "Accounting"
   },
   {
+   "allow_in_quick_entry": 1,
    "fetch_from": "item_group.product_code_prefix",
    "fieldname": "product_code_prefix",
    "fieldtype": "Data",
@@ -963,37 +969,44 @@
    "label": "price_id"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "pos_setting_section",
    "fieldtype": "Section Break",
    "label": "POS Setting"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "1",
    "fieldname": "allow_change_price",
    "fieldtype": "Check",
    "label": "Allow Change Price"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "1",
    "fieldname": "is_favorite",
    "fieldtype": "Check",
    "label": "Show in Favorite Menu"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "column_break_32",
    "fieldtype": "Column Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "1",
    "fieldname": "allow_discount",
    "fieldtype": "Check",
    "label": "Allow Discount"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "column_break_34",
    "fieldtype": "Column Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "1",
    "fieldname": "allow_free",
    "fieldtype": "Check",
@@ -1044,7 +1057,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-24 09:48:46.484314",
+ "modified": "2022-07-24 15:50:26.217250",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
@@ -1108,7 +1121,6 @@
    "share": 1
   }
  ],
- "quick_entry": 1,
  "search_fields": "item_name,description,item_group,customer_code",
  "show_name_in_global_search": 1,
  "show_preview_popup": 1,

@@ -43,6 +43,7 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 
 
 	def on_update(self):
+		
 		NestedSet.on_update(self)
 		invalidate_cache_for(self)
 		self.validate_one_root()
@@ -62,6 +63,7 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 			self.route += self.scrub(self.item_group_name)
 
 			return self.route
+		
 
 	def on_trash(self):
 		NestedSet.on_trash(self)

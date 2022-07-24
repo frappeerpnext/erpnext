@@ -543,6 +543,9 @@ class Item(Document):
 			self.delete_old_bins(old_name)
 
 	def after_rename(self, old_name, new_name, merge):
+		
+		frappe.get_doc({"doctype":"Data for Sync",'doc_type': self.doctype,'doc_name': old_name,"transaction_type":"delete"}).insert()
+		
 		if merge:
 			self.validate_duplicate_item_in_stock_reconciliation(old_name, new_name)
 			frappe.msgprint(
