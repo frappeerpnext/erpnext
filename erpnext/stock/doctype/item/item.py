@@ -157,8 +157,8 @@ class Item(Document):
 		for d in self.barcodes:
 			keyword = keyword + ' ' + d.barcode
         # frappe.db.set_value(doctype, name, fieldname, value)
-		frappe.db.set_value("Item",new_name,"keyword",keyword)
-		
+		frappe.db.set_value("Item",self.name,"keyword",keyword)
+
 
 	def validate(self):
 		if not self.item_name:
