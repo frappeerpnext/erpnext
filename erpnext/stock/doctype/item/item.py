@@ -152,8 +152,13 @@ class Item(Document):
 			doc.unit=self.stock_uom
 			doc.insert()
 
-		#add to version for track change
-		frappe.get_doc({"doctype":"Version","ref_doctype":self.doctype, "docname": self.name}).insert()
+		# updatfe keyword
+		keyword = self.name + ' ' + self.item_code + ' ' + self.item_name;
+		for d in self.barcodes:
+			keyword = keyword + ' ' + d.barcode
+        # frappe.db.set_value(doctype, name, fieldname, value)
+		frappe.db.set_value("Item",new_name,"keyword",keyword)
+		
 
 	def validate(self):
 		if not self.item_name:

@@ -161,12 +161,7 @@ frappe.ui.form.on("Item", {
 	validate: function(frm){
 		erpnext.item.weight_to_validate(frm);
 		
-		//customize code to generate keyword
-		var keyword = frm.doc.name + ' ' + frm.doc.item_code + ' ' + frm.doc.item_name;
-        $.each(frm.doc.barcodes,  function(i,  d) {
-              keyword = keyword + ' ' + d.barcode;      
-        });
-        frm.doc.keyword = keyword;
+		
 	},
 
 	image: function() {
