@@ -13,6 +13,7 @@
   "company_name",
   "abbr",
   "default_currency",
+  "currency_symbol",
   "country",
   "is_group",
   "default_holiday_list",
@@ -32,7 +33,14 @@
   "date_of_commencement",
   "fax",
   "website",
+  "address",
   "address_html",
+  "section_pos_setting",
+  "pos_background_image",
+  "pos_customer_display_thank_you_background",
+  "limit_days_view_report",
+  "column_break_31",
+  "customer_display_slideshow",
   "section_break_28",
   "create_chart_of_accounts_based_on",
   "existing_company",
@@ -234,7 +242,6 @@
    "label": "Default Warehouse for Sales Return",
    "options": "Warehouse"
   },
-
   {
    "fieldname": "country",
    "fieldtype": "Link",
@@ -702,6 +709,46 @@
    "label": "Default Provisional Account",
    "no_copy": 1,
    "options": "Account"
+  },
+  {
+   "fieldname": "currency_symbol",
+   "fieldtype": "Data",
+   "label": "Currency Symbol"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "section_pos_setting",
+   "fieldtype": "Section Break",
+   "label": "POS Setting"
+  },
+  {
+   "fieldname": "pos_background_image",
+   "fieldtype": "Attach Image",
+   "label": "POS Background Image"
+  },
+  {
+   "fieldname": "pos_customer_display_thank_you_background",
+   "fieldtype": "Attach Image",
+   "label": "POS customer display thank you background"
+  },
+  {
+   "fieldname": "limit_days_view_report",
+   "fieldtype": "Int",
+   "label": "Limit days view report"
+  },
+  {
+   "fieldname": "column_break_31",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_display_slideshow",
+   "fieldtype": "Table",
+   "label": "Customer Display Slideshow",
+   "options": "Customer Display Slideshow"
   }
  ],
  "icon": "fa fa-building",
@@ -709,7 +756,7 @@
  "image_field": "company_logo",
  "is_tree": 1,
  "links": [],
- "modified": "2022-06-30 18:03:18.701314",
+ "modified": "2022-07-25 09:46:25.913887",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Company",

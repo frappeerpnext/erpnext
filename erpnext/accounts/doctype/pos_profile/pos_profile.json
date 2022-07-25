@@ -15,6 +15,10 @@
   "campaign",
   "company_address",
   "section_break_15",
+  "api_user",
+  "column_break_11",
+  "sync_assess_token",
+  "section_break_13",
   "applicable_for_users",
   "section_break_11",
   "payments",
@@ -23,11 +27,34 @@
   "hide_unavailable_items",
   "auto_add_item_to_cart",
   "validate_stock_on_save",
+  "view_close_receipt_require_password",
+  "view_shift_report_require_password",
+  "include_sale_transaction_in_shift_report",
+  "print_sale_summary_after_close_shift",
+  "print_sale_product_after_close_shift",
+  "print_sale_transaction_after_close_shist",
+  "sale_return_require_password",
   "column_break_16",
   "update_stock",
   "ignore_pricing_rule",
   "allow_rate_change",
   "allow_discount_change",
+  "open_cashdrawer_require_password",
+  "open_cashier_shift_require_password",
+  "close_cashier_shift_require_password",
+  "discount_item_require_password",
+  "discount_sale_require_password",
+  "change_rate_require_password",
+  "change_unit_require_password",
+  "delete_bill_require_password",
+  "delete_item_require_password",
+  "delete_item_require_note",
+  "column_break_44",
+  "number_of_receipt_copies",
+  "pos_document_number",
+  "open_shift_document_number",
+  "close_shift_document_number",
+  "predefine_discount_code",
   "section_break_23",
   "item_groups",
   "column_break_25",
@@ -366,6 +393,158 @@
    "fieldname": "disable_rounded_total",
    "fieldtype": "Check",
    "label": "Disable Rounded Total"
+  },
+  {
+   "fieldname": "api_user",
+   "fieldtype": "Link",
+   "label": "API User",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sync_assess_token",
+   "fieldtype": "Data",
+   "label": "Sync Assess Token"
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "view_close_receipt_require_password",
+   "fieldtype": "Check",
+   "label": "View Close Receipt Require Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "view_shift_report_require_password",
+   "fieldtype": "Check",
+   "label": "View shift report require password"
+  },
+  {
+   "default": "1",
+   "fieldname": "include_sale_transaction_in_shift_report",
+   "fieldtype": "Check",
+   "label": "Include sale transaction in shift report"
+  },
+  {
+   "default": "1",
+   "fieldname": "print_sale_summary_after_close_shift",
+   "fieldtype": "Check",
+   "label": "Print Sale Summary After Close Shift"
+  },
+  {
+   "default": "1",
+   "fieldname": "print_sale_product_after_close_shift",
+   "fieldtype": "Check",
+   "label": "Print Sale Product After Close Shift"
+  },
+  {
+   "default": "1",
+   "fieldname": "print_sale_transaction_after_close_shist",
+   "fieldtype": "Check",
+   "label": "Print Sale Transaction After Close Shist"
+  },
+  {
+   "default": "0",
+   "fieldname": "sale_return_require_password",
+   "fieldtype": "Check",
+   "label": "Sale return require password"
+  },
+  {
+   "default": "1",
+   "fieldname": "open_cashdrawer_require_password",
+   "fieldtype": "Check",
+   "label": "Open Cashdrawer Require Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "open_cashier_shift_require_password",
+   "fieldtype": "Check",
+   "label": "Open cashier shift require password"
+  },
+  {
+   "default": "0",
+   "fieldname": "close_cashier_shift_require_password",
+   "fieldtype": "Check",
+   "label": "Close cashier shift require password"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_item_require_password",
+   "fieldtype": "Check",
+   "label": "Discount Item Require Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_sale_require_password",
+   "fieldtype": "Check",
+   "label": "Discount Sale Require Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "change_rate_require_password",
+   "fieldtype": "Check",
+   "label": "Change Rate Require Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "change_unit_require_password",
+   "fieldtype": "Check",
+   "label": "Change Unit Require Password"
+  },
+  {
+   "default": "1",
+   "fieldname": "delete_bill_require_password",
+   "fieldtype": "Check",
+   "label": "Delete Bill Require Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "delete_item_require_password",
+   "fieldtype": "Check",
+   "label": "Delete item require password"
+  },
+  {
+   "default": "1",
+   "fieldname": "delete_item_require_note",
+   "fieldtype": "Check",
+   "label": "Delete item require note"
+  },
+  {
+   "fieldname": "column_break_44",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "number_of_receipt_copies",
+   "fieldtype": "Int",
+   "label": "Number of Receipt Copies"
+  },
+  {
+   "fieldname": "pos_document_number",
+   "fieldtype": "Data",
+   "label": "POS Document Number"
+  },
+  {
+   "fieldname": "open_shift_document_number",
+   "fieldtype": "Data",
+   "label": "Open Shift Document Number"
+  },
+  {
+   "fieldname": "close_shift_document_number",
+   "fieldtype": "Data",
+   "label": "Close Shift Document Number"
+  },
+  {
+   "default": "5,10,15,50,25,30,35,40,45,50,100",
+   "fieldname": "predefine_discount_code",
+   "fieldtype": "Data",
+   "label": "Predefine Discount Code"
   }
  ],
  "icon": "icon-cog",
@@ -393,7 +572,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-07-21 11:16:46.911173",
+ "modified": "2022-07-24 18:44:27.584419",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
