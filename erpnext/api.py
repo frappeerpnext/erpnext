@@ -161,6 +161,8 @@ def update_navbar_settings():
     doc.save(
         ignore_permissions=True
     ) 
+
+
     frappe.db.commit()
 
 def update_stock_settings():
@@ -199,6 +201,7 @@ def update_company():
         doc.company_logo = "/assets/frappe/images/retaillogo.png"
         doc.pos_background_image = "/assets/frappe/images/bg01.jpg"
         doc.pos_customer_display_thank_you_background = "/assets/frappe/images/thank.jpg"
+        doc.limit_days_view_report =
 
      
         if not any(d.get('image') == 'slideshow1' for d in doc.customer_display_slideshow):
@@ -356,6 +359,9 @@ def delete_unuse_currency():
             doc = frappe.get_doc('Currency', d)
             doc.delete()
             frappe.db.commit()
+
+    #enable currency khr
+    frappe.db.set_value('Currency', "KHR", 'enabled', 1, update_modified=False)
 
 def delete_unuse_language():
     datas = ['zh-TW','zh','vi','uz','ur','uk','tr','th','te','ta','sw','sv','sr-BA','sr','sq','sl','sk','si','rw','ru','ro','pt-BR','pt','ps','pl','no','nl','my','ms','mr','ml','mk','lv','lt','lo','ku','ko','kn','ja','it','is','id','hu','hr','hi','he','gu','fr-CA','fr','fil','fi','fa','et','es-PE','es-NI','es-MX','es-GT','es-EC','es-DO','es-CO','es-CL','es-BO','es-AR','es','el','de','da-DK','da','cs','ca','bs','bo','bn','bg','ar','am','af','en-GB']
