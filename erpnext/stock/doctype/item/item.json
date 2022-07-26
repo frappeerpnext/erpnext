@@ -1,5 +1,12 @@
 {
- "actions": [],
+ "actions": [
+  {
+   "action": "erpnext.stock.doctype.item.api.print_barcode",
+   "action_type": "Server Action",
+   "group": "Actions",
+   "label": "Print Barcode"
+  }
+ ],
  "allow_guest_to_view": 1,
  "allow_import": 1,
  "allow_rename": 1,
@@ -144,7 +151,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series",
-   "options": "STO-ITEM-.YYYY.-",
+   "options": "STO-ITEM-.YYYY.-\nC.####",
    "set_only_once": 1
   },
   {
@@ -154,6 +161,7 @@
    "fieldtype": "Data",
    "in_global_search": 1,
    "label": "Item Code",
+   "no_copy": 1,
    "oldfieldname": "item_code",
    "oldfieldtype": "Data",
    "reqd": 1,
@@ -960,13 +968,15 @@
    "fieldname": "wholesale_price_id",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "wholesale_price_id"
+   "label": "wholesale_price_id",
+   "no_copy": 1
   },
   {
    "fieldname": "price_id",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "price_id"
+   "label": "price_id",
+   "no_copy": 1
   },
   {
    "allow_in_quick_entry": 1,
@@ -1049,6 +1059,7 @@
   {
    "fieldname": "available_branches",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Available Branches"
   }
  ],
@@ -1057,7 +1068,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-24 15:50:26.217250",
+ "modified": "2022-07-25 17:34:13.338844",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

@@ -120,8 +120,11 @@ class Item(Document):
 				self.price_id = doc.name
 
 			#update wholesale price
+			 
 			if frappe.db.exists("Item Price", self.wholesale_price_id, cache=True):
 				frappe.db.set_value("Item Price", self.wholesale_price_id, "price_list_rate", self.wholesale_price)
+				x = frappe.get_doc("Item Price",self.wholesale_price_id)
+				
 			else:
 				if frappe.db.exists("Price List", "Wholesale Price", cache=True):
 					doc = frappe.new_doc('Item Price')
@@ -131,6 +134,7 @@ class Item(Document):
 					doc.price_list_rate = self.wholesale_price
 					doc.save()
 					self.wholesale_price_id = doc.name
+					
 
 
 	def after_insert(self):
@@ -163,6 +167,13 @@ class Item(Document):
 	def validate(self):
 		if not self.item_name:
 			self.item_name = self.item_code
+
+		if not self.sales_uom:
+			self.sales_uom = self.stock_uom
+		
+		if not self.purchase_uom:
+			self.purchase_uom = self.stock_uom
+		
 
 		if not strip_html(cstr(self.description)).strip():
 			self.description = self.item_name
@@ -1421,3 +1432,6 @@ def get_asset_naming_series():
 	from erpnext.assets.doctype.asset.asset import get_asset_naming_series
 
 	return get_asset_naming_series()
+
+ 
+

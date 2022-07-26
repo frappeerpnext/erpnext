@@ -18,6 +18,7 @@
   "column_break_7",
   "pos_profile",
   "user",
+  "station_name",
   "section_break_12",
   "pos_transactions",
   "section_break_9",
@@ -33,7 +34,10 @@
   "failure_description_section",
   "error_message",
   "section_break_14",
-  "amended_from"
+  "amended_from",
+  "id",
+  "is_sync",
+  "pos_opening_entry_id"
  ],
  "fields": [
   {
@@ -219,6 +223,29 @@
    "fieldtype": "Small Text",
    "label": "Error",
    "read_only": 1
+  },
+  {
+   "fieldname": "station_name",
+   "fieldtype": "Data",
+   "label": "Station Name"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "id"
+  },
+  {
+   "fieldname": "is_sync",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "is_sync"
+  },
+  {
+   "fieldname": "pos_opening_entry_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "pos_opening_entry_id"
   }
  ],
  "is_submittable": 1,
@@ -228,10 +255,11 @@
    "link_fieldname": "pos_closing_entry"
   }
  ],
- "modified": "2021-10-20 16:19:25.340565",
+ "modified": "2022-07-25 11:37:17.663369",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Closing Entry",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -278,5 +306,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }

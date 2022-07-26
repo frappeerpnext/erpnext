@@ -180,7 +180,34 @@
   "column_break_140",
   "auto_repeat",
   "update_auto_repeat_reference",
-  "against_income_account"
+  "against_income_account",
+  "custom_field_section",
+  "apply_birthday_discount",
+  "cancel_note",
+  "customer_phone_number",
+  "customer_photo",
+  "discount_type",
+  "document_number",
+  "document_number_series",
+  "exchange_rate",
+  "free_note",
+  "id",
+  "is_can_sync",
+  "loyalty_point_earn",
+  "loyalty_point_earn_amount",
+  "loyalty_program_tier",
+  "membership_type",
+  "membership_type_discount",
+  "pos_closing_entry_id",
+  "pos_opening_entry_id",
+  "pos_opening_entry_number",
+  "pos_username",
+  "sale_note",
+  "sale_number",
+  "station_name",
+  "sub_total",
+  "total_item_discount",
+  "total_poyalty_point_amount"
  ],
  "fields": [
   {
@@ -1548,12 +1575,150 @@
    "fieldtype": "Currency",
    "label": "Amount Eligible for Commission",
    "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "custom_field_section",
+   "fieldtype": "Section Break",
+   "label": "Custom Field"
+  },
+  {
+   "default": "0",
+   "fieldname": "apply_birthday_discount",
+   "fieldtype": "Check",
+   "label": "Apply Birthday Discount"
+  },
+  {
+   "fieldname": "cancel_note",
+   "fieldtype": "Data",
+   "label": "Cancel Note"
+  },
+  {
+   "fieldname": "customer_phone_number",
+   "fieldtype": "Data",
+   "label": "Customer Phone Number"
+  },
+  {
+   "fieldname": "customer_photo",
+   "fieldtype": "Data",
+   "label": "Customer Photo"
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Data",
+   "label": "Local Discount Type"
+  },
+  {
+   "fieldname": "document_number",
+   "fieldtype": "Data",
+   "label": "Local Document Number"
+  },
+  {
+   "fieldname": "document_number_series",
+   "fieldtype": "Data",
+   "label": "Local Document Number Series"
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Currency",
+   "label": "POS Exchange Rate"
+  },
+  {
+   "fieldname": "free_note",
+   "fieldtype": "Data",
+   "label": "POS Free Note"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "id"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_can_sync",
+   "fieldtype": "Check",
+   "label": "is_can_sync"
+  },
+  {
+   "fieldname": "loyalty_point_earn",
+   "fieldtype": "Int",
+   "label": "Loyalty Point Earn"
+  },
+  {
+   "fieldname": "loyalty_point_earn_amount",
+   "fieldtype": "Currency",
+   "label": "Loyalty Point Earn Amount"
+  },
+  {
+   "fieldname": "loyalty_program_tier",
+   "fieldtype": "Data",
+   "label": "Loyalty Program Tier"
+  },
+  {
+   "fieldname": "membership_type",
+   "fieldtype": "Data",
+   "label": "Membership Type"
+  },
+  {
+   "fieldname": "membership_type_discount",
+   "fieldtype": "Float",
+   "label": "Membership Type Discount"
+  },
+  {
+   "fieldname": "pos_closing_entry_id",
+   "fieldtype": "Data",
+   "label": "POS Closing Entry Id"
+  },
+  {
+   "fieldname": "pos_opening_entry_id",
+   "fieldtype": "Data",
+   "label": "POS Opening Entry Id"
+  },
+  {
+   "fieldname": "pos_opening_entry_number",
+   "fieldtype": "Data",
+   "label": "Local POS Opening Entry Number"
+  },
+  {
+   "fieldname": "pos_username",
+   "fieldtype": "Data",
+   "label": "pos_username"
+  },
+  {
+   "fieldname": "sale_note",
+   "fieldtype": "Data",
+   "label": "Sale Note"
+  },
+  {
+   "fieldname": "sale_number",
+   "fieldtype": "Data",
+   "label": "Sale Number"
+  },
+  {
+   "fieldname": "station_name",
+   "fieldtype": "Data",
+   "label": "Station Name"
+  },
+  {
+   "fieldname": "sub_total",
+   "fieldtype": "Currency",
+   "label": "Sub Total"
+  },
+  {
+   "fieldname": "total_item_discount",
+   "fieldtype": "Float",
+   "label": "Total Item Discount"
+  },
+  {
+   "fieldname": "total_poyalty_point_amount",
+   "fieldtype": "Currency",
+   "label": "Total Poyalty Point Amount"
   }
  ],
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-22 13:00:24.166684",
+ "modified": "2022-07-25 12:06:24.912416",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",
