@@ -12,6 +12,10 @@ def testing(user=None):
 
 @frappe.whitelist()
 def set_system_default_config():
+
+
+
+
     create_translate_role()
      
     update_navbar_settings()
@@ -27,6 +31,7 @@ def set_system_default_config():
    
     delete_unuse_uom_conversion()
     delete_unuse_uom()
+    
     delete_unuse_currency()
     create_default_branch()
 
@@ -342,6 +347,9 @@ def delete_unuse_uom():
 
 
 def delete_unuse_currency():
+    frappe.db.set_value('Web Form', "request-to-delete-data", 'currency', "USD", update_modified=False)
+    frappe.db.set_value('Web Form', "request-data", 'currency', "USD", update_modified=False)
+
     datas = ['INR','CHF','CNY','JPY','AUD','AED','EUR','GBP','ZWL','ZMW','YER','VND','VEF','VUV','UZS','UYU','UAH','UGX','TMM','TRY','TND','TTD','TOP','THB','TZS','TWD','SYP','SEK','SZL','SRD','LKR','ZAR','SOS','SBD','SGD','SLL','SCR','RSD','SAR','STD','WST','SHP','RWF','RUB','RON','QAR','PLN','PHP','PEN','PYG','PGK','PKR','OMR','NOK','NGN','NIO','NZD','NPR','NAD','MMK','MZN','MAD','MNT','MDL','MXN','MUR','MRO','MVR','MYR','MWK','MKD','MOP','LTL','LYD','LRD','LSL','LBP','LVL','LAK','KGS','KWD','KRW','KPW','KES','KZT','JOD','JMD','ILS','IQD','IRR','IDR','ISK','HUF','HKD','HNL','HTG','GYD','GNF','GTQ','GIP','GHS','GMD','FJD','FKP','ETB','ERN','EGP','DOP','DJF','DKK','CZK','CYP','CUP','HRK','CRC','CDF','KMF','COP','CLP','KYD','CVE','CAD','XAF','BIF','BGN','BND','BRL','BWP','BAM','BOB','BTN','BMD','XOF','BZD','BBD','BDT','BHD','BSD','AWG','AMD','ARS','XCD','KZ','DZD','ALL','AFN']
     for d in datas:
         if frappe.db.exists("Currency", {"name": d}):
