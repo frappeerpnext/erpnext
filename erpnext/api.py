@@ -979,7 +979,7 @@ def create_default_payment_type():
             "accounts": [
                 {
                     "company": company.company_name,
-                    "default_account": "ABA - " + company.abbr,
+                    "default_account": "1210 - ABA - " + company.abbr,
                     "doctype": "Mode of Payment Account"
                 }
             ]
@@ -998,7 +998,7 @@ def create_default_payment_type():
             "accounts": [
                 {
                     "company": company.company_name,
-                    "default_account": "ABA - " + company.abbr,
+                    "default_account": "1210 - ABA - " + company.abbr,
                     "doctype": "Mode of Payment Account"
                 }
             ]
