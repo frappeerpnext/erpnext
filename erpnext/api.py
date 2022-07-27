@@ -201,7 +201,7 @@ def update_company():
         doc.company_logo = "/assets/frappe/images/retaillogo.png"
         doc.pos_background_image = "/assets/frappe/images/bg01.jpg"
         doc.pos_customer_display_thank_you_background = "/assets/frappe/images/thank.jpg"
-        doc.limit_days_view_report =
+        doc.limit_days_view_report = 7
 
      
         if not any(d.get('image') == 'slideshow1' for d in doc.customer_display_slideshow):
