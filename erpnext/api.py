@@ -2,16 +2,6 @@ import frappe
 from frappe.utils import today
 from frappe.utils import now
 
-
-
-
-#upload 
-
-
-
-
-
-
 @frappe.whitelist()
 def testing(user=None):
 	return frappe.get_doc("User", "Administrator").get_blocked_modules()
