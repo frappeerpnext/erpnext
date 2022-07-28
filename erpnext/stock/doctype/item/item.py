@@ -91,7 +91,7 @@ class Item(Document):
 				branch_names += x.branch+ ","
 				branch_codes +=x.branch_code
 			
-			if frappe.db.exists("Branch Permission Code", branch_codes, cache=True):
+			if frappe.db.exists("Branch Permission Code", branch_codes):
 				self.available_branches = branch_codes
 				 
 			else:
@@ -147,14 +147,16 @@ class Item(Document):
 			self.set_opening_stock()
 
 		"""auto save item code to barcode"""
+		
 		if not frappe.db.exists({"doctype":"Item Barcode","barcode":self.name}):
 			doc=frappe.new_doc("Item Barcode")
 			doc.barcode = self.name
 			doc.parent = self.name
 			doc.parenttype="Item"
 			doc.parentfield="barcodes"
-			doc.unit=self.stock_uom
+			doc.uom=self.stock_uom
 			doc.insert()
+			
 
 		# updatfe keyword
 		keyword = self.name + ' ' + self.item_code + ' ' + self.item_name;
