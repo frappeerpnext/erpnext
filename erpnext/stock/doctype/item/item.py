@@ -91,7 +91,7 @@ class Item(Document):
 				branch_names += x.branch+ ","
 				branch_codes +=x.branch_code
 			
-			if frappe.db.exists("Branch Permission Code", branch_codes):
+			if frappe.db.exists("Branch Permission Code", branch_codes, cache=True):
 				self.available_branches = branch_codes
 				 
 			else:
