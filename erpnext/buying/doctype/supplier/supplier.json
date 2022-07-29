@@ -18,6 +18,7 @@
   "tax_id",
   "tax_category",
   "tax_withholding_category",
+  "phone_number",
   "image",
   "column_break0",
   "supplier_group",
@@ -109,17 +110,20 @@
   {
    "fieldname": "tax_id",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Tax ID"
   },
   {
    "fieldname": "tax_category",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tax Category",
    "options": "Tax Category"
   },
   {
    "fieldname": "tax_withholding_category",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tax Withholding Category",
    "options": "Tax Withholding Category"
   },
@@ -420,6 +424,11 @@
    "fieldtype": "Link",
    "label": "Supplier Primary Address",
    "options": "Address"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
   }
  ],
  "icon": "fa fa-user",
@@ -432,7 +441,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-04-16 18:02:27.838623",
+ "modified": "2022-07-29 17:18:12.142820",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Supplier",

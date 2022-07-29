@@ -1042,7 +1042,8 @@
   },
   {
    "fieldname": "keyword",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
+   "hidden": 1,
    "label": "keyword"
   },
   {
@@ -1068,7 +1069,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-25 17:34:13.338844",
+ "modified": "2022-07-29 17:19:28.283977",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
