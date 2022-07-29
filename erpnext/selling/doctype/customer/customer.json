@@ -68,6 +68,7 @@
   "is_frozen",
   "membership_section",
   "membership_type",
+  "membership_expired_date",
   "column_break_38",
   "loyalty_program",
   "loyalty_program_tier",
@@ -549,6 +550,11 @@
    "fieldtype": "Link",
    "label": "Membership Type",
    "options": "Membership Type"
+  },
+  {
+   "fieldname": "membership_expired_date",
+   "fieldtype": "Date",
+   "label": "Membership Expired Date"
   }
  ],
  "icon": "fa fa-user",
@@ -562,7 +568,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-07-24 17:30:18.292876",
+ "modified": "2022-07-29 11:43:16.467532",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
