@@ -410,6 +410,7 @@
    "collapsible_depends_on": "po_no",
    "fieldname": "customer_po_details",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Customer PO Details"
   },
   {
@@ -434,6 +435,7 @@
    "collapsible": 1,
    "fieldname": "address_and_contact",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Address and Contact"
   },
   {
@@ -673,6 +675,7 @@
    "collapsible_depends_on": "eval:doc.total_billing_amount > 0",
    "fieldname": "time_sheet_list",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Time Sheet List"
   },
   {
@@ -1054,6 +1057,7 @@
    "collapsible_depends_on": "advances",
    "fieldname": "advances_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Advance Payments",
    "oldfieldtype": "Section Break",
    "options": "fa fa-money",
@@ -1086,6 +1090,7 @@
    "collapsible_depends_on": "eval:(!doc.is_pos && !doc.is_return)",
    "fieldname": "payment_schedule_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Payment Terms"
   },
   {
@@ -1254,6 +1259,7 @@
    "collapsible_depends_on": "terms",
    "fieldname": "terms_section_break",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Terms and Conditions",
    "oldfieldtype": "Section Break"
   },
@@ -1277,6 +1283,7 @@
    "collapsible": 1,
    "fieldname": "edit_printing_settings",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Printing Settings"
   },
   {
@@ -1444,6 +1451,7 @@
    "collapsible_depends_on": "sales_partner",
    "fieldname": "sales_team_section_break",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Commission",
    "oldfieldtype": "Section Break",
    "options": "fa fa-group",
@@ -1487,6 +1495,7 @@
    "collapsible_depends_on": "sales_team",
    "fieldname": "section_break2",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Sales Team",
    "print_hide": 1
   },
@@ -1503,6 +1512,7 @@
   {
    "fieldname": "subscription_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Subscription Section"
   },
   {
@@ -1718,7 +1728,7 @@
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-25 12:06:24.912416",
+ "modified": "2022-08-02 17:22:26.658307",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

@@ -79,6 +79,7 @@ class Item(Document):
 		self.name = self.item_code
 
 	def before_save(self):
+		
 		if self.is_new():
 			self.id = str(uuid.uuid4())
 		# Generate item availablility 
@@ -134,6 +135,18 @@ class Item(Document):
 					doc.price_list_rate = self.wholesale_price
 					doc.save()
 					self.wholesale_price_id = doc.name
+
+			#update keyword after save 
+			
+			
+			keyword = self.name + ' ' + self.item_code + ' ' + self.item_name;
+			for d in self.barcodes:
+				keyword = keyword + ' ' + d.barcode
+
+			if self.alternate_item_code:
+				keyword = keyword + ' ' + self.alternate_item_code
+				
+			self.keyword = keyword
 					
 
 
@@ -158,10 +171,15 @@ class Item(Document):
 			doc.insert()
 			
 
-		# updatfe keyword
-		keyword = self.name + ' ' + self.item_code + ' ' + self.item_name;
+		# update keyword after insert
+		keyword = self.name + ' ' + self.item_code + ' ' + self.item_name
 		for d in self.barcodes:
 			keyword = keyword + ' ' + d.barcode
+
+		if self.alternate_item_code:
+			keyword = keyword + ' ' + self.alternate_item_code
+
+	
         # frappe.db.set_value(doctype, name, fieldname, value)
 		frappe.db.set_value("Item",self.name,"keyword",keyword)
 
@@ -593,11 +611,16 @@ class Item(Document):
 					frappe.db.set_value(
 						dt, d.name, "item_wise_tax_detail", json.dumps(item_wise_tax_detail), update_modified=False
 					)
-		# updatfe keyword
+		# updatfe keyword after rename
 		keyword = self.name + ' ' + self.item_code + ' ' + self.item_name;
 		for d in self.barcodes:
 			keyword = keyword + ' ' + d.barcode
-        # frappe.db.set_value(doctype, name, fieldname, value)
+
+		
+
+		if self.alternate_item_code:
+			keyword = keyword + ' ' + self.alternate_item_code
+
 		frappe.db.set_value("Item",new_name,"keyword",keyword)
 
 
