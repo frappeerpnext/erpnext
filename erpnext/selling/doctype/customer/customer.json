@@ -115,6 +115,7 @@
    "search_index": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "depends_on": "eval:doc.customer_type != 'Company'",
    "fieldname": "gender",
    "fieldtype": "Link",
@@ -122,13 +123,13 @@
    "options": "Gender"
   },
   {
-   "default": "Company",
+   "default": "Individual",
    "fieldname": "customer_type",
    "fieldtype": "Select",
    "label": "Customer Type",
    "oldfieldname": "customer_type",
    "oldfieldtype": "Select",
-   "options": "Company\nIndividual",
+   "options": "Individual\nCompany",
    "reqd": 1
   },
   {
@@ -519,11 +520,13 @@
    "print_hide": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "phone_number",
    "fieldtype": "Data",
    "label": "Phone Number"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "birthdate",
    "fieldtype": "Date",
    "label": "Birthdate"
@@ -535,23 +538,27 @@
    "label": "Birthday Event Name"
   },
   {
+   "allow_in_quick_entry": 1,
    "default": "0",
    "fieldname": "allow_discount_on_birthday",
    "fieldtype": "Check",
    "label": "Allow discount on birthday"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "membership_section",
    "fieldtype": "Section Break",
    "label": "Membership"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "membership_type",
    "fieldtype": "Link",
    "label": "Membership Type",
    "options": "Membership Type"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "membership_expired_date",
    "fieldtype": "Date",
    "label": "Membership Expired Date"
@@ -568,7 +575,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-07-29 11:43:16.467532",
+ "modified": "2022-08-03 15:07:22.929452",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
