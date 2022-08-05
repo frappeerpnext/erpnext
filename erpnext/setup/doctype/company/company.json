@@ -11,6 +11,7 @@
  "field_order": [
   "details",
   "company_name",
+  "company_name_kh",
   "abbr",
   "default_currency",
   "currency_symbol",
@@ -749,6 +750,11 @@
    "fieldtype": "Table",
    "label": "Customer Display Slideshow",
    "options": "Customer Display Slideshow"
+  },
+  {
+   "fieldname": "company_name_kh",
+   "fieldtype": "Data",
+   "label": "Company Name Kh"
   }
  ],
  "icon": "fa fa-building",
@@ -756,7 +762,7 @@
  "image_field": "company_logo",
  "is_tree": 1,
  "links": [],
- "modified": "2022-07-25 09:46:25.913887",
+ "modified": "2022-08-05 12:07:34.929606",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Company",

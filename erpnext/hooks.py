@@ -19,7 +19,6 @@ app_include_css = "erpnext.bundle.css"
 web_include_js = "erpnext-web.bundle.js"
 web_include_css = "erpnext-web.bundle.css"
 email_css = "email_erpnext.bundle.css"
-app_include_css = "/assets/frappe/css/custom.css"
 doctype_js = {
 	"Address": "public/js/address.js",
 	"Communication": "public/js/communication.js",

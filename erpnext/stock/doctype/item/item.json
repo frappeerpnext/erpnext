@@ -1075,7 +1075,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-08-01 10:37:13.025839",
+ "modified": "2022-08-05 10:35:09.449235",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
@@ -1139,7 +1139,7 @@
    "share": 1
   }
  ],
- "search_fields": "item_name,description,item_group,customer_code",
+ "search_fields": "item_name,description,item_group,customer_code,alternate_item_code",
  "show_name_in_global_search": 1,
  "show_preview_popup": 1,
  "sort_field": "modified",
