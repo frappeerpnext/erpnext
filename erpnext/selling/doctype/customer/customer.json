@@ -30,6 +30,7 @@
   "customer_group",
   "customer_type",
   "territory",
+  "default_price_list",
   "account_manager",
   "so_required",
   "dn_required",
@@ -41,7 +42,6 @@
   "currency_and_price_list",
   "default_currency",
   "column_break_14",
-  "default_price_list",
   "address_contacts",
   "address_html",
   "column_break1",
@@ -165,7 +165,7 @@
   {
    "fieldname": "account_manager",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "hidden": 1,
    "label": "Account Manager",
    "options": "User"
   },
@@ -575,7 +575,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-08-03 15:07:22.929452",
+ "modified": "2022-08-06 10:58:04.349403",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
@@ -655,7 +655,7 @@
   }
  ],
  "quick_entry": 1,
- "search_fields": "customer_name,customer_group,territory, mobile_no,primary_address",
+ "search_fields": "customer_name,customer_group,territory, mobile_no,primary_address, phone_number",
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "ASC",
