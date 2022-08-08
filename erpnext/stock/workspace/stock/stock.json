@@ -333,8 +333,60 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Other Reports",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "Material Request",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Requested Items To Be Transferred",
+   "link_count": 0,
+   "link_to": "Requested Items To Be Transferred",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Price List",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Item Prices",
+   "link_count": 0,
+   "link_to": "Item Prices",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Item",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Itemwise Recommended Reorder Level",
+   "link_count": 0,
+   "link_to": "Itemwise Recommended Reorder Level",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Item",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Item Variant Details",
+   "link_count": 0,
+   "link_to": "Item Variant Details",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Key Reports",
-   "link_count": 8,
+   "link_count": 7,
    "onboard": 0,
    "type": "Card Break"
   },
@@ -356,17 +408,6 @@
    "label": "Stock Analytics",
    "link_count": 0,
    "link_to": "Stock Analytics",
-   "link_type": "Report",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Item",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Stock Qty vs Serial No Count",
-   "link_count": 0,
-   "link_to": "Stock Qty vs Serial No Count",
    "link_type": "Report",
    "onboard": 1,
    "type": "Link"
@@ -425,61 +466,9 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Other Reports",
-   "link_count": 4,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "dependencies": "Material Request",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Requested Items To Be Transferred",
-   "link_count": 0,
-   "link_to": "Requested Items To Be Transferred",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Price List",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Item Prices",
-   "link_count": 0,
-   "link_to": "Item Prices",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Item",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Itemwise Recommended Reorder Level",
-   "link_count": 0,
-   "link_to": "Itemwise Recommended Reorder Level",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Item",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Item Variant Details",
-   "link_count": 0,
-   "link_to": "Item Variant Details",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2022-08-06 10:59:13.547449",
+ "modified": "2022-08-06 12:14:30.213483",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock",

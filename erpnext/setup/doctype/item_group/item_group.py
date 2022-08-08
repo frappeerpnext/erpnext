@@ -38,8 +38,7 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 		self.validate_item_group_defaults()
 		ECommerceSettings.validate_field_filters(self.filter_fields, enable_field_filters=True)
 
-	def after_insert(self):
-		frappe.get_doc({"doctype":"Version","ref_doctype":self.doctype, "docname": self.name}).insert()
+	
 
 
 	def on_update(self):
