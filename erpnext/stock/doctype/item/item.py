@@ -107,6 +107,9 @@ class Item(Document):
 
 		#update wholesale price to price list
 		if not self.is_new():
+			#update cost
+			self.add_update_cost()
+
 			#update retail price
 			if frappe.db.exists("Item Price", self.price_id, cache=True):
 				frappe.db.set_value("Item Price", self.price_id, "price_list_rate", self.standard_rate)
@@ -155,6 +158,9 @@ class Item(Document):
 		if self.standard_rate:
 			for default in self.item_defaults or [frappe._dict()]:
 				self.add_price(default.default_price_list)
+
+		if self.valuation_rate:
+			self.add_update_cost()
 
 		if self.opening_stock:
 			self.set_opening_stock()
@@ -275,6 +281,47 @@ class Item(Document):
 			self.price_id = item_price.name
 			self.save()
 
+	def add_update_cost(self):
+		"""Add a new cost to Item Prices"""
+		
+		if frappe.db.exists("Item Price",
+							{
+								"price_list":"Standard Buying",
+								"item_code": self.name,
+								"uom": self.stock_uom,
+								"brand": self.brand,
+								"supplier":None
+							}
+						):
+			#update record
+			
+			price_list =frappe.get_doc("Item Price",
+										{
+											"price_list":"Standard Buying",
+											"item_code": self.name,
+											"uom": self.stock_uom,
+											"brand": self.brand,
+											"supplier":None
+										}
+									)
+			price_list.price_list_rate =  self.valuation_rate
+			price_list.save()
+			
+
+		else:
+			#add new record
+			item_price = frappe.get_doc(
+				{
+					"doctype": "Item Price",
+					"price_list": "Standard Buying",
+					"item_code": self.name,
+					"uom": self.stock_uom,
+					"brand": self.brand,
+					"currency": erpnext.get_default_currency(),
+					"price_list_rate": self.valuation_rate,
+				}
+			)
+			item_price.insert()
 
 
 	def set_opening_stock(self):
