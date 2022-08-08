@@ -1,12 +1,5 @@
 {
- "actions": [
-  {
-   "action": "erpnext.stock.doctype.item.api.print_barcode",
-   "action_type": "Server Action",
-   "group": "Actions",
-   "label": "Print Barcode"
-  }
- ],
+ "actions": [],
  "allow_guest_to_view": 1,
  "allow_import": 1,
  "autoname": "field:item_code",
@@ -1106,7 +1099,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-08-08 15:26:54.541732",
+ "modified": "2022-08-08 17:23:40.871323",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

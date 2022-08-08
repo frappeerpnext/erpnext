@@ -126,6 +126,7 @@ frappe.ui.form.on("Item", {
 
 		erpnext.item.edit_prices_button(frm);
 		erpnext.item.toggle_attributes(frm);
+		erpnext.item.print_barcode_button(frm);
 
 		if (!frm.doc.is_fixed_asset) {
 			erpnext.item.make_dashboard(frm);
@@ -421,6 +422,13 @@ $.extend(erpnext.item, {
 		frm.add_custom_button(__("Add / Edit Prices"), function() {
 			frappe.set_route("List", "Item Price", {"item_code": frm.doc.name});
 		}, __("Actions"));
+	},
+	print_barcode_button: function(frm) {
+		frm.add_custom_button(__("Print Barcode"), function() {
+			msg = frappe.msgprint('<iframe src="http://webmonitor.inccloudserver.com:3344/ReportServer/Pages/ReportViewer.aspx?%2fePOSRetailReport%2frptPrintBarcode&rs:Command=Render&rc:Zoom=Page Width&barcode='+ frm.doc.name +'&price='+ frm.doc.standard_rate +'&product_name=' + frm.doc.item_name + '" frameBorder="0" width="100%" height="650" title="Print Barcode"></iframe>', 'Print Barcode')
+			msg.$wrapper.find('.modal-dialog').css("max-width", "80%");
+		}, __("Actions"));
+	
 	},
 
 	weight_to_validate: function(frm) {
