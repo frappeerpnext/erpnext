@@ -57,5 +57,6 @@ erpnext.get_sales_trends_filters = function() {
 			"options": "Company",
 			"default": frappe.defaults.get_user_default("Company")
 		},
+		 
 	];
 }

@@ -93,6 +93,8 @@ class SalesInvoice(SellingController):
 	def validate(self):
 		super(SalesInvoice, self).validate()
 		self.validate_auto_set_posting_time()
+		if not self.pos_profile and not self.document_naming_code:
+			frappe.throw(_("Please select branch"))
 
 		if not self.is_pos:
 			self.so_dn_required()
@@ -115,6 +117,8 @@ class SalesInvoice(SellingController):
 		self.validate_item_cost_centers()
 		self.validate_income_account()
 		self.check_conversion_rate()
+
+
 
 		validate_inter_company_party(
 			self.doctype, self.customer, self.company, self.inter_company_invoice_reference

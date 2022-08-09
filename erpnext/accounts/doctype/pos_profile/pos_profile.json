@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "company",
+  "branch",
   "customer",
   "country",
   "disabled",
@@ -51,6 +52,7 @@
   "delete_item_require_note",
   "column_break_44",
   "number_of_receipt_copies",
+  "document_naming_code",
   "pos_document_number",
   "open_shift_document_number",
   "close_shift_document_number",
@@ -545,6 +547,17 @@
    "fieldname": "predefine_discount_code",
    "fieldtype": "Data",
    "label": "Predefine Discount Code"
+  },
+  {
+   "fetch_from": "branch.document_naming_code",
+   "fieldname": "document_naming_code",
+   "fieldtype": "Data",
+   "label": "Document Naming Code"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Data",
+   "label": "Branch"
   }
  ],
  "icon": "icon-cog",
@@ -572,7 +585,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-07-24 18:44:27.584419",
+ "modified": "2022-08-09 12:35:08.346725",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
