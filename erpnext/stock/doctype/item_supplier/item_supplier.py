@@ -7,3 +7,7 @@ from frappe.model.document import Document
 
 class ItemSupplier(Document):
 	pass
+
+
+	def __getitem__(self, items):
+		print (type(items), items)

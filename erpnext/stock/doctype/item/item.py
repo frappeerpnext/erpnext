@@ -150,6 +150,13 @@ class Item(Document):
 				keyword = keyword + ' ' + self.alternate_item_code
 				
 			self.keyword = keyword
+
+
+			"""auto save supplier to item supplier"""
+			if self.supplier:
+				if not any(d.supplier == self.supplier for d in self.supplier_items):
+					self.append("supplier_items", {"supplier": self.supplier})
+					
 					
 
 
@@ -175,6 +182,16 @@ class Item(Document):
 			doc.parentfield="barcodes"
 			doc.uom=self.stock_uom
 			doc.insert()
+
+		"""auto save supplier to item supplier"""
+		if self.supplier:
+			 
+			if not frappe.db.exists("Item Supplier",{"supplier":self.supplier,"parent":self.name}):
+				sup=frappe.new_doc("Item Supplier")
+				sup.supplier = self.supplier
+				sup.parent = self.name
+				sup.parenttype = "Item"
+				sup.insert()
 			
 
 		# update keyword after insert
