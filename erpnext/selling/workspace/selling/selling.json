@@ -408,7 +408,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-08-09 16:25:03.355110",
+ "modified": "2022-08-11 11:39:52.367423",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Selling",
@@ -418,7 +418,7 @@
  "quick_lists": [],
  "restrict_to_domain": "",
  "roles": [],
- "sequence_id": 8.0,
+ "sequence_id": 7.0,
  "shortcuts": [
   {
    "color": "Green",
