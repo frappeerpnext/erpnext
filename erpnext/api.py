@@ -1,11 +1,19 @@
 import frappe
 from frappe.utils import today
 from frappe.utils import now
+from frappe.utils import (
+	add_days,
+	add_months,
+	cint,
+	cstr,
+	flt
+)
+
 
 @frappe.whitelist()
 def testing(user=None):
-	return frappe.get_doc("User", "Administrator").get_blocked_modules()
- 
+	update_pos_config()
+    
 
 
 
@@ -28,6 +36,8 @@ def set_system_default_config():
     create_webhook()
     create_customer_display_image()
     update_company()
+
+    update_pos_config()
    
     delete_unuse_uom_conversion()
     delete_unuse_uom()
@@ -189,8 +199,6 @@ def update_website_setting():
     )
     frappe.db.commit()
 
-
-
 def update_company():
     companies = frappe.db.get_list('Company')
     if len(companies)>0:
@@ -226,6 +234,43 @@ def update_company():
         
         doc.save()    
         frappe.db.commit()
+
+def update_pos_config():
+
+    companies = frappe.db.get_list('Company')
+    if len(companies)>0:
+        if not frappe.db.exists("POS Config","Testing Company"):
+            doc = frappe.get_doc({
+                "doctype": "POS Config",
+                "company_name": companies[0].name,
+                "company_name_kh": companies[0].name,
+                "phone_no":"012345678"
+                "address":"Siemreap, Cambodia",
+                "company_logo":"/assets/frappe/images/retaillogo.png",
+                "pos_background_image": "/assets/frappe/images/bg01.jpg",
+                "pos_customer_display_thank_you_background":"/assets/frappe/images/thank.jpg",
+                "limit_days_view_report": 7,
+                "customer_display_slideshow":[
+                    { 
+                        "image":"slideshow1"
+                    },
+                    { 
+                        "image":"slideshow2"
+                    },
+                    { 
+                        "image":"slideshow3"
+                    },
+                    { 
+                        "image":"slideshow4"
+                    },
+                    
+                ]
+            })
+            doc.insert()
+            frappe.db.commit()
+
+
+
 
 def get_company():
     companies = frappe.db.get_list('Company')
