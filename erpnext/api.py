@@ -244,7 +244,7 @@ def update_pos_config():
                 "doctype": "POS Config",
                 "company_name": companies[0].name,
                 "company_name_kh": companies[0].name,
-                "phone_no":"012345678"
+                "phone_no":"012345678",
                 "address":"Siemreap, Cambodia",
                 "company_logo":"/assets/frappe/images/retaillogo.png",
                 "pos_background_image": "/assets/frappe/images/bg01.jpg",
