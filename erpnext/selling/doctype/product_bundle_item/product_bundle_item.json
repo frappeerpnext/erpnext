@@ -9,6 +9,7 @@
   "qty",
   "description",
   "rate",
+  "cost",
   "uom"
  ],
  "fields": [
@@ -44,9 +45,9 @@
    "print_width": "300px"
   },
   {
+   "fetch_from": "item_code.standard_rate",
    "fieldname": "rate",
    "fieldtype": "Float",
-   "hidden": 1,
    "label": "Rate",
    "oldfieldname": "rate",
    "oldfieldtype": "Currency",
@@ -63,12 +64,18 @@
    "oldfieldtype": "Link",
    "options": "UOM",
    "read_only": 1
+  },
+  {
+   "fetch_from": "item_code.valuation_rate",
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "label": "Cost"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-06-27 05:30:18.475150",
+ "modified": "2022-08-23 08:51:36.736604",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Product Bundle Item",
