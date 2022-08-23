@@ -163,8 +163,9 @@ class Item(Document):
 	def after_insert(self):
 		"""set opening stock and item price"""
 		if self.standard_rate:
-			for default in self.item_defaults or [frappe._dict()]:
-				self.add_price(default.default_price_list)
+			#for default in self.item_defaults or [frappe._dict()]:
+			#	self.add_price(default.default_price_list)
+			self.add_price()
 
 		if self.valuation_rate:
 			self.add_update_cost()
