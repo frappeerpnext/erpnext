@@ -120,6 +120,7 @@
   "base_rounded_total",
   "base_in_words",
   "column_break5",
+  "total_cost",
   "grand_total",
   "rounding_adjustment",
   "rounded_total",
@@ -2038,6 +2039,11 @@
    "fieldname": "document_naming_code",
    "fieldtype": "Data",
    "label": "Document Naming Code"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2050,7 +2056,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2022-08-15 14:51:23.780519",
+ "modified": "2022-08-27 12:28:19.863877",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",

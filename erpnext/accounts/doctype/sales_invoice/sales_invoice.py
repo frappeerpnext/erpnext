@@ -310,6 +310,9 @@ class SalesInvoice(SellingController):
 
 		self.process_common_party_accounting()
 
+		#save cost to sale invoice
+		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_total_cost', name=self.name)
+
 	def validate_pos_return(self):
 		if self.is_consolidated:
 			# pos return is already validated in pos invoice
@@ -2607,3 +2610,16 @@ def check_if_return_invoice_linked_with_payment_entry(self):
 			message += " " + ", ".join(payment_entries_link) + " "
 			message += _("to unallocate the amount of this Return Invoice before cancelling it.")
 			frappe.throw(message)
+
+
+
+def update_total_cost(name):
+	frappe.db.sql(
+		"""
+			UPDATE `tabSales Invoice` 
+			SET total_cost = (SELECT SUM(incoming_rate*qty) FROM `tabSales Invoice Item` WHERE parent=%s)
+			WHERE
+			NAME = %s
+		""",
+		(name,name)
+	)
