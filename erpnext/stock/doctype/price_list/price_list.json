@@ -12,9 +12,11 @@
   "enabled",
   "sb_1",
   "price_list_name",
+  "alias",
   "currency",
   "buying",
   "selling",
+  "allow_in_pos",
   "price_not_uom_dependent",
   "column_break_3",
   "countries"
@@ -81,13 +83,24 @@
    "hidden": 1,
    "label": "Applicable for Countries",
    "options": "Price List Country"
+  },
+  {
+   "fieldname": "alias",
+   "fieldtype": "Data",
+   "label": "Alias"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_in_pos",
+   "fieldtype": "Check",
+   "label": "Allow in POS"
   }
  ],
  "icon": "fa fa-tags",
  "idx": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-07-24 18:08:59.636240",
+ "modified": "2022-08-25 16:16:44.357557",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Price List",
