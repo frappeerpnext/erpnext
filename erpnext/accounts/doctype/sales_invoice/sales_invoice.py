@@ -2641,11 +2641,11 @@ def update_total_cost(name):
 	#update supplier supplier group
 	frappe.db.sql(
 		"""
-			UPDATE `tabSales Invoice Item` a,`tabSupplier` b
-			SET 
-				a.supplier_group = b.supplier_group
-		WHERE
-			a.supplier = b.name AND 
+		UPDATE `tabSales Invoice Item` a 
+			SET a.supplier_group = (
+				SELECT supplier_group FROM `tabSupplier` WHERE NAME=a.supplier
+			) 
+		WHERE 
 			ifnull(a.supplier_group,'') = '' AND 
 			ifnull(a.supplier,'') <> ''
 		"""
