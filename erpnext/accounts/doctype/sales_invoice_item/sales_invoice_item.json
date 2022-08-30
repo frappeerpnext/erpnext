@@ -15,6 +15,7 @@
   "description_section",
   "description",
   "item_group",
+  "parent_item_group",
   "brand",
   "image_section",
   "image",
@@ -101,6 +102,9 @@
   "dimension_col_break",
   "project",
   "section_break_54",
+  "supplier",
+  "supplier_name",
+  "supplier_group",
   "page_break"
  ],
  "fields": [
@@ -841,12 +845,36 @@
    "fieldtype": "Check",
    "label": "Grant Commission",
    "read_only": 1
+  },
+  {
+   "fieldname": "parent_item_group",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Parent Item Group"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Supplier"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "supplier_group",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Supplier Group"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-06-17 05:33:15.335912",
+ "modified": "2022-08-30 12:07:53.919523",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice Item",

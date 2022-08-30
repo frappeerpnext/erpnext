@@ -15,6 +15,27 @@ def testing(user=None):
 	update_pos_config()
     
 
+@frappe.whitelist()
+def get_pos_price_rule():
+	data = frappe.db.sql(
+		"""
+		SELECT 
+            b.title,
+            b.start_date,
+            b.end_date,
+            b.base_on_hour,
+            b.start_time,
+            b.end_time,
+            a.item_group,
+            a.discount
+		FROM `tabPOS Prices Rule Item Group` a
+        INNER JOIN `tabPOS Prices Rule` b on b.name = a.parent
+		""",
+		as_dict=True
+	)
+ 
+	return data
+
 
 
 

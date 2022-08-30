@@ -2623,3 +2623,34 @@ def update_total_cost(name):
 		""",
 		(name,name)
 	)
+
+	#update supplier 
+	frappe.db.sql(
+		"""
+			UPDATE `tabSales Invoice Item` a,`tabItem` b
+				SET 
+					a.supplier = b.supplier,
+					a.supplier_name = b.supplier_name
+			WHERE
+				a.item_code = b.name AND 
+				(ifnull(a.supplier, '')='' OR IFNULL(a.supplier_name,'')='') and
+				ifnull(b.supplier,'') <> ''
+		"""
+	)
+
+	#update supplier supplier group
+	frappe.db.sql(
+		"""
+			UPDATE `tabSales Invoice Item` a,`tabSupplier` b
+			SET 
+				a.supplier_group = b.supplier_group
+		WHERE
+			a.supplier = b.name AND 
+			ifnull(a.supplier_group,'') = '' AND 
+			ifnull(a.supplier,'') <> ''
+		"""
+	)
+
+
+
+

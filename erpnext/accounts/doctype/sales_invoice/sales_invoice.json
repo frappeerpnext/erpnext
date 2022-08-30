@@ -11,6 +11,7 @@
   "naming_series",
   "customer",
   "customer_name",
+  "membership",
   "tax_id",
   "pos_profile",
   "is_pos",
@@ -2044,6 +2045,12 @@
    "fieldname": "total_cost",
    "fieldtype": "Currency",
    "label": "Total Cost"
+  },
+  {
+   "fetch_from": "customer.membership_type",
+   "fieldname": "membership",
+   "fieldtype": "Data",
+   "label": "Membership"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2056,7 +2063,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2022-08-27 12:28:19.863877",
+ "modified": "2022-08-30 11:36:26.374603",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",

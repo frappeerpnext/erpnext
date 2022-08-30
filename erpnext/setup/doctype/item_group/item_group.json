@@ -266,9 +266,15 @@
  "idx": 1,
  "image_field": "image",
  "is_tree": 1,
- "links": [],
+ "links": [
+  {
+   "group": "Items",
+   "link_doctype": "Item",
+   "link_fieldname": "item_group"
+  }
+ ],
  "max_attachments": 3,
- "modified": "2022-07-23 17:09:07.602533",
+ "modified": "2022-08-29 12:03:46.363855",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Item Group",
