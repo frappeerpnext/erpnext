@@ -209,7 +209,8 @@
   "station_name",
   "sub_total",
   "total_item_discount",
-  "total_poyalty_point_amount"
+  "total_poyalty_point_amount",
+  "pos_price_list"
  ],
  "fields": [
   {
@@ -1737,12 +1738,17 @@
    "fieldname": "branch",
    "fieldtype": "Data",
    "label": "Branch"
+  },
+  {
+   "fieldname": "pos_price_list",
+   "fieldtype": "Data",
+   "label": "POS Price List"
   }
  ],
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-08-09 12:31:17.333281",
+ "modified": "2022-09-05 17:30:20.773233",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

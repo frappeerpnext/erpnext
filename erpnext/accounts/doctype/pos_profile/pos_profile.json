@@ -35,6 +35,7 @@
   "print_sale_product_after_close_shift",
   "print_sale_transaction_after_close_shist",
   "sale_return_require_password",
+  "allow_see_close_sale_amount_when_close_shift",
   "column_break_16",
   "update_stock",
   "ignore_pricing_rule",
@@ -558,6 +559,12 @@
    "fieldname": "branch",
    "fieldtype": "Data",
    "label": "Branch"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_see_close_sale_amount_when_close_shift",
+   "fieldtype": "Check",
+   "label": "Allow see close sale amount when close shift"
   }
  ],
  "icon": "icon-cog",
@@ -585,7 +592,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-08-09 12:35:08.346725",
+ "modified": "2022-09-08 14:03:18.493094",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
