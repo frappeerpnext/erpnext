@@ -1751,7 +1751,6 @@
    "collapsible_depends_on": "sales_partner",
    "fieldname": "sales_team_section_break",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "hide_days": 1,
    "hide_seconds": 1,
    "label": "Commission",
@@ -2063,7 +2062,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2022-09-01 15:01:44.335792",
+ "modified": "2022-09-08 15:59:38.715870",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
