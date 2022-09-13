@@ -4,7 +4,7 @@
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:item_code",
- "creation": "2013-05-03 10:45:46",
+ "creation": "2022-09-10 15:28:54.534040",
  "description": "A Product or a Service that is bought, sold or kept in stock.",
  "doctype": "DocType",
  "document_type": "Setup",
@@ -37,6 +37,8 @@
   "over_billing_allowance",
   "brand",
   "image",
+  "note",
+  "item_note",
   "product_price_section",
   "cost_kh",
   "wholesale_price_kh",
@@ -258,7 +260,6 @@
    "label": "Opening Stock"
   },
   {
-   "depends_on": "is_stock_item",
    "fieldname": "valuation_rate",
    "fieldtype": "Currency",
    "label": "Cost"
@@ -1107,14 +1108,25 @@
    "fieldname": "supplier_name",
    "fieldtype": "Data",
    "label": "Supplier Name"
+  },
+  {
+   "depends_on": "eval:!doc.is_stock_item",
+   "fieldname": "note",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "item_note",
+   "fieldtype": "Table",
+   "label": "Item Note",
+   "options": "Item Note"
   }
  ],
  "icon": "fa fa-tag",
- "idx": 2,
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-08-10 11:12:42.027688",
+ "modified": "2022-09-10 16:51:45.570918",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

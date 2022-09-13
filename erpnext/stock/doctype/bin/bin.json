@@ -23,7 +23,7 @@
   "fcfs_rate",
   "valuation_rate",
   "stock_value",
-  "company",
+  "company_name",
   "parent_item_group"
  ],
  "fields": [
@@ -194,22 +194,22 @@
    "label": "Price"
   },
   {
-   "fetch_from": "warehouse.company",
-   "fieldname": "company",
-   "fieldtype": "Data",
-   "label": "Company"
-  },
-  {
    "fieldname": "parent_item_group",
    "fieldtype": "Data",
    "label": "Parent Item Group"
+  },
+  {
+   "fetch_from": "warehouse.company",
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company"
   }
  ],
  "hide_toolbar": 1,
  "idx": 1,
  "in_create": 1,
  "links": [],
- "modified": "2022-08-31 20:35:14.803843",
+ "modified": "2022-09-13 17:34:56.750057",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Bin",

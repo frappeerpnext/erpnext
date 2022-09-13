@@ -238,7 +238,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-08-11 11:39:52.653088",
+ "modified": "2022-09-12 17:33:28.816326",
  "modified_by": "Administrator",
  "module": "Loan Management",
  "name": "Loans",
@@ -248,7 +248,7 @@
  "quick_lists": [],
  "restrict_to_domain": "",
  "roles": [],
- "sequence_id": 11.0,
+ "sequence_id": 12.0,
  "shortcuts": [
   {
    "color": "Green",
