@@ -27,6 +27,7 @@ erpnext.financial_statements = {
 		return value;
 	},
 	"open_general_ledger": function(data) {
+	 
 		if (!data.account) return;
 		var project = $.grep(frappe.query_report.filters, function(e){ return e.df.fieldname == 'project'; })
 

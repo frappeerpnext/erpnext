@@ -59,7 +59,7 @@ def _reorder_item():
 			return
 
 		reorder_level = flt(reorder_level)
-		reorder_qty = flt(reorder_qty)
+		reorder_qty = flt(reorder_qty) - 5
 
 		# projected_qty will be 0 if Bin does not exist
 		if warehouse_group:

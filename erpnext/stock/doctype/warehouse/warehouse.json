@@ -10,6 +10,7 @@
  "field_order": [
   "warehouse_detail",
   "warehouse_name",
+  "warehouse_code",
   "column_break_3",
   "warehouse_type",
   "parent_warehouse",
@@ -239,13 +240,18 @@
    "fieldtype": "Link",
    "label": "Default In-Transit Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "warehouse_code",
+   "fieldtype": "Data",
+   "label": "Warehouse Code"
   }
  ],
  "icon": "fa fa-building",
  "idx": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2022-08-27 09:52:51.115146",
+ "modified": "2022-09-14 10:42:03.348820",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Warehouse",
