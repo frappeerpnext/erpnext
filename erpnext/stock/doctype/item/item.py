@@ -676,10 +676,29 @@ class Item(Document):
 					frappe.db.set_value(
 						dt, d.name, "item_wise_tax_detail", json.dumps(item_wise_tax_detail), update_modified=False
 					)
+
+		#update barcode
+		#del self.barcodes[(d for d in self.barcodes if d['barcodes'] == old_name)]
+		frappe.db.delete("Item Barcode", {
+			"barcode": old_name ,
+			"parent": new_name
+		})
+
+		if not frappe.db.exists({"doctype":"Item Barcode","barcode":new_name}):
+			doc=frappe.new_doc("Item Barcode")
+			doc.barcode = new_name
+			doc.parent = new_name
+			doc.parenttype="Item"
+			doc.parentfield="barcodes"
+			doc.uom=self.sales_uom or self.stock_uom 
+			doc.insert()
+
 		# updatfe keyword after rename
+		frappe.db.get
 		keyword = self.name + ' ' + self.item_code + ' ' + self.item_name;
 		for d in self.barcodes:
-			keyword = keyword + ' ' + d.barcode
+			if d.barcode != old_name:
+				keyword = keyword + ' ' + d.barcode
 
 		
 
@@ -688,7 +707,9 @@ class Item(Document):
 
 		frappe.db.set_value("Item",new_name,"keyword",keyword)
 
+		
 
+		
 	def delete_old_bins(self, old_name):
 		frappe.db.delete("Bin", {"item_code": old_name})
 
