@@ -25,6 +25,7 @@
   "disabled",
   "allow_alternative_item",
   "is_stock_item",
+  "is_ticket",
   "has_variants",
   "include_item_in_manufacturing",
   "opening_stock",
@@ -1120,13 +1121,19 @@
    "fieldtype": "Table",
    "label": "Item Note",
    "options": "Item Note"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_ticket",
+   "fieldtype": "Check",
+   "label": "Is Ticket"
   }
  ],
  "icon": "fa fa-tag",
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-10 16:51:45.570918",
+ "modified": "2022-09-22 09:36:37.882878",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

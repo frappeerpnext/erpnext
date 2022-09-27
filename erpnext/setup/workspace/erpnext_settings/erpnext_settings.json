@@ -10,7 +10,7 @@
  "idx": 0,
  "label": "ERPNext Settings",
  "links": [],
- "modified": "2022-09-12 17:33:29.964588",
+ "modified": "2022-09-23 14:29:24.116241",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "ERPNext Settings",
@@ -20,7 +20,7 @@
  "quick_lists": [],
  "restrict_to_domain": "",
  "roles": [],
- "sequence_id": 20.0,
+ "sequence_id": 21.0,
  "shortcuts": [
   {
    "icon": "project",
