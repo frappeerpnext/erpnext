@@ -15,6 +15,7 @@
   "warehouse",
   "campaign",
   "company_address",
+  "pos_config_name",
   "section_break_15",
   "api_user",
   "column_break_11",
@@ -565,6 +566,12 @@
    "fieldname": "allow_see_close_sale_amount_when_close_shift",
    "fieldtype": "Check",
    "label": "Allow see close sale amount when close shift"
+  },
+  {
+   "fieldname": "pos_config_name",
+   "fieldtype": "Link",
+   "label": "POS Config Name",
+   "options": "POS Config"
   }
  ],
  "icon": "icon-cog",
@@ -592,7 +599,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-09-08 14:03:18.493094",
+ "modified": "2022-09-28 14:11:25.715189",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
