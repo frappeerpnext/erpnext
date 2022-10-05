@@ -59,6 +59,7 @@
   "open_shift_document_number",
   "close_shift_document_number",
   "predefine_discount_code",
+  "payment_layout_section",
   "section_break_23",
   "item_groups",
   "column_break_25",
@@ -572,6 +573,13 @@
    "fieldtype": "Link",
    "label": "POS Config Name",
    "options": "POS Config"
+  },
+  {
+   "default": "Touch Friendly",
+   "fieldname": "payment_layout_section",
+   "fieldtype": "Select",
+   "label": "Payment Layout",
+   "options": "Simple\nTouch Friendly"
   }
  ],
  "icon": "icon-cog",
@@ -599,7 +607,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-09-28 14:11:25.715189",
+ "modified": "2022-10-02 12:27:27.974689",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",

@@ -23,6 +23,7 @@
   "tax_id",
   "tax_category",
   "tax_withholding_category",
+  "market_segment",
   "lead_name",
   "opportunity_name",
   "image",
@@ -61,7 +62,6 @@
   "more_info",
   "customer_details",
   "column_break_45",
-  "market_segment",
   "industry",
   "website",
   "language",
@@ -365,7 +365,6 @@
    "collapsible": 1,
    "fieldname": "credit_limit_section",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "label": "Credit Limit and Payment Terms"
   },
   {
@@ -575,7 +574,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-08-06 10:58:04.349403",
+ "modified": "2022-10-01 10:53:07.114215",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

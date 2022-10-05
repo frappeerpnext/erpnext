@@ -54,6 +54,8 @@
    "search_index": 1
   },
   {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "item_code.sales_uom",
    "fieldname": "uom",
    "fieldtype": "Link",
    "label": "UOM",
@@ -64,7 +66,6 @@
    "description": "Quantity  that must be bought or sold per UOM",
    "fieldname": "packing_unit",
    "fieldtype": "Int",
-   "hidden": 1,
    "label": "Packing Unit"
   },
   {
@@ -72,11 +73,12 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "item_code.item_name",
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Item Name",
-   "read_only": 1
+   "label": "Item Name"
   },
   {
    "fetch_from": "item_code.brand",
@@ -240,7 +242,7 @@
  "idx": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-28 19:34:00.237965",
+ "modified": "2022-10-03 20:17:47.944354",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item Price",
@@ -274,7 +276,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "ASC",
  "states": [],

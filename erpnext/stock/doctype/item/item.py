@@ -124,20 +124,20 @@ class Item(Document):
 				self.price_id = doc.name
 
 			#update wholesale price
-			 
-			if frappe.db.exists("Item Price", self.wholesale_price_id, cache=True):
-				frappe.db.set_value("Item Price", self.wholesale_price_id, "price_list_rate", self.wholesale_price)
-				x = frappe.get_doc("Item Price",self.wholesale_price_id)
-				
-			else:
-				if frappe.db.exists("Price List", "Wholesale Price", cache=True):
-					doc = frappe.new_doc('Item Price')
-					doc.uom = self.sales_uom
-					doc.item_code = self.name
-					doc.price_list = "Wholesale Price"
-					doc.price_list_rate = self.wholesale_price
-					doc.save()
-					self.wholesale_price_id = doc.name
+			if frappe.db.exists("Price List", "Wholesale Price", cache=True):
+				if frappe.db.exists("Item Price", self.wholesale_price_id, cache=True):
+					frappe.db.set_value("Item Price", self.wholesale_price_id, "price_list_rate", self.wholesale_price)
+					x = frappe.get_doc("Item Price",self.wholesale_price_id)
+					
+				else:
+					if frappe.db.exists("Price List", "Wholesale Price", cache=True):
+						doc = frappe.new_doc('Item Price')
+						doc.uom = self.sales_uom
+						doc.item_code = self.name
+						doc.price_list = "Wholesale Price"
+						doc.price_list_rate = self.wholesale_price
+						doc.save()
+						self.wholesale_price_id = doc.name
 
 			#update keyword after save 
 			
