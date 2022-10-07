@@ -1,45 +1,39 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:source_name",
- "creation": "2016-09-16 01:47:47.382372",
+ "autoname": "field:lead_source_type",
+ "creation": "2022-10-07 08:45:57.042889",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "lead_source_type",
-  "source_name",
-  "details"
+  "note"
  ],
  "fields": [
   {
-   "fieldname": "source_name",
+   "allow_in_quick_entry": 1,
+   "fieldname": "lead_source_type",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Source Name",
+   "label": "Lead Source Type",
    "reqd": 1,
    "unique": 1
   },
   {
-   "fieldname": "details",
-   "fieldtype": "Text Editor",
-   "label": "Details"
-  },
-  {
    "allow_in_quick_entry": 1,
-   "fieldname": "lead_source_type",
-   "fieldtype": "Link",
+   "fieldname": "note",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
-   "label": "Lead Source Type",
-   "options": "Lead Source Type",
-   "reqd": 1
+   "label": "Note"
   }
  ],
+ "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-07 08:54:39.971451",
+ "modified": "2022-10-07 08:46:20.044564",
  "modified_by": "Administrator",
  "module": "CRM",
- "name": "Lead Source",
+ "name": "Lead Source Type",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
@@ -51,18 +45,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Sales Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Sales User",
+   "role": "System Manager",
    "share": 1,
    "write": 1
   }
