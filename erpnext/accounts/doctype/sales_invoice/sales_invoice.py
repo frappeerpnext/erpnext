@@ -94,7 +94,8 @@ class SalesInvoice(SellingController):
 		super(SalesInvoice, self).validate()
 		self.validate_auto_set_posting_time()
 		if not self.pos_profile and not self.document_naming_code:
-			frappe.throw(_("Please select branch"))
+			if "document_naming_code" in self.naming_series:
+				frappe.throw(_("Please select branch"))
 
 		if not self.is_pos:
 			self.so_dn_required()
