@@ -123,6 +123,8 @@ class ItemPrice(Document):
 			# if only buying then remove customer
 			self.customer = None
 
+
+		 
 		# check if item price has price range 
 		if len(self.item_price_ranges)>0:
 			price_list = self.item_price_ranges
