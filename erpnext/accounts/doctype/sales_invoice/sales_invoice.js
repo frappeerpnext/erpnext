@@ -116,20 +116,20 @@ erpnext.accounts.SalesInvoiceController = class SalesInvoiceController extends e
 					cur_frm.events.create_invoice_discounting(cur_frm);
 				}, __('Create'));
 
-				if (doc.due_date < frappe.datetime.get_today()) {
+				if (doc.due_date < frappe.datetime.get_today() && 1==2) {
 					cur_frm.add_custom_button(__('Dunning'), function() {
 						cur_frm.events.create_dunning(cur_frm);
 					}, __('Create'));
 				}
 			}
 
-			if (doc.docstatus === 1) {
+			if (doc.docstatus === 1 && 1==2) {
 				cur_frm.add_custom_button(__('Maintenance Schedule'), function () {
 					cur_frm.cscript.make_maintenance_schedule();
 				}, __('Create'));
 			}
 
-			if(!doc.auto_repeat) {
+			if(!doc.auto_repeat && 1==2) {
 				cur_frm.add_custom_button(__('Subscription'), function() {
 					erpnext.utils.make_subscription(doc.doctype, doc.name)
 				}, __('Create'))
@@ -925,7 +925,7 @@ frappe.ui.form.on('Sales Invoice', {
 	},
 
 	refresh: function(frm) {
-		if (frm.doc.docstatus===0 && !frm.doc.is_return) {
+		if (frm.doc.docstatus===0 && !frm.doc.is_return && 1==2) {
 			frm.add_custom_button(__("Fetch Timesheet"), function() {
 				let d = new frappe.ui.Dialog({
 					title: __("Fetch Timesheet"),

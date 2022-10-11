@@ -5,7 +5,7 @@
    "label": "Profit and Loss"
   }
  ],
- "content": "[{\"type\":\"chart\",\"data\":{\"chart_name\":\"Profit and Loss\",\"col\":12}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chart of Accounts\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"POS Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Journal Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Accounts Receivable\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"General Ledger\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Trial Balance\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"General Ledger\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Receivable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Payable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Financial Statements\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Profitability\",\"col\":4}}]",
+ "content": "[{\"type\":\"chart\",\"data\":{\"chart_name\":\"Profit and Loss\",\"col\":12}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chart of Accounts\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cost Centers\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"POS Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Journal Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Accounts Receivable\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"General Ledger\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Trial Balance\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"General Ledger\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Receivable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Payable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Financial Statements\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Profitability\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Tools\",\"col\":4}}]",
  "creation": "2020-03-02 15:41:59.515192",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -566,9 +566,87 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tools",
+   "link_count": 7,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Opening Invoice Creation Tool",
+   "link_count": 0,
+   "link_to": "Opening Invoice Creation Tool",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fiscal Year",
+   "link_count": 0,
+   "link_to": "Fiscal Year",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Accounting Period",
+   "link_count": 0,
+   "link_to": "Accounting Period",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Accounting Dimension",
+   "link_count": 0,
+   "link_to": "Accounting Dimension",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bank Account",
+   "link_count": 0,
+   "link_to": "Bank Account",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Journal Entry Template",
+   "link_count": 0,
+   "link_to": "Journal Entry Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Mode of Payment",
+   "link_count": 0,
+   "link_to": "Mode of Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-09-23 14:29:22.778267",
+ "modified": "2022-10-11 10:12:10.261020",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounting",
@@ -591,6 +669,13 @@
   {
    "label": "Chart of Accounts",
    "link_to": "Account",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Cost Centers",
+   "link_to": "Cost Center",
    "type": "DocType"
   },
   {

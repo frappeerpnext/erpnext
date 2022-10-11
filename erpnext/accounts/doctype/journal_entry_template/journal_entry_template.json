@@ -82,14 +82,16 @@
    "default": "0",
    "fieldname": "multi_currency",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Multi Currency"
   }
  ],
  "links": [],
- "modified": "2020-05-01 18:32:01.420488",
+ "modified": "2022-10-10 23:35:01.514071",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry Template",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -129,6 +131,7 @@
  "search_fields": "voucher_type, company",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "title_field": "template_title",
  "track_changes": 1
 }

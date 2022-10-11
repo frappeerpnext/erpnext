@@ -167,6 +167,7 @@
   {
    "fieldname": "integration_details_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Integration Details"
   },
   {
@@ -202,7 +203,7 @@
   }
  ],
  "links": [],
- "modified": "2022-05-04 15:49:42.620630",
+ "modified": "2022-10-10 16:41:27.309507",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Bank Account",
