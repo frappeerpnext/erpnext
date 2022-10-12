@@ -56,6 +56,7 @@
   {
    "fieldname": "depreciation_options",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Depreciation Options"
   },
   {
@@ -66,10 +67,11 @@
   }
  ],
  "links": [],
- "modified": "2021-02-24 15:05:38.621803",
+ "modified": "2022-10-12 14:00:37.703683",
  "modified_by": "Administrator",
  "module": "Assets",
  "name": "Asset Category",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -114,5 +116,6 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1
 }
