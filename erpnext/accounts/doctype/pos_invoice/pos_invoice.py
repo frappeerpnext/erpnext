@@ -3,7 +3,7 @@
 
 
 import frappe
-from frappe import _
+from frappe import _, msgprint
 from frappe.utils import cint, flt, get_link_to_form, getdate, nowdate
 
 from erpnext.accounts.doctype.loyalty_program.loyalty_program import validate_loyalty_points
@@ -57,6 +57,17 @@ class POSInvoice(SalesInvoice):
 			from erpnext.accounts.doctype.pricing_rule.utils import validate_coupon_code
 
 			validate_coupon_code(self.coupon_code)
+
+		#update has ticket if item has field is_ticket
+		if frappe.db.exists("Module Def","E Ticket Management"):
+			if  any(d.get('is_ticket') == 1 for d in self.items):
+				self.has_ticket = 1
+				frappe.msgprint("1")
+			else:
+				self.has_ticket = 0
+				frappe.msgprint("0")
+
+			
 
 	def on_submit(self):
 		# create the loyalty point ledger entry if the customer is enrolled in any loyalty program
