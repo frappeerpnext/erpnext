@@ -147,10 +147,10 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
+   "is_query_report": 1,
    "label": "Booking Forcast",
    "link_count": 0,
-   "link_to": "Sales Summary Report",
+   "link_to": "Ticket Booking Forcast",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -166,7 +166,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-10-12 15:35:06.700021",
+ "modified": "2022-10-12 16:05:28.492581",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CRM",
