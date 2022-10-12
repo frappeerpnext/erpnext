@@ -110,7 +110,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Reports",
-   "link_count": 4,
+   "link_count": 5,
    "onboard": 0,
    "type": "Card Break"
   },
@@ -154,9 +154,19 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Sale Partner Commission Summary",
+   "link_count": 0,
+   "link_to": "Sales Partner Commission Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-10-10 21:21:25.566661",
+ "modified": "2022-10-11 12:33:32.397622",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "CRM",

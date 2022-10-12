@@ -71,7 +71,7 @@ erpnext.accounts.PurchaseInvoice = class PurchaseInvoice extends erpnext.buying.
 					function() {me.unblock_invoice()},
 					__('Create')
 				);
-			} else if (!doc.on_hold) {
+			} else if (!doc.on_hold && 1==2) {
 				this.frm.add_custom_button(
 					__('Block Invoice'),
 					function() {me.block_invoice()},
@@ -92,7 +92,7 @@ erpnext.accounts.PurchaseInvoice = class PurchaseInvoice extends erpnext.buying.
 					this.make_debit_note, __('Create'));
 			}
 
-			if(!doc.auto_repeat) {
+			if(!doc.auto_repeat && 1==2) {
 				cur_frm.add_custom_button(__('Subscription'), function() {
 					erpnext.utils.make_subscription(doc.doctype, doc.name)
 				}, __('Create'))

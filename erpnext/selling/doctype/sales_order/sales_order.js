@@ -180,7 +180,9 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					// delivery note
 					if(flt(doc.per_delivered, 6) < 100 && (order_is_a_sale || order_is_a_custom_sale) && allow_delivery) {
 						this.frm.add_custom_button(__('Delivery Note'), () => this.make_delivery_note_based_on_delivery_date(), __('Create'));
-						this.frm.add_custom_button(__('Work Order'), () => this.make_work_order(), __('Create'));
+						if (1==2){ 
+							this.frm.add_custom_button(__('Work Order'), () => this.make_work_order(), __('Create'));
+						}
 					}
 
 					// sales invoice
@@ -191,7 +193,9 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					// material request
 					if(!doc.order_type || (order_is_a_sale || order_is_a_custom_sale) && flt(doc.per_delivered, 6) < 100) {
 						this.frm.add_custom_button(__('Material Request'), () => this.make_material_request(), __('Create'));
-						this.frm.add_custom_button(__('Request for Raw Materials'), () => this.make_raw_material_request(), __('Create'));
+						if (1==2){ 
+							this.frm.add_custom_button(__('Request for Raw Materials'), () => this.make_raw_material_request(), __('Create'));
+						}
 					}
 
 					// Make Purchase Order
@@ -200,17 +204,17 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 					}
 
 					// maintenance
-					if(flt(doc.per_delivered, 2) < 100 && (order_is_maintenance || order_is_a_custom_sale)) {
+					if(flt(doc.per_delivered, 2) < 100 && (order_is_maintenance || order_is_a_custom_sale) && 1==2) {
 						this.frm.add_custom_button(__('Maintenance Visit'), () => this.make_maintenance_visit(), __('Create'));
 						this.frm.add_custom_button(__('Maintenance Schedule'), () => this.make_maintenance_schedule(), __('Create'));
 					}
 
 					// project
-					if(flt(doc.per_delivered, 2) < 100) {
+					if(flt(doc.per_delivered, 2) < 100 && 1==2) {
 							this.frm.add_custom_button(__('Project'), () => this.make_project(), __('Create'));
 					}
 
-					if(!doc.auto_repeat) {
+					if(!doc.auto_repeat && 1==2) {
 						this.frm.add_custom_button(__('Subscription'), function() {
 							erpnext.utils.make_subscription(doc.doctype, doc.name)
 						}, __('Create'))

@@ -23,3 +23,4 @@ def get_customer_loyalty_point(name,company,loyalty_program):
 	)
  
 	return total_point_balance[0]
+ 
