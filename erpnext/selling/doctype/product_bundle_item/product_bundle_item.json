@@ -10,7 +10,9 @@
   "description",
   "rate",
   "cost",
-  "uom"
+  "uom",
+  "total_cost",
+  "total_rate"
  ],
  "fields": [
   {
@@ -73,12 +75,24 @@
    "fieldtype": "Currency",
    "label": "Cost",
    "read_only": 1
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_rate",
+   "fieldtype": "Currency",
+   "label": "Total Rate"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-08-23 12:42:56.741353",
+ "modified": "2022-10-13 11:26:27.737875",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Product Bundle Item",
