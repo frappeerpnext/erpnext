@@ -546,7 +546,7 @@
    "label": "Close Shift Document Number"
   },
   {
-   "default": "5,10,15,50,25,30,35,40,45,50,100",
+   "default": "5,10,15,20,25,30,35,40,45,50,100",
    "fieldname": "predefine_discount_code",
    "fieldtype": "Data",
    "label": "Predefine Discount Code"
@@ -607,7 +607,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-10-02 12:27:27.974689",
+ "modified": "2022-10-13 15:00:15.658738",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",

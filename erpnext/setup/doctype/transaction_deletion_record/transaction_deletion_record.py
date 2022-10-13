@@ -222,5 +222,7 @@ def get_doctypes_to_be_ignored():
 		"Item Default",
 		"Customer",
 		"Supplier",
+		"Department",
+		"Currency Exchange"
 	]
 	return doctypes_to_be_ignored_list
