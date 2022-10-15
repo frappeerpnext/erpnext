@@ -219,7 +219,26 @@ frappe.ui.form.on("Item", {
 
 	has_variants: function(frm) {
 		erpnext.item.toggle_attributes(frm);
-	}
+	},
+	cost_kh: function(frm) {
+		frm.set_value("valuation_rate",frm.doc.cost_kh / 4100);
+   },
+   wholesale_price_kh: function(frm) {
+		frm.set_value("wholesale_price",frm.doc.wholesale_price_kh / 4100);
+   },
+   price_kh: function(frm) {
+		frm.set_value("standard_rate",frm.doc.price_kh / 4100);
+   },
+   valuation_rate: function(frm) {
+		frm.set_value("cost_kh",frm.doc.valuation_rate * 4100);
+   },
+   wholesale_price: function(frm) {
+		frm.set_value("wholesale_price_kh",frm.doc.wholesale_price * 4100);
+   },
+   standard_rate: function(frm) {
+		frm.set_value("price_kh",frm.doc.standard_rate * 4100);
+   }
+
 });
 
 frappe.ui.form.on('Item Reorder', {
