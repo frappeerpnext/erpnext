@@ -14,6 +14,7 @@
   "naming_series",
   "salutation",
   "customer_name",
+  "email_address",
   "phone_number",
   "birthdate",
   "birthday_event_name",
@@ -62,6 +63,7 @@
   "more_info",
   "customer_details",
   "column_break_45",
+  "customer_address",
   "industry",
   "website",
   "language",
@@ -561,6 +563,16 @@
    "fieldname": "membership_expired_date",
    "fieldtype": "Date",
    "label": "Membership Expired Date"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Small Text",
+   "label": "Customer Address"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address"
   }
  ],
  "icon": "fa fa-user",
@@ -574,7 +586,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-10-01 10:53:07.114215",
+ "modified": "2022-10-15 18:09:19.612661",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
