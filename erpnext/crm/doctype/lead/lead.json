@@ -199,6 +199,7 @@
   {
    "fieldname": "address_html",
    "fieldtype": "HTML",
+   "hidden": 1,
    "label": "Address HTML",
    "read_only": 1
   },
@@ -231,6 +232,7 @@
   {
    "fieldname": "fax",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Fax",
    "oldfieldname": "fax",
    "oldfieldtype": "Data"
@@ -347,6 +349,7 @@
   {
    "fieldname": "whatsapp_no",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "WhatsApp",
    "options": "Phone"
   },
@@ -361,6 +364,7 @@
   {
    "fieldname": "phone_ext",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Phone Ext."
   },
   {
@@ -379,6 +383,7 @@
    "collapsible": 1,
    "fieldname": "other_info_tab",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Additional Information"
   },
   {
@@ -389,28 +394,34 @@
    "fieldname": "qualified_by",
    "fieldtype": "Link",
    "label": "Qualified By",
-   "options": "User"
+   "options": "User",
+   "read_only": 1
   },
   {
    "fieldname": "qualified_on",
    "fieldtype": "Date",
-   "label": "Qualified on"
+   "label": "Qualified on",
+   "read_only": 1
   },
   {
    "fieldname": "qualification_status",
    "fieldtype": "Select",
    "label": "Qualification Status",
-   "options": "Unqualified\nIn Process\nQualified"
+   "options": "Unqualified\nIn Process\nQualified",
+   "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "address_section",
    "fieldtype": "Section Break",
-   "label": "Address & Contacts"
+   "hidden": 1,
+   "label": "Address & Contacts",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_64",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_20",
@@ -426,6 +437,7 @@
   {
    "fieldname": "annual_revenue",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Annual Revenue"
   },
   {
@@ -493,7 +505,8 @@
   {
    "fieldname": "state",
    "fieldtype": "Data",
-   "label": "State"
+   "label": "State",
+   "read_only": 1
   },
   {
    "fieldname": "country",
@@ -506,7 +519,7 @@
  "idx": 5,
  "image_field": "image",
  "links": [],
- "modified": "2022-06-27 21:56:17.392756",
+ "modified": "2022-10-17 11:01:15.950648",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Lead",

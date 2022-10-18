@@ -260,8 +260,9 @@ def update_pos_config():
 
     companies = frappe.db.get_list('Company')
     if len(companies)>0:
-        if not frappe.db.exists("POS Config","Testing Company"):
+        if not frappe.db.exists("POS Config","AWA Demo"):
             doc = frappe.get_doc({
+                "pos_config_name":companies[0].name,
                 "doctype": "POS Config",
                 "company_name": companies[0].name,
                 "company_name_kh": companies[0].name,

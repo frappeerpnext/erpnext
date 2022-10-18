@@ -31,6 +31,6 @@ def get_data():
 			{"label": _("Reference"), "items": ["Timesheet", "Delivery Note", "Sales Order"]},
 			{"label": _("Returns"), "items": ["Sales Invoice"]},
 			{"label": _("Subscription"), "items": ["Auto Repeat"]},
-			{"label": _("Internal Transfers"), "items": ["Purchase Invoice"]},
+			
 		],
 	}
