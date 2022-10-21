@@ -18,6 +18,7 @@
   "item_group",
   "product_code_prefix",
   "item_name",
+  "item_name_kh",
   "stock_uom",
   "supplier",
   "supplier_name",
@@ -1120,13 +1121,18 @@
    "fieldtype": "Table",
    "label": "Item Note",
    "options": "Item Note"
+  },
+  {
+   "fieldname": "item_name_kh",
+   "fieldtype": "Data",
+   "label": "Item Name (Kh)"
   }
  ],
  "icon": "fa fa-tag",
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-27 21:41:28.303347",
+ "modified": "2022-10-21 11:19:32.286797",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

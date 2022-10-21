@@ -14,6 +14,7 @@
   "supplier",
   "get_items_from_open_material_requests",
   "supplier_name",
+  "buying_price_list",
   "apply_tds",
   "tax_withholding_category",
   "is_subcontracted",
@@ -53,7 +54,6 @@
   "currency",
   "conversion_rate",
   "cb_price_list",
-  "buying_price_list",
   "price_list_currency",
   "plc_conversion_rate",
   "ignore_pricing_rule",
@@ -386,6 +386,7 @@
    "collapsible": 1,
    "fieldname": "currency_and_price_list",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Currency and Price List",
    "options": "fa fa-tag"
   },
@@ -456,6 +457,7 @@
    "default": "0",
    "fieldname": "is_subcontracted",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Subcontracted",
    "print_hide": 1
   },
@@ -572,6 +574,7 @@
   {
    "fieldname": "total_net_weight",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Total Net Weight",
    "print_hide": 1,
    "read_only": 1
@@ -579,6 +582,7 @@
   {
    "fieldname": "taxes_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "oldfieldtype": "Section Break",
    "options": "fa fa-money"
   },
@@ -1010,6 +1014,7 @@
    "default": "0",
    "fieldname": "group_same_items",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Group same items",
    "print_hide": 1
   },
@@ -1023,6 +1028,7 @@
    "collapsible": 1,
    "fieldname": "subscription_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Subscription Section"
   },
   {
@@ -1064,6 +1070,7 @@
   {
    "fieldname": "tax_category",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tax Category",
    "options": "Tax Category"
   },
@@ -1124,12 +1131,14 @@
    "default": "0",
    "fieldname": "apply_tds",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Apply Tax Withholding Amount"
   },
   {
    "depends_on": "eval: doc.apply_tds",
    "fieldname": "tax_withholding_category",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Tax Withholding Category",
    "options": "Tax Withholding Category"
   },
@@ -1157,7 +1166,8 @@
    "fieldname": "project",
    "fieldtype": "Link",
    "label": "Project",
-   "options": "Project"
+   "options": "Project",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -1172,7 +1182,7 @@
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-15 15:40:58.527065",
+ "modified": "2022-10-20 17:29:00.512097",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

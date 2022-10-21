@@ -27,6 +27,7 @@
   "market_segment",
   "lead_name",
   "opportunity_name",
+  "company_name",
   "image",
   "column_break0",
   "customer_group",
@@ -573,6 +574,11 @@
    "fieldname": "email_address",
    "fieldtype": "Data",
    "label": "Email Address"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
   }
  ],
  "icon": "fa fa-user",
@@ -586,7 +592,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-10-15 18:09:19.612661",
+ "modified": "2022-10-19 15:16:40.704298",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

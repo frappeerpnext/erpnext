@@ -15,8 +15,8 @@ def get_data():
 			"Batch": "item",
 		},
 		"transactions": [
-			{"label": _("Groups"), "items": ["BOM", "Product Bundle", "Item Alternative"]},
-			{"label": _("Pricing"), "items": ["Item Price", "Pricing Rule"]},
+			{"label": _("Groups"), "items": ["BOM", "Product Bundle"]},
+			{"label": _("Pricing"), "items": ["Item Price"]},
 			{"label": _("Sell"), "items": ["Quotation", "Sales Order", "Delivery Note", "Sales Invoice"]},
 			{
 				"label": _("Buy"),
@@ -29,9 +29,6 @@ def get_data():
 					"Purchase Invoice",
 				],
 			},
-			{"label": _("Manufacture"), "items": ["Production Plan", "Work Order", "Item Manufacturer"]},
-			{"label": _("Traceability"), "items": ["Serial No", "Batch"]},
-			{"label": _("Stock Movement"), "items": ["Stock Entry", "Stock Reconciliation"]},
-			{"label": _("E-commerce"), "items": ["Website Item"]},
+			{"label": _("Stock Movement"), "items": ["Stock Entry", "Stock Reconciliation"]}
 		],
 	}

@@ -128,6 +128,7 @@
    "description": "Set targets Item Group-wise for this Sales Person.",
    "fieldname": "target_details_section_break",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Sales Person Targets",
    "oldfieldtype": "Section Break",
    "options": "icon-bullseye"
@@ -145,10 +146,11 @@
  "idx": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2020-03-18 18:11:13.968024",
+ "modified": "2022-10-20 01:01:45.322529",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Sales Person",
+ "naming_rule": "By fieldname",
  "nsm_parent_field": "parent_sales_person",
  "owner": "Administrator",
  "permissions": [
@@ -181,5 +183,6 @@
  "search_fields": "parent_sales_person",
  "show_name_in_global_search": 1,
  "sort_field": "modified",
- "sort_order": "ASC"
+ "sort_order": "ASC",
+ "states": []
 }

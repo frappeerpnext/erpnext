@@ -78,9 +78,9 @@
   "reference_date",
   "clearance_date",
   "accounting_dimensions_section",
+  "cost_center",
   "project",
   "dimension_col_break",
-  "cost_center",
   "section_break_12",
   "status",
   "custom_remarks",
@@ -239,11 +239,11 @@
    "depends_on": "paid_from",
    "fieldname": "paid_from_account_currency",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Account Currency",
    "options": "Currency",
    "print_hide": 1,
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "depends_on": "paid_from",
@@ -272,11 +272,11 @@
    "depends_on": "paid_to",
    "fieldname": "paid_to_account_currency",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Account Currency",
    "options": "Currency",
    "print_hide": 1,
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "depends_on": "paid_to",
@@ -478,6 +478,7 @@
   {
    "fieldname": "project",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Project",
    "options": "Project",
    "print_hide": 1
@@ -731,7 +732,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-23 20:08:39.559814",
+ "modified": "2022-10-20 00:30:38.127911",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",

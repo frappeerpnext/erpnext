@@ -256,6 +256,7 @@ erpnext.TransactionController = class TransactionController extends erpnext.taxe
 	}
 
 	setup_quality_inspection() {
+		return;
 		if(!in_list(["Delivery Note", "Sales Invoice", "Purchase Receipt", "Purchase Invoice"], this.frm.doc.doctype)) {
 			return;
 		}
@@ -1963,7 +1964,7 @@ erpnext.TransactionController = class TransactionController extends erpnext.taxe
 
 		const me = this;
 		const dialog = new frappe.ui.Dialog({
-			title: __("Select Items for Quality Inspection"),
+			title: __("Select Items for Quality Inspectionx"),
 			fields: fields,
 			primary_action: function () {
 				const data = dialog.get_values();

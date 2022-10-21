@@ -8,7 +8,6 @@ def get_data():
 			"Journal Entry": "reference_name",
 			"Payment Entry": "reference_name",
 			"Payment Request": "reference_name",
-			"Auto Repeat": "reference_document",
 		},
 		"internal_links": {
 			"Material Request": ["items", "material_request"],
@@ -20,8 +19,8 @@ def get_data():
 			{"label": _("Payment"), "items": ["Payment Entry", "Journal Entry", "Payment Request"]},
 			{
 				"label": _("Reference"),
-				"items": ["Material Request", "Supplier Quotation", "Project", "Auto Repeat"],
+				"items": ["Material Request", "Supplier Quotation"],
 			},
-			{"label": _("Sub-contracting"), "items": ["Subcontracting Order", "Stock Entry"]},
+			{"label": _("Sub-contracting"), "items": ["Stock Entry"]},
 		],
 	}

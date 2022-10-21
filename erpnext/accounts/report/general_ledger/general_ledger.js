@@ -15,7 +15,8 @@ frappe.query_reports["General Ledger"] = {
 			"fieldname":"finance_book",
 			"label": __("Finance Book"),
 			"fieldtype": "Link",
-			"options": "Finance Book"
+			"options": "Finance Book",
+			"hidden":1
 		},
 		{
 			"fieldname":"from_date",
@@ -141,7 +142,8 @@ frappe.query_reports["General Ledger"] = {
 			"fieldname": "presentation_currency",
 			"label": __("Currency"),
 			"fieldtype": "Select",
-			"options": erpnext.get_presentation_currency_list()
+			"options": erpnext.get_presentation_currency_list(),
+			"hidden":1
 		},
 		{
 			"fieldname":"cost_center",
@@ -161,7 +163,8 @@ frappe.query_reports["General Ledger"] = {
 				return frappe.db.get_link_options('Project', txt, {
 					company: frappe.query_report.get_filter_value("company")
 				});
-			}
+			},
+			"hidden":1
 		},
 		{
 			"fieldname": "include_dimensions",
@@ -172,12 +175,14 @@ frappe.query_reports["General Ledger"] = {
 		{
 			"fieldname": "show_opening_entries",
 			"label": __("Show Opening Entries"),
-			"fieldtype": "Check"
+			"fieldtype": "Check",
+			 "hidden":1
 		},
 		{
 			"fieldname": "include_default_book_entries",
 			"label": __("Include Default Book Entries"),
-			"fieldtype": "Check"
+			"fieldtype": "Check",
+			 "hidden":1
 		},
 		{
 			"fieldname": "show_cancelled_entries",
@@ -187,7 +192,8 @@ frappe.query_reports["General Ledger"] = {
 		{
 			"fieldname": "show_net_values_in_party_account",
 			"label": __("Show Net Values in Party Account"),
-			"fieldtype": "Check"
+			"fieldtype": "Check",
+			 "hidden":1
 		}
 	]
 }
