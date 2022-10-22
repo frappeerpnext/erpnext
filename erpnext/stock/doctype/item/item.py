@@ -6,7 +6,7 @@ import json
 from typing import Dict, List, Optional
 import uuid;
 import frappe
-from frappe import _
+from frappe import _, msgprint
 from frappe.model.document import Document
 from frappe.utils import (
 	cint,
@@ -157,6 +157,12 @@ class Item(Document):
 				if not any(d.supplier == self.supplier for d in self.supplier_items):
 					self.append("supplier_items", {"supplier": self.supplier})
 					
+			"""Generate POS Menu to New field"""
+			pos_menus = []
+			if self.pos_menu:
+				for m in self.pos_menu:
+					pos_menus.append(m.pos_menu)
+				self.pos_menus =','.join(pos_menus)
 					
 
 
