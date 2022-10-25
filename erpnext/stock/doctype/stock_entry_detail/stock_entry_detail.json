@@ -87,7 +87,6 @@
   {
    "fieldname": "s_warehouse",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Source Warehouse",
    "oldfieldname": "s_warehouse",
    "oldfieldtype": "Link",
@@ -100,7 +99,6 @@
   {
    "fieldname": "t_warehouse",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Target Warehouse",
    "oldfieldname": "t_warehouse",
    "oldfieldtype": "Link",
@@ -207,6 +205,7 @@
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Amount",
    "oldfieldname": "amount",
    "oldfieldtype": "Currency",
@@ -227,6 +226,7 @@
   {
    "fieldname": "uom",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "UOM",
    "oldfieldname": "uom",
    "oldfieldtype": "Link",
@@ -283,6 +283,7 @@
   {
    "fieldname": "serial_no_batch",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Serial No / Batch",
    "no_copy": 1
   },
@@ -485,6 +486,7 @@
   {
    "fieldname": "project",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Project",
    "options": "Project"
   },
@@ -498,14 +500,14 @@
    "read_only": 1
   },
   {
-    "fieldname": "sco_rm_detail",
-    "fieldtype": "Data",
-    "hidden": 1,
-    "label": "SCO Supplied Item",
-    "no_copy": 1,
-    "print_hide": 1,
-    "read_only": 1
-   },
+   "fieldname": "sco_rm_detail",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "SCO Supplied Item",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  },
   {
    "default": "0",
    "depends_on": "eval:parent.purpose===\"Repack\" && doc.t_warehouse",
@@ -541,12 +543,14 @@
    "default": "0",
    "fieldname": "is_scrap_item",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Scrap Item"
   },
   {
    "default": "0",
    "fieldname": "is_finished_item",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Finished Item"
   },
   {
@@ -562,6 +566,7 @@
    "default": "0",
    "fieldname": "is_process_loss",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Process Loss"
   }
  ],
@@ -569,7 +574,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-06-17 05:06:33.621264",
+ "modified": "2022-10-22 16:07:09.236340",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry Detail",

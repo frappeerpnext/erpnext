@@ -211,6 +211,7 @@
   {
    "fieldname": "reference",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Reference"
   },
@@ -242,7 +243,7 @@
  "idx": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-08 15:36:04.501192",
+ "modified": "2022-10-22 16:12:46.928641",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item Price",

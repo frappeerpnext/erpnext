@@ -63,6 +63,7 @@
   "payment_layout_section",
   "section_break_23",
   "item_groups",
+  "pos_root_menu",
   "pos_menus",
   "column_break_25",
   "customer_groups",
@@ -594,6 +595,12 @@
    "fieldtype": "Table",
    "label": "POS Menus",
    "options": "POS Menu Items"
+  },
+  {
+   "fieldname": "pos_root_menu",
+   "fieldtype": "Link",
+   "label": "POS Root Menu",
+   "options": "POS Menu"
   }
  ],
  "icon": "icon-cog",
@@ -621,7 +628,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-10-21 11:21:28.554242",
+ "modified": "2022-10-25 11:13:32.304633",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
