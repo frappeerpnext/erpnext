@@ -38,6 +38,7 @@
   "sale_return_require_password",
   "allow_see_close_sale_amount_when_close_shift",
   "see_booking",
+  "show_aba_pay_when_checkout",
   "column_break_16",
   "update_stock",
   "ignore_pricing_rule",
@@ -601,6 +602,12 @@
    "fieldtype": "Link",
    "label": "POS Root Menu",
    "options": "POS Menu"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_aba_pay_when_checkout",
+   "fieldtype": "Check",
+   "label": "Show ABA Pay when Checkout"
   }
  ],
  "icon": "icon-cog",
@@ -628,7 +635,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-10-25 11:13:32.304633",
+ "modified": "2022-10-26 09:30:34.757260",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",

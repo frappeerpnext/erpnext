@@ -29,9 +29,9 @@
   "amended_from",
   "return_against",
   "accounting_dimensions_section",
+  "cost_center",
   "project",
   "dimension_col_break",
-  "cost_center",
   "customer_po_details",
   "po_no",
   "column_break_23",
@@ -392,6 +392,7 @@
   {
    "fieldname": "project",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_global_search": 1,
    "label": "Project",
    "oldfieldname": "project_name",
@@ -404,6 +405,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "pos_profile.cost_center",
    "fieldname": "cost_center",
    "fieldtype": "Link",
    "label": "Cost Center",
@@ -1755,7 +1757,7 @@
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-15 14:38:20.299220",
+ "modified": "2022-10-26 09:47:18.359208",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

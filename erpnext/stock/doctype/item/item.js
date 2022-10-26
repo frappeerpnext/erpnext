@@ -221,6 +221,7 @@ frappe.ui.form.on("Item", {
 		erpnext.item.toggle_attributes(frm);
 	},
 	cost_kh: function(frm) {
+		
 		frm.set_value("valuation_rate",frm.doc.cost_kh / 4100);
    },
    wholesale_price_kh: function(frm) {
