@@ -223,6 +223,8 @@ def get_doctypes_to_be_ignored():
 		"Customer",
 		"Supplier",
 		"Department",
-		"Currency Exchange"
+		"Currency Exchange",
+		"Mode of Payment",
+		"Mode of Payment Account"
 	]
 	return doctypes_to_be_ignored_list
