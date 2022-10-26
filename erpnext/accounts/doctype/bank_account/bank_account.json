@@ -21,10 +21,10 @@
   "column_break_14",
   "party",
   "account_details_section",
+  "bank_account_no",
   "iban",
   "column_break_12",
   "branch_code",
-  "bank_account_no",
   "address_and_contact",
   "address_html",
   "column_break_13",
@@ -129,7 +129,7 @@
   {
    "fieldname": "iban",
    "fieldtype": "Data",
-   "in_list_view": 1,
+   "hidden": 1,
    "label": "IBAN",
    "length": 30
   },
@@ -203,7 +203,7 @@
   }
  ],
  "links": [],
- "modified": "2022-10-10 16:41:27.309507",
+ "modified": "2022-10-26 15:01:40.075400",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Bank Account",
