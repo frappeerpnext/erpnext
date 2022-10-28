@@ -737,6 +737,7 @@
    "depends_on": "packed_items",
    "fieldname": "packing_list",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "hide_days": 1,
    "hide_seconds": 1,
    "label": "Packing List",
@@ -2067,7 +2068,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2022-10-19 22:31:36.655715",
+ "modified": "2022-10-27 10:41:15.490042",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",

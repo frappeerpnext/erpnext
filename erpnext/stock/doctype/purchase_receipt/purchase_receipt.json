@@ -280,6 +280,7 @@
    "collapsible": 1,
    "fieldname": "section_addresses",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Address and Contact"
   },
   {
@@ -1104,6 +1105,7 @@
    "default": "0",
    "fieldname": "apply_putaway_rule",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Apply Putaway Rule"
   },
   {
@@ -1161,7 +1163,7 @@
  "idx": 261,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-15 14:06:42.121506",
+ "modified": "2022-10-27 09:58:35.597458",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Purchase Receipt",

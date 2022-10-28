@@ -11,8 +11,7 @@ def get_data():
 			"Purchase Invoice": "bom",
 		},
 		"transactions": [
-			{"label": _("Stock"), "items": ["Item", "Stock Entry", "Quality Inspection"]},
-			{"label": _("Manufacture"), "items": ["BOM", "Work Order", "Job Card"]},
+			{"label": _("Stock"), "items": ["Item", "Stock Entry"]},
 			{
 				"label": _("Subcontract"),
 				"items": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"],
@@ -23,7 +22,6 @@ def get_data():
 			"Purchase Order",
 			"Purchase Receipt",
 			"Purchase Invoice",
-			"Job Card",
 			"Stock Entry",
 			"BOM",
 		],
