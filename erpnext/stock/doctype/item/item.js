@@ -445,7 +445,7 @@ $.extend(erpnext.item, {
 	},
 	print_barcode_button: function(frm) {
 		frm.add_custom_button(__("Print Barcode"), function() {
-			msg = frappe.msgprint('<iframe src="http://webmonitor.inccloudserver.com:3344/ReportServer/Pages/ReportViewer.aspx?%2fePOSRetailReport%2frptPrintBarcode&rs:Command=Render&rc:Zoom=Page Width&barcode='+ frm.doc.name +'&price='+ frm.doc.standard_rate +'&product_name=' + frm.doc.item_name + '" frameBorder="0" width="100%" height="650" title="Print Barcode"></iframe>', 'Print Barcode')
+			msg = frappe.msgprint('<iframe src="http://webmonitor.inccloudserver.com:3344/ReportServer/Pages/ReportViewer.aspx?%2fePOSRetailReport%2frptPrintBarcode&rs:Command=Render&rc:Zoom=Page Width&barcode='+ frm.doc.name +'&price='+ frm.doc.standard_rate +'&product_name_kh=' + frm.doc.item_name_kh + '&product_name=' + frm.doc.item_name + '" frameBorder="0" width="100%" height="650" title="Print Barcode"></iframe>', 'Print Barcode')
 			msg.$wrapper.find('.modal-dialog').css("max-width", "80%");
 		}, __("Actions"));
 	
