@@ -11,6 +11,7 @@
   "item_code",
   "col_break1",
   "item_name",
+  "item_name_kh",
   "customer_item_code",
   "description_section",
   "description",
@@ -872,11 +873,17 @@
    "fieldname": "sub_total",
    "fieldtype": "Currency",
    "label": "Sub Total"
+  },
+  {
+   "fetch_from": "item_code.item_name_kh",
+   "fieldname": "item_name_kh",
+   "fieldtype": "Data",
+   "label": "Item Name Kh"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2022-07-25 12:21:51.964245",
+ "modified": "2022-10-31 12:00:58.074514",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice Item",

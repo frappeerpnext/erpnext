@@ -92,7 +92,6 @@
   {
    "fieldname": "defaults",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "label": "Defaults"
   },
   {
@@ -275,7 +274,7 @@
   }
  ],
  "max_attachments": 3,
- "modified": "2022-10-20 08:24:41.137900",
+ "modified": "2022-10-31 10:57:37.032135",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Item Group",

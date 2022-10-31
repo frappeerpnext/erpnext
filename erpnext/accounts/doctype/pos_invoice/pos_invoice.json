@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "customer_section",
+  "document_number",
   "title",
   "naming_series",
   "customer",
@@ -189,7 +190,6 @@
   "customer_phone_number",
   "customer_photo",
   "discount_type",
-  "document_number",
   "document_number_series",
   "exchange_rate",
   "free_note",
@@ -1627,7 +1627,8 @@
   {
    "fieldname": "document_number",
    "fieldtype": "Data",
-   "label": "Local Document Number"
+   "in_list_view": 1,
+   "label": "POS Document #"
   },
   {
    "fieldname": "document_number_series",
@@ -1757,7 +1758,7 @@
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-26 09:47:18.359208",
+ "modified": "2022-10-31 10:09:00.123507",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",
