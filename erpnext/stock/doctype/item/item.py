@@ -355,6 +355,8 @@ class Item(Document):
 
 		if not self.valuation_rate and self.standard_rate:
 			self.valuation_rate = self.standard_rate
+			frappe.throw(str(self.valuation_rate))
+			
 
 		if not self.valuation_rate and not self.is_customer_provided_item:
 			frappe.throw(_("Valuation Rate is mandatory if Opening Stock entered"))
