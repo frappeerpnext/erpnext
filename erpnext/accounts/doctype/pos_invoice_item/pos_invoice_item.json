@@ -14,7 +14,6 @@
   "item_name_kh",
   "customer_item_code",
   "description_section",
-  "sale_item_note",
   "description",
   "item_group",
   "brand",
@@ -880,16 +879,11 @@
    "fieldname": "item_name_kh",
    "fieldtype": "Data",
    "label": "Item Name Kh"
-  },
-  {
-   "fieldname": "sale_item_note",
-   "fieldtype": "Data",
-   "label": "Sale Item Note"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2022-11-02 08:11:40.049137",
+ "modified": "2022-11-02 18:19:37.399516",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice Item",
