@@ -1206,7 +1206,7 @@ def get_valuation_rate(
 	raise_error_if_no_rate=True,
 	batch_no=None,
 ):
-
+	
 	if not company:
 		company = frappe.get_cached_value("Warehouse", warehouse, "company")
 
@@ -1267,7 +1267,7 @@ def get_valuation_rate(
 	if not valuation_rate:
 		# try Item Standard rate
 		valuation_rate = frappe.db.get_value("Item", item_code, "standard_rate")
-
+	
 		if not valuation_rate:
 			# try in price list
 			valuation_rate = frappe.db.get_value(
