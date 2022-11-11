@@ -33,7 +33,6 @@
   "cost_center",
   "project",
   "dimension_col_break",
-  "department",
   "customer_po_details",
   "po_no",
   "column_break_23",
@@ -1754,18 +1753,12 @@
    "fieldname": "local_sale_discount_percentage",
    "fieldtype": "Float",
    "label": "Local Sale Dicount Percentage"
-  },
-  {
-   "fieldname": "department",
-   "fieldtype": "Link",
-   "label": "Department",
-   "options": "Department"
   }
  ],
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-11-07 11:39:47.464571",
+ "modified": "2022-11-11 21:47:46.934748",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",
