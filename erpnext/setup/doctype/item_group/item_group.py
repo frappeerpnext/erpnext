@@ -28,6 +28,7 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 		self.name = self.item_group_name
 
 	def validate(self):
+	
 		super(ItemGroup, self).validate()
 
 		if not self.parent_item_group and not frappe.flags.in_test:

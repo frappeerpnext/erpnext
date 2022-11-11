@@ -16,6 +16,7 @@
   "description_section",
   "description",
   "item_group",
+  "parent_item_group",
   "brand",
   "image_section",
   "image",
@@ -109,7 +110,8 @@
   "regular_price",
   "sub_total",
   "section_break_54",
-  "page_break"
+  "page_break",
+  "sale_item_note"
  ],
  "fields": [
   {
@@ -879,11 +881,22 @@
    "fieldname": "item_name_kh",
    "fieldtype": "Data",
    "label": "Item Name Kh"
+  },
+  {
+   "fieldname": "sale_item_note",
+   "fieldtype": "Data",
+   "label": "Sale Item Note"
+  },
+  {
+   "fetch_from": "item_group.parent_item_group",
+   "fieldname": "parent_item_group",
+   "fieldtype": "Data",
+   "label": "Parent Item Group"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2022-11-02 18:19:37.399516",
+ "modified": "2022-11-07 11:22:04.484171",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice Item",

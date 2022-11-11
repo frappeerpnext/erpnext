@@ -92,6 +92,7 @@
   {
    "fieldname": "defaults",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Defaults"
   },
   {
@@ -183,6 +184,7 @@
    "search_index": 1
   },
   {
+   "default": "All Item Groups",
    "fieldname": "old_parent",
    "fieldtype": "Link",
    "hidden": 1,
@@ -242,7 +244,6 @@
   {
    "fieldname": "item_group_discount",
    "fieldtype": "Text",
-   "hidden": 1,
    "label": "Item Group Discountt"
   },
   {
@@ -274,7 +275,7 @@
   }
  ],
  "max_attachments": 3,
- "modified": "2022-10-31 10:57:37.032135",
+ "modified": "2022-11-03 16:33:56.853469",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Item Group",

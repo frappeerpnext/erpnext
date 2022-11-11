@@ -215,6 +215,7 @@ class Item(Document):
 
 
 	def validate(self):
+		
 		if not self.item_name:
 			self.item_name = self.item_code
 
@@ -1210,6 +1211,16 @@ class Item(Document):
 					indicator="orange",
 				)
 
+	@frappe.whitelist()
+	def get_selling_exchange_rate(self):
+		exchage_rate = frappe.get_last_doc('Currency Exchange',filters={"for_selling": "1"},order_by="modified desc")
+		return exchage_rate.exchange_rate
+	
+	#get 
+	@frappe.whitelist()
+	def get_buying_exchange_rate(self):
+		exchage_rate = frappe.get_last_doc('Currency Exchange',filters={"for_buying": "1"},order_by="modified desc")
+		return exchage_rate.exchange_rate
 
 def make_item_price(item, price_list_name, item_price):
 	frappe.get_doc(
@@ -1552,5 +1563,6 @@ def get_asset_naming_series():
 
 	return get_asset_naming_series()
 
- 
+
+
 

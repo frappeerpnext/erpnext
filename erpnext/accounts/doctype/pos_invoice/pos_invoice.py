@@ -62,10 +62,10 @@ class POSInvoice(SalesInvoice):
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			if  any(d.get('is_ticket') == 1 for d in self.items):
 				self.has_ticket = 1
-				frappe.msgprint("1")
+			
 			else:
 				self.has_ticket = 0
-				frappe.msgprint("0")
+
 
 			
 
@@ -86,6 +86,10 @@ class POSInvoice(SalesInvoice):
 			from erpnext.accounts.doctype.pricing_rule.utils import update_coupon_code_count
 
 			update_coupon_code_count(self.coupon_code, "used")
+		
+		# update to ticket sold for module eticket have only
+		if frappe.db.exists("Module Def","E Ticket Management"):
+			add_ticket_to_ticket_sold_list(self)
 
 	def before_cancel(self):
 		if (
@@ -121,6 +125,11 @@ class POSInvoice(SalesInvoice):
 			from erpnext.accounts.doctype.pricing_rule.utils import update_coupon_code_count
 
 			update_coupon_code_count(self.coupon_code, "cancelled")
+
+		# update to ticket sold for module eticket have only
+		if frappe.db.exists("Module Def","E Ticket Management"):
+			remove_ticket_from_tickets_sold(self)
+
 
 	def check_phone_payments(self):
 		for pay in self.payments:
@@ -751,3 +760,28 @@ def add_return_modes(doc, pos_profile):
 		]:
 			payment_mode = get_mode_of_payment_info(mode_of_payment, doc.company)
 			append_payment(payment_mode[0])
+
+
+def add_ticket_to_ticket_sold_list(self):
+	
+	for t in self.items:
+		if t.is_ticket:
+			doc = frappe.get_doc({
+				'doctype': 'Tickets Sold',
+				'pos_invoice':self.name,
+				'transaction_date': self.posting_date,
+				'item_code':t.item_code,
+				'quantity':t.qty,
+				'price':t.rate,
+				'discount':t.amount - t.net_amount,
+				'amount':t.net_amount,
+				'customer':self.customer,
+				'department':self.department,
+				'pos_profile':self.pos_profile
+			})
+			doc.insert()
+			frappe.db.commit()
+			
+def remove_ticket_from_tickets_sold(self):
+	frappe.db.sql("delete from `tabTickets Sold` where pos_invoice='{}'".format(self.name))
+	frappe.db.commit()

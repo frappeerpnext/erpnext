@@ -310,6 +310,12 @@ class SalesInvoice(SellingController):
 			self.apply_loyalty_points()
 
 		self.process_common_party_accounting()
+		
+
+		# update to ticket sold for module eticket have only
+		if frappe.db.exists("Module Def","E Ticket Management"):
+			if not self.is_pos:
+				add_ticket_to_ticket_sold_list(self)
 
 		#save cost to sale invoice
 		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_total_cost', name=self.name)
@@ -408,6 +414,10 @@ class SalesInvoice(SellingController):
 			"Repost Item Valuation",
 			"Payment Ledger Entry",
 		)
+
+		# update to ticket sold for module eticket have only
+		if frappe.db.exists("Module Def","E Ticket Management"):
+			remove_ticket_from_tickets_sold(self)
 
 	def update_status_updater_args(self):
 		if cint(self.update_stock):
@@ -2655,3 +2665,27 @@ def update_total_cost(name):
 
 
 
+
+def add_ticket_to_ticket_sold_list(self):
+	if not self.is_pos:
+		for t in self.items:
+			if t.is_ticket:
+				doc = frappe.get_doc({
+					'doctype': 'Tickets Sold',
+					'sale_invoice':self.name,
+					'booking_number':self.booking_number,
+					'transaction_date': self.posting_date,
+					'item_code':t.item_code,
+					'quantity':t.qty,
+					'price':t.rate,
+					'discount':t.amount - t.net_amount,
+					'amount':t.net_amount,
+					'customer':self.customer,
+					'department':self.department
+				})
+				doc.insert()
+				frappe.db.commit()
+			
+def remove_ticket_from_tickets_sold(self):
+	frappe.db.sql("delete from `tabTickets Sold` where sale_invoice='{}'".format(self.name))
+	frappe.db.commit()

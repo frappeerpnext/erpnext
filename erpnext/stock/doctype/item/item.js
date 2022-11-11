@@ -3,6 +3,9 @@
 
 frappe.provide("erpnext.item");
 
+var buying_exchange_rate = 4000;
+var selling_exchange_rate = 4000;
+
 frappe.ui.form.on("Item", {
 	setup: function(frm) {
 		frm.add_fetch('attribute', 'numeric_values', 'numeric_values');
@@ -12,6 +15,21 @@ frappe.ui.form.on("Item", {
 		frm.add_fetch('tax_type', 'tax_rate', 'tax_rate');
 	},
 	onload: function(frm) {
+		frm.call('get_selling_exchange_rate')
+			.then(r => {
+				if (r.message) {
+					selling_exchange_rate = r.message
+				}
+			}
+		)
+		frm.call('get_buying_exchange_rate')
+			.then(r => {
+				if (r.message) {
+					buying_exchange_rate = r.message
+				}
+			}
+		)
+	
 		erpnext.item.setup_queries(frm);
 		if (frm.doc.variant_of){
 			frm.fields_dict["attributes"].grid.set_column_disp("attribute_value", true);
@@ -222,22 +240,22 @@ frappe.ui.form.on("Item", {
 	},
 	cost_kh: function(frm) {
 		
-		frm.set_value("valuation_rate",frm.doc.cost_kh / 4100);
+		frm.set_value("valuation_rate",frm.doc.cost_kh / buying_exchange_rate);
    },
    wholesale_price_kh: function(frm) {
-		frm.set_value("wholesale_price",frm.doc.wholesale_price_kh / 4100);
+		frm.set_value("wholesale_price",frm.doc.wholesale_price_kh / selling_exchange_rate);
    },
    price_kh: function(frm) {
-		frm.set_value("standard_rate",frm.doc.price_kh / 4100);
+		frm.set_value("standard_rate",frm.doc.price_kh / selling_exchange_rate);
    },
    valuation_rate: function(frm) {
-		frm.set_value("cost_kh",frm.doc.valuation_rate * 4100);
+		frm.set_value("cost_kh",frm.doc.valuation_rate * buying_exchange_rate);
    },
    wholesale_price: function(frm) {
-		frm.set_value("wholesale_price_kh",frm.doc.wholesale_price * 4100);
+		frm.set_value("wholesale_price_kh",frm.doc.wholesale_price * selling_exchange_rate);
    },
    standard_rate: function(frm) {
-		frm.set_value("price_kh",frm.doc.standard_rate * 4100);
+		frm.set_value("price_kh",frm.doc.standard_rate * selling_exchange_rate);
    }
 
 });
@@ -444,11 +462,17 @@ $.extend(erpnext.item, {
 		}, __("Actions"));
 	},
 	print_barcode_button: function(frm) {
-		frm.add_custom_button(__("Print Barcode"), function() {
-			msg = frappe.msgprint('<iframe src="http://webmonitor.inccloudserver.com:3344/ReportServer/Pages/ReportViewer.aspx?%2fePOSRetailReport%2frptPrintBarcode&rs:Command=Render&rc:Zoom=Page Width&barcode='+ frm.doc.name +'&price='+ frm.doc.standard_rate +'&product_name_kh=' + frm.doc.item_name_kh + '&product_name=' + frm.doc.item_name + '" frameBorder="0" width="100%" height="650" title="Print Barcode"></iframe>', 'Print Barcode')
-			msg.$wrapper.find('.modal-dialog').css("max-width", "80%");
-		}, __("Actions"));
-	
+		frappe.db.get_list('Barcode List', {
+			fields: ['title','url'],
+		}).then(res => {
+			$.each(res, function(i, d) {
+				frm.add_custom_button(__(d.title), function() {
+					msg = frappe.msgprint('<iframe src=' +  d.url + '&rs:Command=Render&rc:Zoom=Page Width&barcode='+ frm.doc.name +'&price='+ frm.doc.standard_rate +'&product_name_kh=' + frm.doc.item_name_kh + '&product_name=' + frm.doc.item_name + '&cost=' + frm.doc.valuation_rate+ '" frameBorder="0" width="100%" height="650" title="Print Barcode"></iframe>', 'Print Barcode')
+					msg.$wrapper.find('.modal-dialog').css("max-width", "80%");
+				}, __("Actions"));
+			});
+		});
+		
 	},
 
 	weight_to_validate: function(frm) {
