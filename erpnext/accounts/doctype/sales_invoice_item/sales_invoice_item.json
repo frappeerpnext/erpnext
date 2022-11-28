@@ -37,6 +37,7 @@
   "column_break_19",
   "discount_percentage",
   "discount_amount",
+  "total_discount_amount",
   "base_rate_with_margin",
   "section_break1",
   "rate",
@@ -883,12 +884,18 @@
    "fieldtype": "Float",
    "hidden": 1,
    "label": "Total Transaction"
+  },
+  {
+   "fieldname": "total_discount_amount",
+   "fieldtype": "Currency",
+   "label": "Total Discount Amount",
+   "read_only": 1
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-11-02 08:09:48.855989",
+ "modified": "2022-11-19 16:34:14.966115",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice Item",

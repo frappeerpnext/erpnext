@@ -5,7 +5,8 @@ from frappe.utils.data import strip
 def execute(filters=None): 
 
 	validate(filters)
-	 
+	
+	update_parent_item_group()
 	report_data = []
 	skip_total_row=False
 	message=None
@@ -20,6 +21,8 @@ def execute(filters=None):
 		report_chart = get_report_chart(filters,report_data) 
 	return get_columns(filters), report_data, message, report_chart, get_report_summary(report_data,filters),skip_total_row
  
+
+
 def validate(filters):
 	if filters.filter_based_on=="Today":
 		filters.start_date = frappe.utils.today()
@@ -49,6 +52,16 @@ def validate(filters):
 	frappe.db.commit()
 	#end update total transaction to pos invoice item
 	# 				
+
+def update_parent_item_group():
+	frappe.db.sql(
+		"""
+			UPDATE `tabPOS Invoice Item` a 
+			SET parent_item_group = (
+					SELECT parent_item_group FROM `tabItem Group` WHERE NAME=a.item_group) 
+			WHERE ifnull(parent_item_group,'') = ''
+		"""
+	)
 
 def get_columns(filters):
 	

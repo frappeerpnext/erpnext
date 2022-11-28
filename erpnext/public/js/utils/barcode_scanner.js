@@ -72,20 +72,39 @@ erpnext.utils.BarcodeScanner = class BarcodeScanner {
 			const {item_code, barcode, batch_no, serial_no, uom} = data;
 
 			let row = this.get_row_to_modify_on_scan(item_code, batch_no, uom);
-
-			if (!row) {
-				if (this.dont_allow_new_row) {
-					this.show_alert(__("Maximum quantity scanned for item {0}.", [item_code]), "red");
-					this.clean_up();
-					return;
+			if(this.frm.doctype === "Sales Invoice")
+			{
+				this.show_alert(("Sales Invoice"), "red");
+				if (!row) {
+					if (this.dont_allow_new_row) {
+						this.show_alert(__("Maximum quantity scanned for item {0}.", [item_code]), "red");
+						this.clean_up();
+						return;
+					}
 				}
-
-				// add new row if new item/batch is scanned
-				row = frappe.model.add_child(this.frm.doc, cur_grid.doctype, this.items_table_name);
-				// trigger any row add triggers defined on child table.
-				this.frm.script_manager.trigger(`${this.items_table_name}_add`, row.doctype, row.name);
+				if(!this.get_existing_blank_row()){
+					// add new row if new item/batch is scanned
+					row = frappe.model.add_child(this.frm.doc, cur_grid.doctype, this.items_table_name);
+					// trigger any row add triggers defined on child table.
+					this.frm.script_manager.trigger(`${this.items_table_name}_add`, row.doctype, row.name);
+				}	
 			}
-
+			else
+			{
+				if (!row) {
+					if (this.dont_allow_new_row) {
+						this.show_alert(__("Maximum quantity scanned for item {0}.", [item_code]), "red");
+						this.clean_up();
+						return;
+					}
+	
+					// add new row if new item/batch is scanned
+					row = frappe.model.add_child(this.frm.doc, cur_grid.doctype, this.items_table_name);
+					// trigger any row add triggers defined on child table.
+					this.frm.script_manager.trigger(`${this.items_table_name}_add`, row.doctype, row.name);
+				}
+			}
+			
 			if (this.is_duplicate_serial_no(row, serial_no)) {
 				this.clean_up();
 				return;

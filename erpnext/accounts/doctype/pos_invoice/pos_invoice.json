@@ -9,6 +9,7 @@
  "field_order": [
   "customer_section",
   "document_number",
+  "bank_transaction_number",
   "title",
   "naming_series",
   "customer",
@@ -25,6 +26,7 @@
   "branch",
   "posting_date",
   "posting_time",
+  "pos_creation",
   "set_posting_time",
   "due_date",
   "amended_from",
@@ -1753,12 +1755,22 @@
    "fieldname": "local_sale_discount_percentage",
    "fieldtype": "Float",
    "label": "Local Sale Dicount Percentage"
+  },
+  {
+   "fieldname": "bank_transaction_number",
+   "fieldtype": "Data",
+   "label": "Bank Transaction Number"
+  },
+  {
+   "fieldname": "pos_creation",
+   "fieldtype": "Datetime",
+   "label": "POS Creation"
   }
  ],
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-11-11 21:47:46.934748",
+ "modified": "2022-11-26 10:26:15.178910",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

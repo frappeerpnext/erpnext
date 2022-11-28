@@ -60,6 +60,7 @@
   "pos_document_number",
   "open_shift_document_number",
   "close_shift_document_number",
+  "bank_transaction_number",
   "predefine_discount_code",
   "payment_layout_section",
   "section_break_23",
@@ -608,6 +609,11 @@
    "fieldname": "show_aba_pay_when_checkout",
    "fieldtype": "Check",
    "label": "Show ABA Pay when Checkout"
+  },
+  {
+   "fieldname": "bank_transaction_number",
+   "fieldtype": "Data",
+   "label": "Bank Transaction Number"
   }
  ],
  "icon": "icon-cog",
@@ -635,7 +641,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-10-26 09:30:34.757260",
+ "modified": "2022-11-21 20:22:04.419003",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",

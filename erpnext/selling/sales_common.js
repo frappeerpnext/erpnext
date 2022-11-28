@@ -171,6 +171,28 @@ erpnext.selling.SellingController = class SellingController extends erpnext.Tran
 			)
 		);
 	}
+	commission_base_on() {
+		let amount_eligible_for_commission = 0;
+		if (this.frm.doc.commission_base_on=="Grand Total"){
+			amount_eligible_for_commission = this.frm.doc.grand_total;
+			this.frm.set_value(
+				"amount_eligible_for_commission", flt(
+					this.frm.doc.grand_total
+				)
+			);
+		}else {
+			amount_eligible_for_commission = this.frm.doc.profit_amount;
+			this.frm.set_value(
+				"amount_eligible_for_commission", flt(
+					this.frm.doc.profit_amount
+				)
+			);
+		}
+
+		this.calculate_commission();
+		
+		
+	}
 
 	allocated_percentage(doc, cdt, cdn) {
 		var sales_person = frappe.get_doc(cdt, cdn);
@@ -253,6 +275,7 @@ erpnext.selling.SellingController = class SellingController extends erpnext.Tran
 	}
 
 	calculate_commission() {
+
 		if(!this.frm.fields_dict.commission_rate) return;
 
 		if(this.frm.doc.commission_rate > 100) {
@@ -262,9 +285,13 @@ erpnext.selling.SellingController = class SellingController extends erpnext.Tran
 			))} ${__("cannot be greater than 100")}`);
 		}
 
-		this.frm.doc.amount_eligible_for_commission = this.frm.doc.items.reduce(
-			(sum, item) => item.grant_commission ? sum + item.base_net_amount : sum, 0
-		)
+		if (this.frm.doc.commission_base_on =="Profit"){ 
+			this.frm.doc.amount_eligible_for_commission = this.frm.doc.profit_amount; 
+		}else {
+			this.frm.doc.amount_eligible_for_commission = this.frm.doc.items.reduce(
+				(sum, item) => item.grant_commission ? sum + item.base_net_amount : sum, 0
+			)
+		}
 
 		this.frm.doc.total_commission = flt(
 			this.frm.doc.amount_eligible_for_commission * this.frm.doc.commission_rate / 100.0,

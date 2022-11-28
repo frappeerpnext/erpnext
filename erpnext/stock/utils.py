@@ -553,7 +553,7 @@ def check_pending_reposting(posting_date: str, throw_error: bool = True) -> bool
 
 @frappe.whitelist()
 def scan_barcode(search_value: str) -> Dict[str, Optional[str]]:
-
+	
 	# search barcode no
 	barcode_data = frappe.db.get_value(
 		"Item Barcode",

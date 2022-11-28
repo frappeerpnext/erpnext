@@ -183,6 +183,10 @@ class SalesInvoice(SellingController):
 
 		self.reset_default_field_value("set_warehouse", "items", "warehouse")
 
+		#update total discount
+		for d in self.items:
+			d.total_discount_amount = d.qty * d.discount_amount
+
 	def validate_fixed_asset(self):
 		for d in self.get("items"):
 			if d.is_fixed_asset and d.meta.get_field("asset") and d.asset:
