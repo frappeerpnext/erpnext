@@ -74,7 +74,6 @@ erpnext.utils.BarcodeScanner = class BarcodeScanner {
 			let row = this.get_row_to_modify_on_scan(item_code, batch_no, uom);
 			if(this.frm.doctype === "Sales Invoice")
 			{
-				this.show_alert(("Sales Invoice"), "red");
 				if (!row) {
 					if (this.dont_allow_new_row) {
 						this.show_alert(__("Maximum quantity scanned for item {0}.", [item_code]), "red");
