@@ -15,6 +15,13 @@ from erpnext.controllers.status_updater import StatusUpdater
 
 class POSClosingEntry(StatusUpdater):
 	def validate(self):
+		if self.is_new():
+			if self.id:
+				if frappe.db.exists("POS Closing Entry", {"id": self.id}):
+					frappe.throw(
+						_("POS Closing Entry id {} already exist".format(self.id))
+					)
+
 		if frappe.db.get_value("POS Opening Entry", self.pos_opening_entry, "status") != "Open":
 			frappe.throw(_("Selected POS Opening Entry should be open."), title=_("Invalid Opening Entry"))
 

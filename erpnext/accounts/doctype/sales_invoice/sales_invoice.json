@@ -2067,6 +2067,7 @@
    "label": "Membership"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "profit_amount",
    "fieldtype": "Currency",
    "hidden": 1,
@@ -2092,7 +2093,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2022-11-26 11:42:15.140866",
+ "modified": "2022-12-01 17:12:32.962202",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",

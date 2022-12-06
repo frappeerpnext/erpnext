@@ -28,6 +28,14 @@ class POSInvoice(SalesInvoice):
 		super(POSInvoice, self).__init__(*args, **kwargs)
 
 	def validate(self):
+		if self.is_new():
+			if self.id:
+				if frappe.db.exists("POS Invoice", {"id": self.id}):
+					frappe.throw(
+						_("POS Invoice id {} already exist".format(self.id))
+					)
+
+
 		if not cint(self.is_pos):
 			frappe.throw(
 				_("POS Invoice should have {} field checked.").format(frappe.bold("Include Payment"))

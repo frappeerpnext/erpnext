@@ -11,6 +11,14 @@ from erpnext.controllers.status_updater import StatusUpdater
 
 class POSOpeningEntry(StatusUpdater):
 	def validate(self):
+		if self.is_new():
+			if self.id:
+				if frappe.db.exists("POS Opening Entry", {"id": self.id}):
+					frappe.throw(
+						_("POS Opening Entry id {} already exist".format(self.id))
+					)
+
+					
 		self.validate_pos_profile_and_cashier()
 		self.validate_payment_method_account()
 		self.set_status()
