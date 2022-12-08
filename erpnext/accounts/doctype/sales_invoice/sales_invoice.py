@@ -7,6 +7,7 @@ from frappe import _, msgprint, throw
 from frappe.contacts.doctype.address.address import get_address_display
 from frappe.model.mapper import get_mapped_doc
 from frappe.model.utils import get_fetch_values
+from py_linq import Enumerable
 from frappe.utils import (
 	add_days,
 	add_months,
@@ -118,7 +119,7 @@ class SalesInvoice(SellingController):
 		self.validate_item_cost_centers()
 		self.validate_income_account()
 		self.check_conversion_rate()
-
+		update_sales_invoice_items_foc(self)
 
 
 		validate_inter_company_party(
@@ -2693,3 +2694,7 @@ def add_ticket_to_ticket_sold_list(self):
 def remove_ticket_from_tickets_sold(self):
 	frappe.db.sql("delete from `tabTickets Sold` where sale_invoice='{}'".format(self.name))
 	frappe.db.commit()
+
+def update_sales_invoice_items_foc(self):
+	for i in self.items:
+		if not i.foc: i.foc = self.foc

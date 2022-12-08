@@ -150,10 +150,16 @@ class SellingController(StockController):
 					_("must be between 0 and 100"),
 				)
 			)
-
-		self.amount_eligible_for_commission = sum(
-			item.base_net_amount for item in self.items if item.grant_commission
-		)
+		if (self.commission_base_on=="Grand Total"):
+			self.amount_eligible_for_commission = sum(
+				item.base_net_amount for item in self.items if item.grant_commission
+			)
+		
+		else:
+			self.amount_eligible_for_commission = sum(
+				(item.net_rate*item.qty - item.incoming_rate*item.qty) for item in self.items if item.grant_commission
+			)
+		
 
 		self.total_commission = flt(
 			self.amount_eligible_for_commission * self.commission_rate / 100.0,

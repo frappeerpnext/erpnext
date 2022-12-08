@@ -89,7 +89,7 @@ class POSInvoice(SalesInvoice):
 			self.apply_loyalty_points()
 		self.check_phone_payments()
 		self.set_status(update=True)
-
+		
 		if self.coupon_code:
 			from erpnext.accounts.doctype.pricing_rule.utils import update_coupon_code_count
 
@@ -98,6 +98,10 @@ class POSInvoice(SalesInvoice):
 		# update to ticket sold for module eticket have only
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			add_ticket_to_ticket_sold_list(self)
+		# Add Queue Update POS Ticket in current POS Invoice
+		if frappe.db.exists("POS Ticket",{"pos_invoice_id": self.id}):
+			frappe.enqueue('erpnext.accounts.doctype.pos_invoice.pos_invoice.update_pos_invoice_to_pos_ticket', self=self)
+		
 
 	def before_cancel(self):
 		if (
@@ -793,3 +797,13 @@ def add_ticket_to_ticket_sold_list(self):
 def remove_ticket_from_tickets_sold(self):
 	frappe.db.sql("delete from `tabTickets Sold` where pos_invoice='{}'".format(self.name))
 	frappe.db.commit()
+
+def update_pos_invoice_to_pos_ticket(self):
+	pos_ticket_list = frappe.db.get_list("POS Ticket", filters={'pos_invoice_id':self.id})
+	if pos_ticket_list:
+		values = {'name': self.name,'document_number':self.document_number,'pos_invoice_id':self.id}
+		frappe.db.sql("""update `tabPOS Ticket` 
+                			set pos_invoice = %(name)s,
+							pos_document_number = %(document_number)s 
+       					where pos_invoice_id = %(pos_invoice_id)s""",values)
+		frappe.db.commit()
