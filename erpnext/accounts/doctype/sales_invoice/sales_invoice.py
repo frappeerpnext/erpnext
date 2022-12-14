@@ -119,7 +119,7 @@ class SalesInvoice(SellingController):
 		self.validate_item_cost_centers()
 		self.validate_income_account()
 		self.check_conversion_rate()
-		update_sales_invoice_items_foc(self)
+		check_foc_discount_percentage(self)
 
 
 		validate_inter_company_party(
@@ -320,7 +320,8 @@ class SalesInvoice(SellingController):
 		# update to ticket sold for module eticket have only
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			if not self.is_pos:
-				add_ticket_to_ticket_sold_list(self)
+				if self.departmenmt:
+					add_ticket_to_ticket_sold_list(self)
 
 		#save cost to sale invoice
 		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_total_cost', name=self.name)
@@ -2627,8 +2628,6 @@ def check_if_return_invoice_linked_with_payment_entry(self):
 			message += _("to unallocate the amount of this Return Invoice before cancelling it.")
 			frappe.throw(message)
 
-
-
 def update_total_cost(name):
 	frappe.db.sql(
 		"""
@@ -2695,6 +2694,11 @@ def remove_ticket_from_tickets_sold(self):
 	frappe.db.sql("delete from `tabTickets Sold` where sale_invoice='{}'".format(self.name))
 	frappe.db.commit()
 
-def update_sales_invoice_items_foc(self):
-	for i in self.items:
-		if not i.foc: i.foc = self.foc
+
+def check_foc_discount_percentage(self):
+	if self.foc == 1 and (self.additional_discount_percentage or 0) < 100:
+		frappe.throw(_("Cannot add foc to invoice. Please set discount amount"))
+
+	for item in self.items:
+		if item.discount_percentage < 100 and item.foc == 1:
+			frappe.throw(_("Cannot add foc to invoice. Please set discount item: <b>{}</b>".format(item.item_code)))

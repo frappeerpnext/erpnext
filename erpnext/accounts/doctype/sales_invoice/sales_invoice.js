@@ -986,6 +986,14 @@ frappe.ui.form.on('Sales Invoice', {
 			method: "erpnext.accounts.doctype.sales_invoice.sales_invoice.create_dunning",
 			frm: frm
 		});
+	},
+
+	foc:function(frm){
+		$.each(frm.doc.items, function(i, d){
+			d.foc = frm.doc.foc
+			frm.set_value('foc', frm.doc.foc);
+			frm.refresh_field("frm.doc.foc");
+		});
 	}
 });
 
@@ -1040,3 +1048,25 @@ var select_loyalty_program = function(frm, loyalty_programs) {
 
 	dialog.show();
 }
+
+frappe.ui.form.on('Sales Invoice Item', {
+	
+    foc(frm,cdt, cdn) {
+		getItemSFOC(frm)
+	},
+	
+
+})
+function getItemSFOC(frm){
+	$.each(frm.doc.items, function(i, d) {
+		if(frm.doc.items.length == frm.doc.items.filter(item => item.foc == 1).length){
+			frm.doc.foc = d.foc
+		}else{
+			frm.doc.foc = 0
+		}
+			
+		frm.set_value('foc', frm.doc.foc);
+		frm.refresh_field("foc");
+	});
+}
+

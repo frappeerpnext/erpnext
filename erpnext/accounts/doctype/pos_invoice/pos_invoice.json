@@ -213,7 +213,8 @@
   "total_item_discount",
   "total_poyalty_point_amount",
   "pos_price_list",
-  "local_sale_discount_percentage"
+  "local_sale_discount_percentage",
+  "commission_base_on"
  ],
  "fields": [
   {
@@ -1765,12 +1766,19 @@
    "fieldname": "pos_creation",
    "fieldtype": "Datetime",
    "label": "POS Creation"
+  },
+  {
+   "default": "Grand Total",
+   "fieldname": "commission_base_on",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Commission Base On"
   }
  ],
  "icon": "fa fa-file-text",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-11-26 10:26:15.178910",
+ "modified": "2022-12-13 15:49:42.358076",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

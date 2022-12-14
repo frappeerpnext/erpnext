@@ -150,6 +150,7 @@ class SellingController(StockController):
 					_("must be between 0 and 100"),
 				)
 			)
+		
 		if (self.commission_base_on=="Grand Total"):
 			self.amount_eligible_for_commission = sum(
 				item.base_net_amount for item in self.items if item.grant_commission
