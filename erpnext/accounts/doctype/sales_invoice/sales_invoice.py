@@ -7,7 +7,6 @@ from frappe import _, msgprint, throw
 from frappe.contacts.doctype.address.address import get_address_display
 from frappe.model.mapper import get_mapped_doc
 from frappe.model.utils import get_fetch_values
-from py_linq import Enumerable
 from frappe.utils import (
 	add_days,
 	add_months,
@@ -320,7 +319,7 @@ class SalesInvoice(SellingController):
 		# update to ticket sold for module eticket have only
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			if not self.is_pos:
-				if self.departmenmt:
+				if self.department:
 					add_ticket_to_ticket_sold_list(self)
 
 		#save cost to sale invoice
@@ -2696,9 +2695,6 @@ def remove_ticket_from_tickets_sold(self):
 
 
 def check_foc_discount_percentage(self):
-	if self.foc == 1 and (self.additional_discount_percentage or 0) < 100:
-		frappe.throw(_("Cannot add foc to invoice. Please set discount amount"))
-
 	for item in self.items:
 		if item.discount_percentage < 100 and item.foc == 1:
 			frappe.throw(_("Cannot add foc to invoice. Please set discount item: <b>{}</b>".format(item.item_code)))

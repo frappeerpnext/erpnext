@@ -11,6 +11,7 @@
   "naming_series",
   "customer",
   "customer_name",
+  "territory",
   "membership",
   "selling_price_list",
   "tax_id",
@@ -46,7 +47,6 @@
   "contact_display",
   "contact_mobile",
   "contact_email",
-  "territory",
   "col_break4",
   "shipping_address_name",
   "shipping_address",
@@ -120,7 +120,6 @@
   "base_rounding_adjustment",
   "base_rounded_total",
   "base_in_words",
-  "foc",
   "column_break5",
   "total_cost",
   "grand_total",
@@ -917,7 +916,6 @@
   {
    "fieldname": "section_break_40",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "hide_days": 1,
    "hide_seconds": 1
   },
@@ -2081,12 +2079,6 @@
    "fieldtype": "Select",
    "label": "Commission Base On",
    "options": "Grand Total\nProfit"
-  },
-  {
-   "default": "0",
-   "fieldname": "foc",
-   "fieldtype": "Check",
-   "label": "FOC"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2099,7 +2091,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2022-12-08 17:16:42.815998",
+ "modified": "2022-12-20 11:43:02.263419",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
