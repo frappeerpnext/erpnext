@@ -191,7 +191,7 @@ erpnext.selling.SellingController = class SellingController extends erpnext.Tran
 
 		this.calculate_commission();
 		
-		
+		//check
 	}
 
 	allocated_percentage(doc, cdt, cdn) {
