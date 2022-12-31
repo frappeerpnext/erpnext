@@ -467,7 +467,7 @@ $.extend(erpnext.item, {
 		}).then(res => {
 			$.each(res, function(i, d) {
 				frm.add_custom_button(__(d.title), function() {
-					msg = frappe.msgprint('<iframe src="' +  d.url + '&rs:Command=Render&rc:Zoom=Page%20Width&barcode='+ frm.doc.name +'&price='+ frm.doc.standard_rate +'&product_name_kh=' + encodeURIComponent(frm.doc.item_name_kh) + '&product_name=' + encodeURIComponent(frm.doc.item_name) + '&cost=' + frm.doc.valuation_rate + '" frameBorder="0" width="100%" height="650" title="Print Barcode"></iframe>', 'Print Barcode')
+					msg = frappe.msgprint('<iframe src="http://webmonitor.inccloudserver.com:3344/ReportServer/Pages/ReportViewer.aspx?%2fePOSRetailReport%2frptPrintBarcode1.3x0.5WatBo&rs:Command=Render&rc:Zoom=Page Width&barcode='+ frm.doc.name +'&price='+ frm.doc.standard_rate +'&product_name=' + frm.doc.item_name + '" frameBorder="0" width="100%" height="650" title="Print Barcode"></iframe>', 'Print Barcode')
 					msg.$wrapper.find('.modal-dialog').css("max-width", "80%");
 				}, __("Actions"));
 			});

@@ -21,6 +21,8 @@
   "is_pos",
   "is_return",
   "update_billed_amount_in_sales_order",
+  "cancelled_by",
+  "cancelled_date",
   "column_break1",
   "company",
   "branch",
@@ -1773,6 +1775,18 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Commission Base On"
+  },
+  {
+   "fieldname": "cancelled_by",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Cancelled By"
+  },
+  {
+   "fieldname": "cancelled_date",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "Cancelled Date"
   }
  ],
  "icon": "fa fa-file-text",
@@ -1784,7 +1798,7 @@
    "link_fieldname": "pos_invoice"
   }
  ],
- "modified": "2022-12-20 11:34:19.127292",
+ "modified": "2022-12-23 10:06:32.681186",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

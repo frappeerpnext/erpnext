@@ -995,6 +995,22 @@ frappe.ui.form.on("Sales Invoice Timesheet", {
 	}
 });
 
+frappe.ui.form.on("Sales Invoice Item", {
+	foc(frm,cdt, cdn) {
+		
+		let doc=   locals[cdt][cdn];
+		if(doc.foc == 1){
+			doc.discount_percentage=100;
+		}else{
+			doc.discount_percentage=0;
+		}
+		
+		frm.refresh_field('items');
+		
+		
+	},
+});
+
 var set_timesheet_detail_rate = function(cdt, cdn, currency, timelog) {
 	frappe.call({
 		method: "erpnext.projects.doctype.timesheet.timesheet.get_timesheet_detail_rate",

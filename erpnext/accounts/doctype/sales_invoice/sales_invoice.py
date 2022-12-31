@@ -249,6 +249,8 @@ class SalesInvoice(SellingController):
 
 	def before_save(self):
 		set_account_for_mode_of_payment(self)
+		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_price_list_rate', self=self)
+	
 
 	def on_submit(self):
 		self.validate_pos_paid_amount()
@@ -2698,3 +2700,10 @@ def check_foc_discount_percentage(self):
 	for item in self.items:
 		if item.discount_percentage < 100 and item.foc == 1:
 			frappe.throw(_("Cannot add foc to invoice. Please set discount item: <b>{}</b>".format(item.item_code)))
+
+def update_price_list_rate(self):
+	for i in self.items:
+		if i.base_price_list_rate == 0:
+			frappe.db.sql("UPDATE `tabSales Invoice Item` set base_price_list_rate = {},price_list_rate={} Where parent = '{}' and base_price_list_rate = 0".format(i.rate,i.rate,self.name))	
+		if i.base_price_list_rate > 0:
+			frappe.db.sql("UPDATE `tabSales Invoice Item` set price_list_rate = {},price_list_rate={} Where parent = '{}'".format(i.rate,i.rate,self.name))

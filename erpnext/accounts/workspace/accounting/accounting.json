@@ -5,7 +5,7 @@
    "label": "Profit and Loss"
   }
  ],
- "content": "[{\"type\":\"chart\",\"data\":{\"chart_name\":\"Profit and Loss\",\"col\":12}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chart of Accounts\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cost Centers\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"POS Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Journal Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Accounts Receivable\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"General Ledger\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Trial Balance\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Today Revenue Dashboard\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"General Ledger\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Receivable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Payable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Financial Statements\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Profitability\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Tools\",\"col\":4}}]",
+ "content": "[{\"type\":\"chart\",\"data\":{\"chart_name\":\"Profit and Loss\",\"col\":12}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chart of Accounts\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cost Centers\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"POS Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Invoice\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Journal Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Entry\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Accounts Receivable\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"General Ledger\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Trial Balance\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"General Ledger\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Receivable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Accounts Payable\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Financial Statements\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Profitability\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Tools\",\"col\":4}}]",
  "creation": "2020-03-02 15:41:59.515192",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -646,7 +646,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-11-11 12:04:52.197024",
+ "modified": "2022-12-20 19:08:57.525574",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounting",
@@ -658,13 +658,6 @@
  "roles": [],
  "sequence_id": 2.0,
  "shortcuts": [
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Today Revenue Dashboard",
-   "link_to": "Today Revenue Dashboard",
-   "type": "Dashboard"
-  },
   {
    "color": "Green",
    "doc_view": "List",
