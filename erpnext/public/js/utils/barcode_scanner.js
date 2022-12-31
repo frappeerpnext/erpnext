@@ -70,7 +70,6 @@ erpnext.utils.BarcodeScanner = class BarcodeScanner {
 			let cur_grid = this.frm.fields_dict[this.items_table_name].grid;
 
 			const {item_code, barcode, batch_no, serial_no, uom} = data;
-
 			let row = this.get_row_to_modify_on_scan(item_code, batch_no, uom);
 			if(this.frm.doctype === "Sales Invoice")
 			{
@@ -85,6 +84,7 @@ erpnext.utils.BarcodeScanner = class BarcodeScanner {
 					// add new row if new item/batch is scanned
 					row = frappe.model.add_child(this.frm.doc, cur_grid.doctype, this.items_table_name);
 					// trigger any row add triggers defined on child table.
+					// check
 					this.frm.script_manager.trigger(`${this.items_table_name}_add`, row.doctype, row.name);
 				}	
 			}
