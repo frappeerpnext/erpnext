@@ -81,10 +81,7 @@ erpnext.utils.BarcodeScanner = class BarcodeScanner {
 					}
 				}
 				if(!this.get_existing_blank_row()){
-					// add new row if new item/batch is scanned
 					row = frappe.model.add_child(this.frm.doc, cur_grid.doctype, this.items_table_name);
-					// trigger any row add triggers defined on child table.
-					// check
 					this.frm.script_manager.trigger(`${this.items_table_name}_add`, row.doctype, row.name);
 				}	
 			}
