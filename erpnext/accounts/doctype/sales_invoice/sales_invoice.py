@@ -249,7 +249,7 @@ class SalesInvoice(SellingController):
 
 	def before_save(self):
 		set_account_for_mode_of_payment(self)
-		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_price_list_rate', self=self)
+		#frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_price_list_rate', self=self)
 	
 
 	def on_submit(self):
