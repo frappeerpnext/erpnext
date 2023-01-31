@@ -2698,7 +2698,7 @@ def remove_ticket_from_tickets_sold(self):
 
 def check_foc_discount_percentage(self):
 	for item in self.items:
-		if item.discount_percentage < 100 and item.foc == 1:
+		if item.discount_percentage < 100 and item.is_foc == 1:
 			frappe.throw(_("Cannot add foc to invoice. Please set discount item: <b>{}</b>".format(item.item_code)))
 
 # def update_price_list_rate(self):

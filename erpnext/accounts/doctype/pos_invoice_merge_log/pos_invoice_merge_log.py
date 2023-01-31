@@ -153,6 +153,7 @@ class POSInvoiceMergeLog(Document):
 						and i.uom == item.uom
 						and i.net_rate == item.net_rate
 						and i.warehouse == item.warehouse
+						and i.is_foc == item.is_foc
 					):
 						found = True
 						i.qty = i.qty + item.qty
@@ -166,6 +167,7 @@ class POSInvoiceMergeLog(Document):
 					item.amount = item.net_amount
 					item.base_amount = item.base_net_amount
 					item.price_list_rate = 0
+					item.is_foc = item.is_foc
 					si_item = map_child_doc(item, invoice, {"doctype": "Sales Invoice Item"})
 					items.append(si_item)
 

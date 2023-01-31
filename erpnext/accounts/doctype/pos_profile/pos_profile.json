@@ -54,6 +54,7 @@
   "delete_bill_require_password",
   "delete_item_require_password",
   "delete_item_require_note",
+  "add_sale_item_foc_require_password",
   "column_break_44",
   "number_of_receipt_copies",
   "document_naming_code",
@@ -614,6 +615,12 @@
    "fieldname": "bank_transaction_number",
    "fieldtype": "Data",
    "label": "Bank Transaction Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "add_sale_item_foc_require_password",
+   "fieldtype": "Check",
+   "label": "Add Sale Item FOC Require Password"
   }
  ],
  "icon": "icon-cog",
@@ -641,7 +648,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2022-11-21 20:22:04.419003",
+ "modified": "2023-01-28 09:53:41.773904",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",

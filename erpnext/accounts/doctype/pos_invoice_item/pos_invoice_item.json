@@ -111,7 +111,8 @@
   "sub_total",
   "section_break_54",
   "page_break",
-  "sale_item_note"
+  "sale_item_note",
+  "is_foc"
  ],
  "fields": [
   {
@@ -892,11 +893,17 @@
    "fieldname": "parent_item_group",
    "fieldtype": "Data",
    "label": "Parent Item Group"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_foc",
+   "fieldtype": "Check",
+   "label": "FOC"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2022-12-20 11:27:37.475041",
+ "modified": "2023-01-27 16:11:29.711903",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice Item",
