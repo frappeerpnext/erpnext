@@ -876,9 +876,15 @@ class update_entries_after(object):
 			stock_queue = FIFOValuation(self.wh_data.stock_queue)
 
 		_prev_qty, prev_stock_value = stock_queue.get_total_stock_and_value()
-
+		current_qty = None
+		data = frappe.db.sql("select actual_qty from `tabBin` where warehouse = '{}' and item_code = '{}'".format(sle.warehouse,sle.item_code),as_dict=1)
+		if data:
+			current_qty = data[0]["actual_qty"]
 		if actual_qty > 0:
-			stock_queue.add_stock(qty=actual_qty, rate=incoming_rate)
+			if current_qty:
+				stock_queue.add_stock(qty=actual_qty, rate=incoming_rate, current_qty=current_qty, has_current_qty=1)
+			else:
+				stock_queue.add_stock(qty=actual_qty, rate=incoming_rate, current_qty=0, has_current_qty=0)
 		else:
 
 			def rate_generator() -> float:
@@ -965,7 +971,7 @@ class update_entries_after(object):
 			sle.warehouse,
 			sle.voucher_type,
 			sle.voucher_no,
-			self.allow_zero_rate,
+			True,
 			currency=erpnext.get_company_currency(sle.company),
 			company=sle.company,
 			batch_no=sle.batch_no,
