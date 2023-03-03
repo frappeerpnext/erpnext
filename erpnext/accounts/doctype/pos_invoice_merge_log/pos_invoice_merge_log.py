@@ -98,7 +98,7 @@ class POSInvoiceMergeLog(Document):
 		sales_invoice = self.merge_pos_invoice_into(sales_invoice, data)
 		sales_invoice.is_consolidated = 1
 		sales_invoice.set_posting_time = 1
-		sales_invoice.posting_date = getdate(pos_posting_date)
+		sales_invoice.posting_date = getdate(self.posting_date)
 		sales_invoice.save()
 		sales_invoice.submit()
 
@@ -114,7 +114,7 @@ class POSInvoiceMergeLog(Document):
 
 		credit_note.is_consolidated = 1
 		credit_note.set_posting_time = 1
-		credit_note.posting_date = getdate(pos_posting_date)
+		credit_note.posting_date = getdate(self.posting_date)
 		# TODO: return could be against multiple sales invoice which could also have been consolidated?
 		# credit_note.return_against = self.consolidated_invoice
 		credit_note.save()
@@ -315,16 +315,9 @@ def get_invoice_customer_map(pos_invoices):
 
 
 def consolidate_pos_invoices(pos_invoices=None, closing_entry=None):
-	global pos_posting_date
-	pos_posting_date = closing_entry.posting_date
 	invoices = pos_invoices or (closing_entry and closing_entry.get("pos_transactions"))
 	if frappe.flags.in_test and not invoices:
 		invoices = get_all_unconsolidated_invoices()
-
-	data = frappe.db.sql("SELECT posting_date FROM `tabPOS Opening Entry` WHERE NAME = '{}'".format(closing_entry.pos_opening_entry),as_dict=1)
-	if data:
-		pos_posting_date = data[0]["posting_date"]
-		
 	invoice_by_customer = get_invoice_customer_map(invoices)
 
 	if len(invoices) >= 10 and closing_entry:
