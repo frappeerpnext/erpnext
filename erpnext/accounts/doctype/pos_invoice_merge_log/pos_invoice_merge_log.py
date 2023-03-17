@@ -67,7 +67,7 @@ class POSInvoiceMergeLog(Document):
 
 	def on_submit(self):
 		pos_invoice_docs = [
-			frappe.get_cached_doc("POS Invoice", d.pos_invoice) for d in self.pos_invoices
+			frappe.get_doc("POS Invoice", d.pos_invoice) for d in self.pos_invoices
 		]
 
 		returns = [d for d in pos_invoice_docs if d.get("is_return") == 1]
@@ -86,7 +86,7 @@ class POSInvoiceMergeLog(Document):
 
 	def on_cancel(self):
 		pos_invoice_docs = [
-			frappe.get_cached_doc("POS Invoice", d.pos_invoice) for d in self.pos_invoices
+			frappe.get_doc("POS Invoice", d.pos_invoice) for d in self.pos_invoices
 		]
 
 		self.update_pos_invoices(pos_invoice_docs)
@@ -98,7 +98,7 @@ class POSInvoiceMergeLog(Document):
 		sales_invoice = self.merge_pos_invoice_into(sales_invoice, data)
 		sales_invoice.is_consolidated = 1
 		sales_invoice.set_posting_time = 1
-		sales_invoice.posting_date = getdate(pos_posting_date)
+		sales_invoice.posting_date = getdate(self.posting_date)
 		sales_invoice.save()
 		sales_invoice.submit()
 
@@ -114,7 +114,7 @@ class POSInvoiceMergeLog(Document):
 
 		credit_note.is_consolidated = 1
 		credit_note.set_posting_time = 1
-		credit_note.posting_date = getdate(pos_posting_date)
+		credit_note.posting_date = getdate(self.posting_date)
 		# TODO: return could be against multiple sales invoice which could also have been consolidated?
 		# credit_note.return_against = self.consolidated_invoice
 		credit_note.save()
@@ -368,7 +368,7 @@ def split_invoices(invoices):
 	_invoices = []
 	special_invoices = []
 	pos_return_docs = [
-		frappe.get_cached_doc("POS Invoice", d.pos_invoice)
+		frappe.get_doc("POS Invoice", d.pos_invoice)
 		for d in invoices
 		if d.is_return and d.return_against
 	]
