@@ -484,7 +484,6 @@ erpnext.accounts.SalesInvoiceController = class SalesInvoiceController extends e
 		}
 	}
 };
-
 // for backward compatibility: combine new and previous states
 extend_cscript(cur_frm.cscript, new erpnext.accounts.SalesInvoiceController({frm: cur_frm}));
 
@@ -995,20 +994,14 @@ frappe.ui.form.on("Sales Invoice Timesheet", {
 	}
 });
 
-frappe.ui.form.on("Sales Invoice Item", {
-	foc(frm,cdt, cdn) {
-		
-		let doc=   locals[cdt][cdn];
-		if(doc.foc == 1){
-			doc.discount_percentage=100;
-		}else{
-			doc.discount_percentage=0;
-		}
-		
-		frm.refresh_field('items');
-		
-		
-	},
+frappe.ui.form.on("Sales Invoice Item", "is_foc", function(frm, cdt, cdn) {
+	let doc =  locals[cdt][cdn];
+	if(doc.is_foc == 1){
+		doc.discount_percentage = 100;
+	}else{
+		doc.discount_percentage = 0;
+	}
+	frm.refresh_field('items');
 });
 
 var set_timesheet_detail_rate = function(cdt, cdn, currency, timelog) {
