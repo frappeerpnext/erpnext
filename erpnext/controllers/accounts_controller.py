@@ -787,9 +787,8 @@ class AccountsController(TransactionBase):
 		return {}
 
 	@frappe.whitelist()
-	def set_advances(self):
+	def set_advancess(self):
 		"""Returns list of advances against Account, Party, Reference"""
-
 		res = self.get_advance_entries()
 
 		self.set("advances", [])
@@ -805,9 +804,9 @@ class AccountsController(TransactionBase):
 
 				allocated_amount = min(amount - advance_allocated, d.amount)
 			advance_allocated += flt(allocated_amount)
-
+			
 			advance_row = {
-				"doctype": self.doctype + " Advance",
+				"doctype": self.doctype + " Advances",
 				"reference_type": d.reference_type,
 				"reference_name": d.reference_name,
 				"reference_row": d.reference_row,
@@ -816,7 +815,39 @@ class AccountsController(TransactionBase):
 				"allocated_amount": allocated_amount,
 				"ref_exchange_rate": flt(d.exchange_rate),  # exchange_rate of advance entry
 			}
+			
+			self.append("advances", advance_row)
 
+
+	@frappe.whitelist()
+	def set_advances_for_booking(self):
+		"""Returns list of advances against Account, Party, Reference"""
+		res = self.get_advance_entries_for_booking()
+
+		self.set("advances", [])
+		advance_allocated = 0
+		for d in res:
+			if d.against_order:
+				allocated_amount = flt(d.amount)
+			else:
+				if self.get("party_account_currency") == self.company_currency:
+					amount = self.get("base_rounded_total") or self.base_grand_total
+				else:
+					amount = self.get("rounded_total") or self.grand_total
+
+				allocated_amount = min(amount - advance_allocated, d.amount)
+			advance_allocated += flt(allocated_amount)
+			advance_row = {
+				"doctype": self.doctype + " Advances",
+				"reference_type": d.reference_type,
+				"reference_name": d.reference_name,
+				"reference_row": d.reference_row,
+				"remarks": d.remarks,
+				"advance_amount": flt(d.amount),
+				"allocated_amount": allocated_amount,
+				"ref_exchange_rate": flt(d.exchange_rate),  # exchange_rate of advance entry
+			}
+			
 			self.append("advances", advance_row)
 
 	def get_advance_entries(self, include_unallocated=True):
@@ -843,6 +874,40 @@ class AccountsController(TransactionBase):
 
 		payment_entries = get_advance_payment_entries(
 			party_type, party, party_account, order_doctype, order_list, include_unallocated
+		)
+
+		res = journal_entries + payment_entries
+
+		return res
+
+		#get Advance payment entry for booking 
+	def get_advance_entries_for_booking(self, include_unallocated=True):
+		booking_number = ''
+		if self.doctype == "Sales Invoice":
+			party_account = self.debit_to
+			party_type = "Customer"
+			party = self.customer
+			amount_field = "credit_in_account_currency"
+			order_field = "sales_order"
+			order_doctype = "Sales Order"
+			if hasattr(self, "booking_number"):
+				booking_number = self.booking_number
+		else:
+			party_account = self.credit_to
+			party_type = "Supplier"
+			party = self.supplier
+			amount_field = "debit_in_account_currency"
+			order_field = "purchase_order"
+			order_doctype = "Purchase Order"
+
+		order_list = list(set(d.get(order_field) for d in self.get("items") if d.get(order_field)))
+
+		journal_entries = get_advance_journal_entries(
+			party_type, party, party_account, amount_field, order_doctype, order_list, include_unallocated
+		)
+		
+		payment_entries = get_advance_payment_entries_for_booking(
+			booking_number or '',party_type, party, party_account, order_doctype, order_list, include_unallocated
 		)
 
 		res = journal_entries + payment_entries
@@ -2734,6 +2799,83 @@ def update_child_qty_rate(parent_doctype, trans_items, parent_doctype_name, chil
 	parent.update_blanket_order()
 	parent.update_billing_percentage()
 	parent.set_status()
+
+
+def get_advance_payment_entries_for_booking(
+		booking_number,
+		party_type,
+		party,
+		party_account,
+		order_doctype,
+		order_list=None,
+		include_unallocated=True,
+		against_all_orders=False,
+		limit=None,
+		condition=None
+	):
+		party_account_field = "paid_from" if party_type == "Customer" else "paid_to"
+		currency_field = (
+			"paid_from_account_currency" if party_type == "Customer" else "paid_to_account_currency"
+		)
+		payment_type = "Receive" if party_type == "Customer" else "Pay"
+		exchange_rate_field = (
+			"source_exchange_rate" if payment_type == "Receive" else "target_exchange_rate"
+		)
+		booking_number_field=''
+		if booking_number:
+			booking_number_field = 'booking_number'
+		payment_entries_against_order, unallocated_payment_entries = [], []
+		limit_cond = "limit %s" % limit if limit else ""
+		
+		if order_list or against_all_orders:
+			if order_list:
+				reference_condition = " and t2.reference_name in ({0})".format(
+					", ".join(["%s"] * len(order_list))
+				)
+			else:
+				reference_condition = ""
+				order_list = []
+			
+			payment_entries_against_order = frappe.db.sql(
+				"""
+				select
+					'Payment Entry' as reference_type, t1.name as reference_name,
+					t1.remarks, t2.allocated_amount as amount, t2.name as reference_row,
+					t2.reference_name as against_order, t1.posting_date,
+					t1.{0} as currency, t1.{4} as exchange_rate
+				from `tabPayment Entry` t1, `tabPayment Entry Reference` t2
+				where
+					t1.name = t2.parent and t1.{1} = %s and t1.payment_type = %s
+					and t1.party_type = %s and t1.party = %s and t1.docstatus = 1
+					and t2.reference_doctype = %s {2}
+					and t.{5} = %s
+				order by t1.posting_date {3}
+			""".format(
+					currency_field, party_account_field, reference_condition, limit_cond, exchange_rate_field,booking_number_field
+				),
+				[party_account, payment_type, party_type, party, order_doctype,booking_number] + order_list,
+				as_dict=1,
+			)
+
+		if include_unallocated:
+			unallocated_payment_entries = frappe.db.sql(
+				"""
+					select 'Payment Entry' as reference_type, name as reference_name, posting_date,
+					remarks, unallocated_amount as amount, {2} as exchange_rate, {3} as currency
+					from `tabPayment Entry`
+					where
+						{0} = %s and party_type = %s and party = %s and payment_type = %s
+						and docstatus = 1 and unallocated_amount > 0 {condition} and 
+						{4} = %s
+					order by posting_date {1}
+				""".format(
+					party_account_field, limit_cond, exchange_rate_field, currency_field,booking_number_field, condition=condition or ""
+				),
+				(party_account, party_type, party, payment_type, booking_number),
+				as_dict=1,
+			)
+
+		return list(payment_entries_against_order) + list(unallocated_payment_entries)
 
 
 @erpnext.allow_regional
