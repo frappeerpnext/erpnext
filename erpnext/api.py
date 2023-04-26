@@ -10,9 +10,11 @@ from frappe.utils import (
 )
 
 
+
 @frappe.whitelist()
-def testing(user=None):
-	update_pos_config()
+def testing():
+    return frappe.local.request.method
+    
     
 
 @frappe.whitelist()

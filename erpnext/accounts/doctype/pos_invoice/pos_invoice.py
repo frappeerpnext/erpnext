@@ -803,7 +803,7 @@ def update_pos_invoice_to_pos_ticket(self):
 	if pos_ticket_list:
 		values = {'name': self.name,'document_number':self.document_number,'pos_invoice_id':self.id}
 		frappe.db.sql("""update `tabPOS Ticket` 
-                			set pos_invoice = %(name)s,
+							set pos_invoice = %(name)s,
 							pos_document_number = %(document_number)s 
-       					where pos_invoice_id = %(pos_invoice_id)s""",values)
+							where pos_invoice_id = %(pos_invoice_id)s""",values)
 		frappe.db.commit()

@@ -1,7 +1,7 @@
 {
  "charts": [],
  "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Loan Application\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Loan\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports & Masters</b></span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Loan\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Loan Processes\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Disbursement and Repayment\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Loan Security\",\"col\":4}},{\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
- "creation": "2020-03-12 16:35:55.299820",
+ "creation": "2023-03-01 09:09:02.385804",
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
@@ -15,6 +15,7 @@
    "is_query_report": 0,
    "label": "Loan",
    "link_count": 0,
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -56,6 +57,7 @@
    "is_query_report": 0,
    "label": "Loan Processes",
    "link_count": 0,
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -86,6 +88,7 @@
    "is_query_report": 0,
    "label": "Disbursement and Repayment",
    "link_count": 0,
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -138,6 +141,7 @@
    "is_query_report": 0,
    "label": "Loan Security",
    "link_count": 0,
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -212,6 +216,7 @@
    "is_query_report": 0,
    "label": "Reports",
    "link_count": 0,
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -238,7 +243,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-09-23 14:29:23.611854",
+ "modified": "2023-03-01 09:09:02.385804",
  "modified_by": "Administrator",
  "module": "Loan Management",
  "name": "Loans",
@@ -252,6 +257,7 @@
  "shortcuts": [
   {
    "color": "Green",
+   "doc_view": "",
    "format": "{} Open",
    "label": "Loan Application",
    "link_to": "Loan Application",
@@ -259,6 +265,7 @@
    "type": "DocType"
   },
   {
+   "doc_view": "",
    "label": "Loan",
    "link_to": "Loan",
    "type": "DocType"

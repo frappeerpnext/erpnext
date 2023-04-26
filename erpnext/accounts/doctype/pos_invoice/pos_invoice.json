@@ -27,6 +27,7 @@
   "company",
   "branch",
   "posting_date",
+  "closed_date",
   "posting_time",
   "pos_creation",
   "set_posting_time",
@@ -1787,6 +1788,11 @@
    "fieldtype": "Datetime",
    "hidden": 1,
    "label": "Cancelled Date"
+  },
+  {
+   "fieldname": "closed_date",
+   "fieldtype": "Datetime",
+   "label": "Closed Date"
   }
  ],
  "icon": "fa fa-file-text",
@@ -1798,7 +1804,7 @@
    "link_fieldname": "pos_invoice"
   }
  ],
- "modified": "2022-12-23 10:06:32.681186",
+ "modified": "2023-02-11 16:04:35.217528",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

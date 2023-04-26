@@ -5,7 +5,7 @@ frappe.provide("erpnext.item");
 
 var buying_exchange_rate = 4000;
 var selling_exchange_rate = 4000;
-
+this.frm.get_field("variant_list").grid.cannot_add_rows = true;
 frappe.ui.form.on("Item", {
 	setup: function(frm) {
 		frm.add_fetch('attribute', 'numeric_values', 'numeric_values');

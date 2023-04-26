@@ -30,24 +30,21 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 	def validate(self):
 	
 		super(ItemGroup, self).validate()
-
 		if not self.parent_item_group and not frappe.flags.in_test:
 			if frappe.db.exists("Item Group", _("All Item Groups")):
 				self.parent_item_group = _("All Item Groups")
-
+		frappe.db.sql("""UPDATE `tabItem` SET change_unit_allow_discount = '{0}' WHERE item_group = '{1}' """.format(self.change_unit_allow_discount,self.item_group_name))
 		self.make_route()
 		self.validate_item_group_defaults()
 		ECommerceSettings.validate_field_filters(self.filter_fields, enable_field_filters=True)
-
-	
-
-
+		
 	def on_update(self):
 		
 		NestedSet.on_update(self)
 		invalidate_cache_for(self)
 		self.validate_one_root()
 		self.delete_child_item_groups_key()
+		
 
 	def make_route(self):
 		"""Make website route"""
@@ -115,8 +112,17 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 		validate_item_default_company_links(self.item_group_defaults)
 
 	def before_save(self):
-			# check if item price has price range 
-			
+			data = [] 
+			duplicate=[]	
+			msg=""
+			for i in self.membership_discount: 
+				if (i.branch+i.membership_type) in data: 
+					duplicate.append(i.idx) 
+				data.append(i.branch+i.membership_type)
+			if duplicate:
+				for a in duplicate:
+					msg = msg + ('Duplicate At Row #' + str(a)) + '<br />'
+				frappe.throw(msg, title=_("Duplicated Row Found"), as_list=True)
 			if len(self.max_birthday_discount_by_branch)>0:
 				branch_list = self.max_birthday_discount_by_branch
 				str_json = ""
@@ -124,6 +130,17 @@ class ItemGroup(NestedSet, WebsiteGenerator):
 					str_json += str(MaxBirthdayDiscountByBranchModel(x.branch,x.discount).__dict__)+ ","
 				str_json ="[" + str_json[0:len(str_json)-1] + "]"
 				self.item_group_discount = str_json
+			else:
+				self.item_group_discount = ""
+			if len(self.membership_discount)>0:
+				member_list = self.membership_discount
+				str_json = ""
+				for x in member_list:
+					str_json += str(MembershipDiscount(x.branch,x.membership_type,x.discount_percent).__dict__)+ ","
+				str_json ="[" + str_json[0:len(str_json)-1] + "]"
+				self.membership_discount_data = str_json
+			else:
+				self.membership_discount_data = ""
 
 def get_child_groups_for_website(item_group_name, immediate=False, include_self=False):
 	"""Returns child item groups *excluding* passed group."""
@@ -224,4 +241,10 @@ def get_item_group_defaults(item, company):
 class MaxBirthdayDiscountByBranchModel:
 	def __init__(self, branch,discount):
 		self.branch =branch
+		self.discount =discount
+
+class MembershipDiscount:
+	def __init__(self, branch,membership_type,discount):
+		self.branch =branch
+		self.membership_type =membership_type
 		self.discount =discount

@@ -5,7 +5,7 @@
  "allow_rename": 1,
  "autoname": "field:item_code",
  "creation": "2022-09-10 15:28:54.534040",
- "description": "A Product or a Service that is bought, sold or kept in stock.",
+ "description": "A Product or a Service that is bought, sold or kept in stock",
  "doctype": "DocType",
  "document_type": "Setup",
  "editable_grid": 1,
@@ -148,7 +148,10 @@
   "published_in_website",
   "total_projected_qty",
   "id",
-  "keyword"
+  "keyword",
+  "change_unit_allow_discount",
+  "variant_list_section",
+  "variant_list"
  ],
  "fields": [
   {
@@ -377,7 +380,6 @@
    "depends_on": "is_stock_item",
    "fieldname": "valuation_method",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "Valuation Method",
    "options": "\nFIFO\nMoving Average\nLIFO"
   },
@@ -1126,13 +1128,31 @@
    "fieldname": "item_name_kh",
    "fieldtype": "Data",
    "label": "Item Name (Kh)"
+  },
+  {
+   "default": "0",
+   "fieldname": "change_unit_allow_discount",
+   "fieldtype": "Check",
+   "label": "Change Unit Allow Discount"
+  },
+  {
+   "fieldname": "variant_list",
+   "fieldtype": "Table",
+   "label": "Variant List",
+   "options": "Item Variant List"
+  },
+  {
+   "depends_on": "eval:doc.has_variants",
+   "fieldname": "variant_list_section",
+   "fieldtype": "Tab Break",
+   "label": "Variant List"
   }
  ],
  "icon": "fa fa-tag",
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-24 16:42:10.297378",
+ "modified": "2023-03-03 11:17:05.204105",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

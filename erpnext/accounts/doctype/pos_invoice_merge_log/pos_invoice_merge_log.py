@@ -315,11 +315,6 @@ def get_invoice_customer_map(pos_invoices):
 
 
 def consolidate_pos_invoices(pos_invoices=None, closing_entry=None):
-	global pos_posting_date
-	pos_posting_date = closing_entry.posting_date
-	data = frappe.db.sql("SELECT posting_date FROM `tabPOS Opening Entry` WHERE NAME = '{}'".format(closing_entry.pos_opening_entry),as_dict=1)
-	if data:
-		pos_posting_date = data[0]["posting_date"]
 	invoices = pos_invoices or (closing_entry and closing_entry.get("pos_transactions"))
 	if frappe.flags.in_test and not invoices:
 		invoices = get_all_unconsolidated_invoices()

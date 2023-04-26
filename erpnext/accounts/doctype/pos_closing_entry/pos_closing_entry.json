@@ -64,6 +64,7 @@
   },
   {
    "default": "Today",
+   "fetch_from": "pos_opening_entry.posting_date",
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -256,7 +257,7 @@
    "link_fieldname": "pos_closing_entry"
   }
  ],
- "modified": "2022-12-01 09:37:58.386448",
+ "modified": "2023-04-17 09:38:53.521691",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Closing Entry",

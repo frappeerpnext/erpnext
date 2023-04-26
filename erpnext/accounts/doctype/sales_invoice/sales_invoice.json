@@ -139,6 +139,7 @@
   "advances_section",
   "allocate_advances_automatically",
   "get_advances",
+  "my_get_advances",
   "advances",
   "payment_schedule_section",
   "ignore_default_payment_terms_template",
@@ -1284,15 +1285,6 @@
    "label": "Allocate Advances Automatically (FIFO)"
   },
   {
-   "depends_on": "eval:!doc.allocate_advances_automatically",
-   "fieldname": "get_advances",
-   "fieldtype": "Button",
-   "hide_days": 1,
-   "hide_seconds": 1,
-   "label": "Get Advances Received",
-   "options": "set_advances"
-  },
-  {
    "fieldname": "advances",
    "fieldtype": "Table",
    "hide_days": 1,
@@ -2079,6 +2071,21 @@
    "fieldtype": "Select",
    "label": "Commission Base On",
    "options": "Grand Total\nProfit"
+  },
+  {
+   "depends_on": "eval:!doc.allocate_advances_automatically",
+   "fieldname": "my_get_advances",
+   "fieldtype": "Button",
+   "label": "Get Advances Received",
+   "options": "set_advances_for_booking"
+  },
+  {
+   "depends_on": "eval:!doc.allocate_advances_automatically",
+   "fieldname": "get_advances",
+   "fieldtype": "Button",
+   "hidden": 1,
+   "label": "Get Advances Received",
+   "options": "set_advances"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2091,7 +2098,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2022-12-20 11:43:02.263419",
+ "modified": "2023-04-25 10:05:04.577895",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",

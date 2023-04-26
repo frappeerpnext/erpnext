@@ -17,6 +17,7 @@
   "buying",
   "selling",
   "allow_in_pos",
+  "allow_discount",
   "pos_allow_birthday_discount",
   "pos_allow_membership_discount",
   "price_not_uom_dependent",
@@ -82,7 +83,6 @@
   {
    "fieldname": "countries",
    "fieldtype": "Table",
-   "hidden": 1,
    "label": "Applicable for Countries",
    "options": "Price List Country"
   },
@@ -108,13 +108,19 @@
    "fieldname": "pos_allow_membership_discount",
    "fieldtype": "Check",
    "label": "POS Allow Membership Discount"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_discount",
+   "fieldtype": "Check",
+   "label": "Allow Discount"
   }
  ],
  "icon": "fa fa-tags",
  "idx": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-09-05 16:42:15.614344",
+ "modified": "2023-01-25 16:08:21.683878",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Price List",

@@ -17,6 +17,8 @@
   "image",
   "column_break_5",
   "product_code_prefix",
+  "change_unit_allow_discount",
+  "item_group_type",
   "max_discount_on_customer_birthday_section",
   "max_birthday_discount_by_branch",
   "item_group_discount",
@@ -39,7 +41,10 @@
   "filter_attributes",
   "lft",
   "rgt",
-  "old_parent"
+  "old_parent",
+  "membership_discount_section",
+  "membership_discount",
+  "membership_discount_data"
  ],
  "fields": [
   {
@@ -244,7 +249,8 @@
   {
    "fieldname": "item_group_discount",
    "fieldtype": "Text",
-   "label": "Item Group Discountt"
+   "hidden": 1,
+   "label": "Item Group Discount"
   },
   {
    "fieldname": "product_code_prefix",
@@ -261,6 +267,35 @@
    "fieldtype": "Table",
    "label": "Discount",
    "options": "Item Group Birthday Discount"
+  },
+  {
+   "default": "0",
+   "fieldname": "change_unit_allow_discount",
+   "fieldtype": "Check",
+   "label": "Change Unit Allow Discount"
+  },
+  {
+   "fieldname": "membership_discount_section",
+   "fieldtype": "Section Break",
+   "label": "Membership Discount"
+  },
+  {
+   "fieldname": "membership_discount",
+   "fieldtype": "Table",
+   "label": "Membership Discount",
+   "options": "Item Group Membership Discount"
+  },
+  {
+   "fieldname": "membership_discount_data",
+   "fieldtype": "Long Text",
+   "hidden": 1,
+   "label": "Membership Discount Data"
+  },
+  {
+   "fieldname": "item_group_type",
+   "fieldtype": "Select",
+   "label": "Item Group Type",
+   "options": "Alcohol\nNon-Alcohol\nFood\nTicket\nOther"
   }
  ],
  "icon": "fa fa-sitemap",
@@ -275,7 +310,7 @@
   }
  ],
  "max_attachments": 3,
- "modified": "2022-11-03 16:33:56.853469",
+ "modified": "2023-03-07 15:34:01.827057",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Item Group",

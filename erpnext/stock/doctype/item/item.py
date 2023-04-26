@@ -29,6 +29,7 @@ from erpnext.controllers.item_variant import (
 	get_variant,
 	make_variant_item_code,
 	validate_item_variant_attributes,
+	update_to_variant_list,
 )
 from erpnext.setup.doctype.item_group.item_group import invalidate_cache_for
 from erpnext.stock.doctype.item_default.item_default import ItemDefault
@@ -54,6 +55,25 @@ class Item(Document):
 	def onload(self):
 		self.set_onload("stock_exists", self.stock_ledger_created())
 		self.set_onload("asset_naming_series", get_asset_naming_series())
+		self.set_item_variant()
+	
+	def set_item_variant(self):
+			data = self.variant_list
+			for a in data:
+				total_qty = frappe.db.sql("""select sum(actual_qty) actual_qty from tabBin where item_code = '{0}'""".format(a.child_item),as_dict=1)
+				item_att = frappe.db.sql("""
+											SELECT
+												parent,
+												concat(CONCAT('Color: ',max(case when ATTRIBUTE = 'Colour' then coalesce(attribute_value,'Not Set') END)),', ',
+												CONCAT('Size: ',max(case when ATTRIBUTE = 'Size' then coalesce(attribute_value,'Not Set') END))) att
+											FROM
+												`tabItem Variant Attribute`
+											WHERE parent = '{0}'
+												GROUP BY parent
+											""".format(a.child_item),as_dict=1)
+				a.qty = total_qty[0].actual_qty
+				a.attribute = item_att[0].att
+			self.variant_list = data
 
 	def autoname(self):
 		if frappe.db.get_default("item_naming_by") == "Naming Series":
@@ -212,6 +232,7 @@ class Item(Document):
 	
         # frappe.db.set_value(doctype, name, fieldname, value)
 		frappe.db.set_value("Item",self.name,"keyword",keyword)
+		update_to_variant_list(self.variant_of)
 
 
 	def validate(self):
