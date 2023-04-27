@@ -29,7 +29,6 @@ from erpnext.controllers.item_variant import (
 	get_variant,
 	make_variant_item_code,
 	validate_item_variant_attributes,
-	update_to_variant_list,
 )
 from erpnext.setup.doctype.item_group.item_group import invalidate_cache_for
 from erpnext.stock.doctype.item_default.item_default import ItemDefault
@@ -232,7 +231,6 @@ class Item(Document):
 	
         # frappe.db.set_value(doctype, name, fieldname, value)
 		frappe.db.set_value("Item",self.name,"keyword",keyword)
-		update_to_variant_list(self.variant_of)
 
 
 	def validate(self):
