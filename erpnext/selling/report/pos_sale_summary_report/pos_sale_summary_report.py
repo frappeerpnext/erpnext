@@ -66,7 +66,12 @@ def update_parent_item_group():
 def get_columns(filters):
 	
 	columns = []
-	columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Data','align':'left','width':250})
+	if filters.row_group == 'POS Invoice':
+		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Link','options':'POS Invoice','align':'left','width':250})
+	else:
+		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Data','align':'left','width':250})
+	
+	
 	# if filters.row_group == "Product":
 	# 	columns.append({"label":"Item Code","fieldname":"item_code","fieldtype":"Data","align":"left",'width':130})
 	
@@ -234,7 +239,7 @@ def get_conditions(filters,group_filter=None):
 	if filters.get("business_source"):
 		conditions += " AND b.business_source in %(business_source)s"
 
-	conditions += " AND b.department in %(department)s"
+	# conditions += " AND b.department in %(department)s"
 	
 	if filters.get("supplier_group"):
 		conditions += " AND (SELECT supplier_group FROM `tabSupplier` b WHERE b.name = a.supplier) in %(supplier_group)s"
@@ -393,16 +398,18 @@ def get_report_field(filters):
 	if filters.parent_row_group == "POS Invoice" or filters.row_group == "POS Invoice":
 		return [
 			{"label":"Quantity","short_label":"Qty", "fieldname":"qty","fieldtype":"Float","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"a.qty"},
-			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"a.base_rate*a.qty"},
-			{"label":"Total Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"a.base_rate*a.qty-a.net_amount"},
+			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate)) * a.qty"},
+			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount)"},
+   			{"label":"FOC", "short_label":"FOC", "fieldname":"foc_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#FFA621","sql_expression":"if(a.is_foc,(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount,0)"},
 			{"label":"Amount", "short_label":"Amt", "fieldname":"amount","fieldtype":"Currency","indicator":"Red","precision":None, "align":"right","chart_color":"#2E7D32","sql_expression":"a.net_amount"},
 		]
 	else:
 		return [
 			
 			{"label":"Quantity","short_label":"Qty", "fieldname":"qty","fieldtype":"Float","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"a.qty"},
-			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"a.base_rate*a.qty"},
-			{"label":"Total Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"a.base_rate*a.qty-a.net_amount"},
+			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty"},
+			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount)"},
+			{"label":"FOC", "short_label":"FOC", "fieldname":"foc_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#FFA621","sql_expression":"if(a.is_foc=1, (if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount,0)"},
 			{"label":"Amount", "short_label":"Amt", "fieldname":"amount","fieldtype":"Currency","indicator":"Red","precision":None, "align":"right","chart_color":"#2E7D32","sql_expression":"a.net_amount"},
 		]
 

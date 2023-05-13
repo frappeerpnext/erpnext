@@ -48,6 +48,7 @@ from erpnext.stock.doctype.serial_no.serial_no import (
 	get_serial_nos,
 	update_serial_nos_after_submit,
 )
+from py_linq import Enumerable
 
 form_grid_templates = {"items": "templates/form_grid/item_grid.html"}
 
@@ -119,7 +120,7 @@ class SalesInvoice(SellingController):
 		self.validate_income_account()
 		self.check_conversion_rate()
 		check_foc_discount_percentage(self)
-
+		update_item_sub_total(self)
 
 		validate_inter_company_party(
 			self.doctype, self.customer, self.company, self.inter_company_invoice_reference
@@ -2701,9 +2702,8 @@ def check_foc_discount_percentage(self):
 		if item.discount_percentage < 100 and item.is_foc == 1:
 			frappe.throw(_("Cannot add foc to invoice. Please set discount item: <b>{}</b>".format(item.item_code)))
 
-# def update_price_list_rate(self):
-# 	for i in self.items:
-# 		if i.base_price_list_rate == 0:
-# 			frappe.db.sql("UPDATE `tabSales Invoice Item` set base_price_list_rate = {},price_list_rate={} Where parent = '{}' and base_price_list_rate = 0".format(i.rate,i.rate,self.name))	
-# 		if i.base_price_list_rate > 0:
-# 			frappe.db.sql("UPDATE `tabSales Invoice Item` set price_list_rate = {} Where parent = '{}'".format(i.rate,i.rate,self.name))
+
+def update_item_sub_total(self):
+	for item in self.items:
+		item.sub_total = item.base_price_list_rate * item.qty
+	self.sub_total = Enumerable(self.items).select(lambda x: x.sub_total).sum()

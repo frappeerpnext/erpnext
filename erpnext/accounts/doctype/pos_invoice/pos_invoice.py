@@ -21,7 +21,7 @@ from erpnext.stock.doctype.serial_no.serial_no import (
 	get_pos_reserved_serial_nos,
 	get_serial_nos,
 )
-
+from py_linq import Enumerable
 
 class POSInvoice(SalesInvoice):
 	def __init__(self, *args, **kwargs):
@@ -61,6 +61,7 @@ class POSInvoice(SalesInvoice):
 		self.validate_pos()
 		self.validate_payment_amount()
 		self.validate_loyalty_transaction()
+		update_item_sub_total(self)
 		if self.coupon_code:
 			from erpnext.accounts.doctype.pricing_rule.utils import validate_coupon_code
 
@@ -807,3 +808,8 @@ def update_pos_invoice_to_pos_ticket(self):
 							pos_document_number = %(document_number)s 
 							where pos_invoice_id = %(pos_invoice_id)s""",values)
 		frappe.db.commit()
+
+def update_item_sub_total(self):
+	for item in self.items:
+		item.sub_total = item.base_price_list_rate * item.qty
+	self.sub_total = Enumerable(self.items).select(lambda x: x.sub_total).sum()

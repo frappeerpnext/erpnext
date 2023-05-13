@@ -84,6 +84,7 @@
   "base_net_total",
   "column_break_32",
   "total_net_weight",
+  "sub_total",
   "total",
   "net_total",
   "taxes_section",
@@ -2086,6 +2087,12 @@
    "hidden": 1,
    "label": "Get Advances Received",
    "options": "set_advances"
+  },
+  {
+   "fieldname": "sub_total",
+   "fieldtype": "Currency",
+   "label": "Sub Total",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-file-text",
@@ -2098,7 +2105,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-04-25 10:05:04.577895",
+ "modified": "2023-05-13 15:02:22.922446",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
