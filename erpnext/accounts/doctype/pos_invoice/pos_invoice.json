@@ -1788,11 +1788,6 @@
    "fieldtype": "Datetime",
    "hidden": 1,
    "label": "Cancelled Date"
-  },
-  {
-   "fieldname": "closed_date",
-   "fieldtype": "Datetime",
-   "label": "Closed Date"
   }
  ],
  "icon": "fa fa-file-text",
