@@ -67,7 +67,8 @@ def get_columns(filters):
 	
 	columns = []
 	if filters.row_group == 'POS Invoice':
-		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Link','options':'POS Invoice','align':'left','width':250})
+		columns.append({'fieldname':'name','label':filters.row_group,'fieldtype':'Link','options':'POS Invoice','align':'left','width':250})
+		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Data','align':'left','width':250})
 	else:
 		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Data','align':'left','width':250})
 	
@@ -280,8 +281,8 @@ def get_report_data(filters,parent_row_group=None,indent=0,group_filter=None):
 	item_code = ""
 	groupdocstatus = ""
 	normal_filter = "b.docstatus in (1) AND"
-	# if ((indent > 0) and ( filters.row_group == "Product" or filters.parent_row_group == "Product")):
-	# 	item_code = ",a.item_code"
+	if filters.row_group == "POS Invoice" or filters.parent_row_group == "POS Invoice":
+		item_code = ",b.name"
 	
 	for rf in report_fields:
 		#check sql variable if last character is , then remove it
@@ -299,9 +300,9 @@ def get_report_data(filters,parent_row_group=None,indent=0,group_filter=None):
 		GROUP BY 
 		{1} {2} {3}
 	""".format(get_conditions(filters,group_filter), row_group,item_code,groupdocstatus,normal_filter)	
-	 
+	frappe.msgprint(sql)
 	data = frappe.db.sql(sql,filters, as_dict=1)
- 
+	#frappe.throw(sql)
 	return data
  
 def get_report_group_data(filters):
@@ -397,6 +398,7 @@ def get_report_chart(filters,data):
 def get_report_field(filters):
 	if filters.parent_row_group == "POS Invoice" or filters.row_group == "POS Invoice":
 		return [
+			# {"label":"Receipt","short_label":"Receipt", "fieldname":"document_number","fieldtype":"Data","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"b.document_number"},
 			{"label":"Quantity","short_label":"Qty", "fieldname":"qty","fieldtype":"Float","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"a.qty"},
 			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate)) * a.qty"},
 			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount)"},
