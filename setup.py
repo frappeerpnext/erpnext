@@ -3,4 +3,11 @@ from setuptools import setup
 
 name = "erpnext"
 
-setup()
+setup(
+    name=name,
+    install_requires=[
+        'py_linq',
+        # Add other dependencies if required
+    ],
+    # Add other setup parameters if necessary
+)
