@@ -38,6 +38,24 @@ def get_pos_price_rule():
  
 	return data
 
+@frappe.whitelist()
+def get_last_point_conversion():
+	data = frappe.db.sql(
+		"""
+		SELECT 
+           a.from_amount,
+           a.to_point,
+           a.from_point,
+           a.to_amount,
+           a.allow_payment_type_data
+		FROM `tabPoint Conversion` a
+        where docstatus = 1
+          order by date desc limit 1
+		""",
+		as_dict=True
+	)
+	return data
+
 
 
 

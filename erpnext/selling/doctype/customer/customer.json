@@ -72,6 +72,7 @@
   "membership_section",
   "membership_type",
   "membership_expired_date",
+  "earn_point",
   "column_break_38",
   "loyalty_program",
   "loyalty_program_tier",
@@ -579,6 +580,11 @@
    "fieldname": "company_name",
    "fieldtype": "Data",
    "label": "Company Name"
+  },
+  {
+   "fieldname": "earn_point",
+   "fieldtype": "Float",
+   "label": "Earn Point"
   }
  ],
  "icon": "fa fa-user",
@@ -592,7 +598,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2022-10-19 15:16:40.704298",
+ "modified": "2023-05-25 15:46:08.565304",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
