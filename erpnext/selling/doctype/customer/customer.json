@@ -133,7 +133,7 @@
    "label": "Customer Type",
    "oldfieldname": "customer_type",
    "oldfieldtype": "Select",
-   "options": "Individual\nCompany",
+   "options": "Individual\nCompany\nMembership",
    "reqd": 1
   },
   {
