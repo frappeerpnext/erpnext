@@ -48,7 +48,6 @@ from erpnext.stock.doctype.serial_no.serial_no import (
 	get_serial_nos,
 	update_serial_nos_after_submit,
 )
-from py_linq import Enumerable
 
 form_grid_templates = {"items": "templates/form_grid/item_grid.html"}
 
