@@ -21,7 +21,6 @@ from erpnext.stock.doctype.serial_no.serial_no import (
 	get_pos_reserved_serial_nos,
 	get_serial_nos,
 )
-from py_linq import Enumerable
 
 class POSInvoice(SalesInvoice):
 	def __init__(self, *args, **kwargs):
@@ -815,4 +814,4 @@ def update_pos_invoice_to_pos_ticket(self):
 def update_item_sub_total(self):
 	for item in self.items:
 		item.sub_total = item.base_price_list_rate * item.qty
-	self.sub_total = Enumerable(self.items).select(lambda x: x.sub_total).sum()
+	self.sub_total = sum(c.sub_total for c in self.items)

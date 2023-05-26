@@ -2705,4 +2705,4 @@ def check_foc_discount_percentage(self):
 def update_item_sub_total(self):
 	for item in self.items:
 		item.sub_total = item.base_price_list_rate * item.qty
-	self.sub_total = Enumerable(self.items).select(lambda x: x.sub_total).sum()
+	self.sub_total = sum(c.sub_total for c in self.items)
