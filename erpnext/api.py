@@ -43,10 +43,10 @@ def get_last_point_conversion():
 	data = frappe.db.sql(
 		"""
 		SELECT 
-           a.from_amount,
-           a.to_point,
-           a.from_point,
-           a.to_amount,
+           a.from_amount_earn,
+           a.to_point_earn,
+           a.from_amount_sale,
+           a.to_point_sale,
            a.allow_payment_type_data
 		FROM `tabPoint Conversion` a
         where docstatus = 1
