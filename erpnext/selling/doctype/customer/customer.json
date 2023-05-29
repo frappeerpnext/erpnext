@@ -72,6 +72,7 @@
   "membership_section",
   "membership_type",
   "membership_expired_date",
+  "allow_earn_point",
   "earn_point",
   "column_break_38",
   "loyalty_program",
@@ -133,7 +134,7 @@
    "label": "Customer Type",
    "oldfieldname": "customer_type",
    "oldfieldtype": "Select",
-   "options": "Individual\nCompany\nMembership",
+   "options": "Individual\nCompany",
    "reqd": 1
   },
   {
@@ -421,6 +422,7 @@
    "collapsible": 1,
    "fieldname": "column_break_38",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Loyalty Points"
   },
   {
@@ -557,6 +559,7 @@
    "allow_in_quick_entry": 1,
    "fieldname": "membership_type",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Membership Type",
    "options": "Membership Type"
   },
@@ -584,7 +587,13 @@
   {
    "fieldname": "earn_point",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Earn Point"
+  },
+  {
+   "fieldname": "allow_earn_point",
+   "fieldtype": "Data",
+   "label": "Allow To Earn Point"
   }
  ],
  "icon": "fa fa-user",
@@ -598,7 +607,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-05-25 15:46:08.565304",
+ "modified": "2023-05-29 10:43:22.426750",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

@@ -27,7 +27,8 @@ class POSInvoice(SalesInvoice):
 		super(POSInvoice, self).__init__(*args, **kwargs)
 
 	def after_insert(self):
-		frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}'".format(self.earn_point,self.customer))
+		frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
+		frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
 
 	def validate(self):
 		if self.is_new():
