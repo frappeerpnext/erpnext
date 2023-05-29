@@ -134,7 +134,7 @@
    "label": "Customer Type",
    "oldfieldname": "customer_type",
    "oldfieldtype": "Select",
-   "options": "Individual\nCompany",
+   "options": "Individual\nCompany\nMembership",
    "reqd": 1
   },
   {
@@ -567,6 +567,7 @@
    "allow_in_quick_entry": 1,
    "fieldname": "membership_expired_date",
    "fieldtype": "Date",
+   "hidden": 1,
    "label": "Membership Expired Date"
   },
   {
@@ -607,7 +608,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-05-29 11:22:39.067012",
+ "modified": "2023-05-29 11:27:51.635271",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
