@@ -587,13 +587,13 @@
   {
    "fieldname": "earn_point",
    "fieldtype": "Float",
-   "hidden": 1,
    "label": "Earn Point"
   },
   {
+   "default": "0",
    "fieldname": "allow_earn_point",
-   "fieldtype": "Data",
-   "label": "Allow To Earn Point"
+   "fieldtype": "Check",
+   "label": "Allow Earn Point"
   }
  ],
  "icon": "fa fa-user",
@@ -607,7 +607,7 @@
    "link_fieldname": "party"
   }
  ],
- "modified": "2023-05-29 10:43:22.426750",
+ "modified": "2023-05-29 11:14:12.424632",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
