@@ -443,6 +443,8 @@ def get_items(filters: StockBalanceFilter) -> List[str]:
 			item_filters["item_group"] = ("in", children + [item_group])
 		if brand := filters.get("brand"):
 			item_filters["brand"] = brand
+		if supplier := filters.get("supplier"):
+			item_filters["supplier"] = supplier
 
 		return frappe.get_all("Item", filters=item_filters, pluck="name", order_by=None)
 
