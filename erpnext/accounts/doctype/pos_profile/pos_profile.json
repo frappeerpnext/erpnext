@@ -39,6 +39,7 @@
   "allow_see_close_sale_amount_when_close_shift",
   "see_booking",
   "show_aba_pay_when_checkout",
+  "show_ar_button",
   "column_break_16",
   "update_stock",
   "ignore_pricing_rule",
@@ -621,6 +622,12 @@
    "fieldname": "add_sale_item_foc_require_password",
    "fieldtype": "Check",
    "label": "Add Sale Item FOC Require Password"
+  },
+  {
+   "default": "0",
+   "fieldname": "show_ar_button",
+   "fieldtype": "Check",
+   "label": "Show A/R Button"
   }
  ],
  "icon": "icon-cog",
@@ -648,7 +655,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2023-01-28 09:53:41.773904",
+ "modified": "2023-06-08 08:40:36.180072",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
