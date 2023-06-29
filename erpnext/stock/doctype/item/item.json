@@ -1151,10 +1151,11 @@
   },
   {
    "fieldname": "print_note",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Long Text",
    "label": "Print Note"
   },
   {
+   "collapsible": 1,
    "fieldname": "print_note_section",
    "fieldtype": "Section Break",
    "label": "Print Note"
@@ -1164,7 +1165,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-29 14:41:59.730039",
+ "modified": "2023-06-29 15:05:19.491979",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
