@@ -62,6 +62,8 @@
   "available_branches",
   "section_break_11",
   "description",
+  "print_note_section",
+  "print_note",
   "dashboard_tab",
   "inventory_section",
   "inventory_settings_section",
@@ -1146,13 +1148,23 @@
    "fieldname": "variant_list_section",
    "fieldtype": "Tab Break",
    "label": "Variant List"
+  },
+  {
+   "fieldname": "print_note",
+   "fieldtype": "Text Editor",
+   "label": "Print Note"
+  },
+  {
+   "fieldname": "print_note_section",
+   "fieldtype": "Section Break",
+   "label": "Print Note"
   }
  ],
  "icon": "fa fa-tag",
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-03 11:17:05.204105",
+ "modified": "2023-06-29 14:41:59.730039",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
