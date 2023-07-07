@@ -69,7 +69,7 @@ class FIFOValuation(BinWiseValuation):
 	def state(self) -> List[StockBin]:
 		"""Get current state of queue."""
 		return self.queue
-	#By Ratha
+
 	def add_stock(self, qty: float, rate: float) -> None:
 		"""Update fifo queue with new stock.
 
