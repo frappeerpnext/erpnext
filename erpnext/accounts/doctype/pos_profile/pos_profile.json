@@ -65,6 +65,7 @@
   "bank_transaction_number",
   "predefine_discount_code",
   "payment_layout_section",
+  "exchange_rate",
   "section_break_23",
   "item_groups",
   "pos_root_menu",
@@ -628,6 +629,13 @@
    "fieldname": "show_ar_button",
    "fieldtype": "Check",
    "label": "Show A/R Button"
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "2",
+   "read_only": 1
   }
  ],
  "icon": "icon-cog",
@@ -655,7 +663,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2023-06-08 08:40:36.180072",
+ "modified": "2023-06-23 08:47:42.062829",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
