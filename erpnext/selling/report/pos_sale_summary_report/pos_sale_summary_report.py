@@ -28,9 +28,6 @@ def validate(filters):
 		filters.start_date = frappe.utils.today()
 		filters.end_date =frappe.utils.today()
 
-	if not filters.department:
-		filters.department = frappe.db.get_list("Department",pluck='name')
-
 	if filters.start_date and filters.end_date:
 		if filters.start_date > filters.end_date:
 
@@ -239,8 +236,6 @@ def get_conditions(filters,group_filter=None):
 
 	if filters.get("business_source"):
 		conditions += " AND b.business_source in %(business_source)s"
-
-	conditions += " AND b.department in %(department)s"
 	
 	if filters.get("supplier_group"):
 		conditions += " AND (SELECT supplier_group FROM `tabSupplier` b WHERE b.name = a.supplier) in %(supplier_group)s"
@@ -399,18 +394,18 @@ def get_report_field(filters):
 		return [
 			# {"label":"Receipt","short_label":"Receipt", "fieldname":"document_number","fieldtype":"Data","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"b.document_number"},
 			{"label":"Quantity","short_label":"Qty", "fieldname":"qty","fieldtype":"Float","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"a.qty"},
-			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate)) * a.qty"},
-			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount)"},
-   			{"label":"FOC", "short_label":"FOC", "fieldname":"foc_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#FFA621","sql_expression":"if(a.is_foc,(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount,0)"},
+			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"a.base_price_list_rate * a.qty"},
+			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,a.base_price_list_rate*a.qty-a.net_amount)"},
+   			{"label":"FOC", "short_label":"FOC", "fieldname":"foc_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#FFA621","sql_expression":"if(a.is_foc,a.base_price_list_rate*a.qty-a.net_amount,0)"},
 			{"label":"Amount", "short_label":"Amt", "fieldname":"amount","fieldtype":"Currency","indicator":"Red","precision":None, "align":"right","chart_color":"#2E7D32","sql_expression":"a.net_amount"},
 		]
 	else:
 		return [
 			
 			{"label":"Quantity","short_label":"Qty", "fieldname":"qty","fieldtype":"Float","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"a.qty"},
-			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty"},
-			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,(if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount)"},
-			{"label":"FOC", "short_label":"FOC", "fieldname":"foc_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#FFA621","sql_expression":"if(a.is_foc=1, (if(b.posting_date<'2022-12-20',a.base_rate,a.base_price_list_rate))*a.qty-a.net_amount,0)"},
+			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"a.base_price_list_rate*a.qty"},
+			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,a.base_price_list_rate*a.qty-a.net_amount)"},
+			{"label":"FOC", "short_label":"FOC", "fieldname":"foc_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#FFA621","sql_expression":"if(a.is_foc=1, a.base_price_list_rate*a.qty-a.net_amount,0)"},
 			{"label":"Amount", "short_label":"Amt", "fieldname":"amount","fieldtype":"Currency","indicator":"Red","precision":None, "align":"right","chart_color":"#2E7D32","sql_expression":"a.net_amount"},
 		]
 
@@ -449,11 +444,6 @@ def get_row_groups():
 		{
 			"fieldname":"a.parent_item_group",
 			"label":"Product Group",
-			"parent_row_group_filter_field":"row_group"
-		},
-			{
-			"fieldname":"b.department",
-			"label":"Department",
 			"parent_row_group_filter_field":"row_group"
 		},
 		{

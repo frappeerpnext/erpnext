@@ -14,18 +14,6 @@ frappe.query_reports["POS Sale Summary Report"] = {
 			print_hide: 1
 		},
 		{
-			fieldname: "department",
-			label: "Department",
-		 
-			
-			"fieldtype": "MultiSelectList",
-			get_data: function(txt) {
-				return frappe.db.get_link_options('Department', txt, {"name": ['!=', 'All Departments']});
-				
-			},
-			 
-		},
-		{
 			"fieldname":"filter_based_on",
 			"label": __("Filter Based On"),
 			"fieldtype": "Select",
