@@ -63,9 +63,9 @@ def update_parent_item_group():
 def get_columns(filters):
 	
 	columns = []
-	if filters.row_group == 'POS Invoice':
-		columns.append({'fieldname':'name','label':filters.row_group,'fieldtype':'Link','options':'POS Invoice','align':'left','width':250})
-		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Data','align':'left','width':250})
+	if filters.row_group == 'POS Invoice' or filters.parent_row_group == 'POS Invoice':
+		# columns.append({'fieldname':'name','label':filters.parent_row_group,'fieldtype':'Link','options':'POS Invoice','align':'left','width':250})
+		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Link','options':'POS Invoice','align':'left','width':250})
 	else:
 		columns.append({'fieldname':'row_group','label':filters.row_group,'fieldtype':'Data','align':'left','width':250})
 	
@@ -392,7 +392,7 @@ def get_report_chart(filters,data):
 def get_report_field(filters):
 	if filters.parent_row_group == "POS Invoice" or filters.row_group == "POS Invoice":
 		return [
-			# {"label":"Receipt","short_label":"Receipt", "fieldname":"document_number","fieldtype":"Data","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"b.document_number"},
+			#{"label":"Receipt","short_label":"Receipt", "fieldname":"document_number","fieldtype":"Data","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"b.document_number"},
 			{"label":"Quantity","short_label":"Qty", "fieldname":"qty","fieldtype":"Float","indicator":"Grey","precision":2, "align":"center","chart_color":"#FF8A65","sql_expression":"a.qty"},
 			{"label":"Sub Total", "short_label":"Sub To.", "fieldname":"sub_total","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"a.base_price_list_rate * a.qty"},
 			{"label":"Discount", "short_label":"Disc.", "fieldname":"discount_amount","fieldtype":"Currency","indicator":"Grey","precision":None, "align":"right","chart_color":"#dd5574","sql_expression":"if(a.is_foc,0,a.base_price_list_rate*a.qty-a.net_amount)"},
@@ -412,7 +412,7 @@ def get_report_field(filters):
 def get_row_groups():
 	return [
 		{
-			"fieldname":"b.document_number",
+			"fieldname":"a.parent",
 			"label":"POS Invoice",
 			"parent_row_group_filter_field":"row_group"
 		},

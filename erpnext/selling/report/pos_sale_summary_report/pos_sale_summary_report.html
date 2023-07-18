@@ -8,28 +8,6 @@
              {%= filters.company %}
         {% }
     %}
-    {%
-        if (filters.department.length>0) { %}
-            <span class="text-right text-muted">
-                ,Department:
-            </span>
-            
-            {% for ( var i = 0; i < filters.department.length; i++ ) { %}
-                <b>
-                    {%= filters.department[i]%}       
-                </b>
-            
-                {%
-                    if (filters.department.length != i+1) { %}
-                        ,
-                    {% }
-                %}
-                
-            {% } %}
-	    {% }
-        
-    %}
-
 	{% if (filters.filter_based_on == "Date Range") { %}
         <span class="text-right text-muted">
             ,Date:
@@ -40,7 +18,6 @@
     <span class="text-right text-muted">
         ,Year In:
     </span>
-        
 		{%= filters.from_fiscal_year %}
 	{% }
     %}
@@ -98,7 +75,6 @@
                 </b>    
             
                 {%
-                    
                     if (filters.item_category.length != i+1) { %}
                         ,
                     {% }
@@ -147,10 +123,15 @@
         
             {% for(var i=0, l=data.length; i<l; i++) { %}
                 {% var style = ``%}
+                {% var parent_group = ``%}
                 {% if(i==l-1) { %}
                     {% style = `style="font-weight:800"`%}
                 {% } %}
-                <tr {%= style %}>
+                {% if(data[i]['is_group'] === 1) { %}
+                    {% parent_group = `parent-group`%}
+                {% } %}
+                {% console.log(data[i]['is_group']) %}
+                <tr {%= style %} class="{%= parent_group %}">
                         
                         {% if(i+1==l) { %}
                             {% colspan = 2%}
@@ -158,9 +139,11 @@
                         <td class="text-center">
                             {% if(i+1 != l) { %}
                                 {%= i + 1 %}
+                                
                             {% }%}
                             
                         </td>
+                        
                         {% for(var c=0, cl=report.columns.length; c<cl; c++) { %}
                             
                                 <td class="text-{%= report.columns[c]['align'] %}">
@@ -192,16 +175,21 @@
     Printed by {%= frappe.user.name%} On {%= frappe.datetime.str_to_user(frappe.datetime.get_datetime_as_string()) %}
 </p>
 
-<style media="print">
-    .print-format {
-        padding: 2mm;
-        font-size: 8.0pt !important;
-    }
-    .print-format .table-bordered td, .print-format .table-bordered th{
-        border: 1px solid #c3c3c3!important;
-    }
-    .report-title{
-        font-weight: 600!important;
+<style>
+    @media print{
+        .print-format {
+            padding: 2mm;
+            font-size: 8.0pt !important;
+        }
+        .print-format .table-bordered td, .print-format .table-bordered th{
+            border: 1px solid #c3c3c3!important;
+        }
+        .report-title{
+            font-weight: 600!important;
+        }
     }
     
+    .table .parent-group{
+        font-weight: 800;
+    }
 </style>
