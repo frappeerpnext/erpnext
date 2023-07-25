@@ -526,4 +526,9 @@ def get_row_groups():
 			"label":"Sale Type",
 			"parent_row_group_filter_field":"row_group"
 		},
+		{
+			"fieldname":"b.pos_username",
+			"label":"POS User",
+			"parent_row_group_filter_field":"row_group"
+		}
 	]

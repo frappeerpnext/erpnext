@@ -101,7 +101,7 @@ frappe.query_reports["POS Sale Summary Report"] = {
 			"fieldname": "row_group",
 			"label": __("Row Group By"),
 			"fieldtype": "Select",
-			"options": "Product\nCategory\nProduct Group\nDepartment\nPOS Profile\nCustomer\nCustomer Group\nTerritory\nWarehouse\nDate\n\Month\nYear\nPOS Invoice",
+			"options": "Product\nCategory\nProduct Group\nDepartment\nPOS Profile\nCustomer\nCustomer Group\nTerritory\nWarehouse\nDate\n\Month\nYear\nPOS Invoice\nPOS User",
 			"default":"Category"
 		},
 		{
@@ -138,7 +138,6 @@ frappe.query_reports["POS Sale Summary Report"] = {
 	"formatter": function(value, row, column, data, default_formatter) {
 	
 		value = default_formatter(value, row, column, data);
-
 		if (data && data.is_group==1) {
 			value = $(`<span>${value}</span>`);
 

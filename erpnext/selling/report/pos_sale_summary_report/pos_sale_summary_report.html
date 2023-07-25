@@ -130,7 +130,6 @@
                 {% if(data[i]['is_group'] === 1) { %}
                     {% parent_group = `parent-group`%}
                 {% } %}
-                {% console.log(data[i]['is_group']) %}
                 <tr {%= style %} class="{%= parent_group %}">
                         
                         {% if(i+1==l) { %}
