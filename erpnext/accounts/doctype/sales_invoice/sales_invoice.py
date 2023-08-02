@@ -250,12 +250,13 @@ class SalesInvoice(SellingController):
 
 	def before_save(self):
 		# if not self.pos_profile and self.is_new():
-		self.document_number = make_autoname(self.document_number_prefix + ".#####", "", self)
 		set_account_for_mode_of_payment(self)
 		
 		# frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_price_list_rate', self=self)
 	
-
+	def after_insert(self):
+		self.document_number = make_autoname(self.document_number_prefix + ".#####", "", self)
+ 
 	def on_submit(self):
 		self.validate_pos_paid_amount()
 
