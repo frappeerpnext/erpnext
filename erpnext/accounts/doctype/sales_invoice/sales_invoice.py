@@ -255,7 +255,9 @@ class SalesInvoice(SellingController):
 		# frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_price_list_rate', self=self)
 	
 	def after_insert(self):
-		self.document_number = make_autoname(self.document_number_prefix + ".#####", "", self)
+		document_number = make_autoname(self.document_number_prefix + ".#####", "", self)
+		frappe.db.set_value('Sales Invoice', self.name, 'document_number', document_number)
+
  
 	def on_submit(self):
 		self.validate_pos_paid_amount()
