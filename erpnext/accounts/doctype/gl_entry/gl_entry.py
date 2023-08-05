@@ -97,8 +97,8 @@ class GLEntry(Document):
 		# Zero value transaction is not allowed
 		if not (flt(self.debit, self.precision("debit")) or flt(self.credit, self.precision("credit"))):
 			frappe.throw(
-				_("{0} {1}: Either debit or credit amount is required for {2}").format(
-					self.voucher_type, self.voucher_no, self.account
+				_("{0} {1}: Either debit or credit amount is required for {2},Party: {3}").format(
+					self.voucher_type, self.voucher_no, self.account, self.party
 				)
 			)
 
