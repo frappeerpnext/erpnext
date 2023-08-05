@@ -2094,11 +2094,11 @@
    "label": "Warehouse"
   },
   {
-   "default": "2022-.########",
+   "default": "2022-.##########",
    "fieldname": "document_number_prefix",
    "fieldtype": "Select",
    "label": "Document Number Prefix",
-   "options": "2022-.########"
+   "options": "2022-.##########"
   },
   {
    "fieldname": "document_number",
@@ -2117,7 +2117,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-08-05 09:56:13.998356",
+ "modified": "2023-08-05 09:15:23.508852",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
