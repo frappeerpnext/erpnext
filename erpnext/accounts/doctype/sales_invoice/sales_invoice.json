@@ -16,6 +16,7 @@
   "membership",
   "selling_price_list",
   "tax_id",
+  "pos_username",
   "pos_profile",
   "is_pos",
   "is_consolidated",
@@ -868,7 +869,6 @@
   {
    "fieldname": "taxes_section",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "hide_days": 1,
    "hide_seconds": 1,
    "oldfieldtype": "Section Break",
@@ -2095,17 +2095,22 @@
    "label": "Warehouse"
   },
   {
-   "default": "2022-.########",
+   "default": "2022-.##########",
    "fieldname": "document_number_prefix",
    "fieldtype": "Select",
    "label": "Document Number Prefix",
-   "options": "2022-.########"
+   "options": "2022-.##########"
   },
   {
    "fieldname": "document_number",
    "fieldtype": "Data",
    "label": "Document Number",
    "read_only": 1
+  },
+  {
+   "fieldname": "pos_username",
+   "fieldtype": "Data",
+   "label": "POS Username"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2118,7 +2123,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-07-31 15:22:41.207083",
+ "modified": "2023-08-05 08:50:03.331783",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
