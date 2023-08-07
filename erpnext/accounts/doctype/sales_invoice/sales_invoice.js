@@ -156,12 +156,12 @@ erpnext.accounts.SalesInvoiceController = class SalesInvoiceController extends e
 			}
 		}
 	
-		var total_profit = 0
-		$.each(this.frm.doc.items,  function(i,  d) {
-			total_profit += flt(d.net_rate*d.qty - d.incoming_rate*d.qty)
-		});
-		this.frm.set_value("profit_amount", total_profit);
-		this.frm.refresh_field("profit_amount");
+		// var total_profit = 0
+		// $.each(this.frm.doc.items,  function(i,  d) {
+		// 	total_profit += flt(d.net_rate*d.qty - d.incoming_rate*d.qty)
+		// });
+		// this.frm.set_value("profit_amount", total_profit);
+		// this.frm.refresh_field("profit_amount");
 		
 	}
 
