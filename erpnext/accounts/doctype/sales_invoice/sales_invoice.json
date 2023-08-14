@@ -2101,6 +2101,7 @@
    "options": "2022-.###########"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "document_number",
    "fieldtype": "Data",
    "label": "Document Number"
@@ -2116,7 +2117,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-08-14 11:21:41.037141",
+ "modified": "2023-08-14 11:38:41.148380",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
