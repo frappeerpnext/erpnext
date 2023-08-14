@@ -2094,17 +2094,16 @@
    "label": "Warehouse"
   },
   {
-   "default": "2022-.##########",
+   "default": "2022-.###########",
    "fieldname": "document_number_prefix",
    "fieldtype": "Select",
    "label": "Document Number Prefix",
-   "options": "2022-.##########"
+   "options": "2022-.###########"
   },
   {
    "fieldname": "document_number",
    "fieldtype": "Data",
-   "label": "Document Number",
-   "read_only": 1
+   "label": "Document Number"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2117,7 +2116,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-08-05 09:15:23.508852",
+ "modified": "2023-08-14 11:00:46.659882",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
