@@ -145,7 +145,7 @@ class Item(Document):
 			#update wholesale price
 			if frappe.db.exists("Price List", "Wholesale Price", cache=True):
 				if frappe.db.exists("Item Price", self.wholesale_price_id, cache=True):
-					frappe.db.set_value("Item Price", self.wholesale_price_id, "price_list_rate", self.wholesale_price)
+					frappe.db.set_value("Item Price", self.wholesale_price_id, "price_list_rate", self.wholesale_price or 0)
 					x = frappe.get_doc("Item Price",self.wholesale_price_id)
 					
 				else:
@@ -154,7 +154,7 @@ class Item(Document):
 						doc.uom = self.sales_uom
 						doc.item_code = self.name
 						doc.price_list = "Wholesale Price"
-						doc.price_list_rate = self.wholesale_price
+						doc.price_list_rate = self.wholesale_price or 0
 						doc.save()
 						self.wholesale_price_id = doc.name
 
@@ -312,16 +312,17 @@ class Item(Document):
 			item_price = frappe.get_doc(
 				{
 					"doctype": "Item Price",
-					"price_list": price_list,
+					"price_list": str(price_list),
 					"item_code": self.name,
 					"uom": self.stock_uom,
 					"brand": self.brand,
 					"currency": erpnext.get_default_currency(),
-					"price_list_rate": self.standard_rate,
+					"price_list_rate": self.standard_rate or 0,
 				}
 			)
+			
 			item_price.insert()
-
+			print(item_price)
 			self.price_id = item_price.name
 			self.save()
 
