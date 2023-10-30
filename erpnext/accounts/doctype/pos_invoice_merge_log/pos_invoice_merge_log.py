@@ -142,7 +142,6 @@ class POSInvoiceMergeLog(Document):
 				invoice.loyalty_redemption_cost_center = doc.loyalty_redemption_cost_center
 				loyalty_points_sum += doc.loyalty_points
 				loyalty_amount_sum += doc.loyalty_amount
-
 			for item in doc.get("items"):
 				found = False
 				for i in items:
@@ -161,13 +160,14 @@ class POSInvoiceMergeLog(Document):
 						i.net_amount = i.amount
 						i.base_amount = i.base_amount + item.base_net_amount
 						i.base_net_amount = i.base_amount
-
+						i.item_tax = i.item_tax + item.tax_amount
 				if not found:
 					item.rate = item.net_rate
 					item.amount = item.net_amount
 					item.base_amount = item.base_net_amount
 					item.price_list_rate = 0
 					item.is_foc = item.is_foc
+					item.item_tax = item.tax_amount
 					si_item = map_child_doc(item, invoice, {"doctype": "Sales Invoice Item"})
 					items.append(si_item)
 
