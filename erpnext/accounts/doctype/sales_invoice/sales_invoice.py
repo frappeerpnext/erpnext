@@ -91,6 +91,7 @@ class SalesInvoice(SellingController):
 			self.indicator_color = "green"
 			self.indicator_title = _("Paid")
 
+
 	def validate(self):
 		super(SalesInvoice, self).validate()
 		self.validate_auto_set_posting_time()
@@ -100,9 +101,8 @@ class SalesInvoice(SellingController):
 
 		if not self.is_pos:
 			self.so_dn_required()
-
+		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_item_tax', data=self)
 		self.set_tax_withholding()
-
 		self.validate_proj_cust()
 		self.validate_pos_return()
 		self.validate_with_previous_doc()
@@ -250,10 +250,13 @@ class SalesInvoice(SellingController):
 
 	def before_save(self):
 		set_account_for_mode_of_payment(self)
+		
 	
 	def after_insert(self):
-		document_number = make_autoname(self.document_number_prefix + ".#####", "", self)
-		frappe.db.set_value('Sales Invoice', self.name, 'document_number', document_number, update_modified=False)
+		if not self.document_number:
+			document_number = make_autoname(self.document_number_prefix + ".#####", "", self)
+			frappe.db.set_value('Sales Invoice', self.name, 'document_number', document_number, update_modified=False)
+		
 
  
 	def on_submit(self):
@@ -327,7 +330,7 @@ class SalesInvoice(SellingController):
 			if not self.is_pos:
 				if self.department:
 					add_ticket_to_ticket_sold_list(self)
-
+		
 		#save cost to sale invoice
 		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_total_cost', name=self.name)
 
@@ -2710,3 +2713,11 @@ def update_item_sub_total(self):
 	for item in self.items:
 		item.sub_total = item.base_price_list_rate * item.qty
 	self.sub_total = sum(c.sub_total for c in self.items)
+
+def update_item_tax(data):
+	total_tax_amount = data.total_taxes_and_charges
+	sub_total = data.net_total
+	tax_percent = total_tax_amount/sub_total
+	sql = "update `tabSales Invoice Item` set item_tax = net_amount*{0} where parent='{1}'".format(tax_percent,data.name)
+	frappe.db.sql(sql)
+	frappe.db.commit()

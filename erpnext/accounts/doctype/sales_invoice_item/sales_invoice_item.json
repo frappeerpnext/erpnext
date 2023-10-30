@@ -109,7 +109,8 @@
   "supplier_name",
   "supplier_group",
   "total_transaction",
-  "page_break"
+  "page_break",
+  "item_tax"
  ],
  "fields": [
   {
@@ -906,12 +907,18 @@
    "fieldtype": "Currency",
    "label": "Sub Total",
    "read_only": 1
+  },
+  {
+   "fieldname": "item_tax",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Item Tax"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-13 15:01:55.222372",
+ "modified": "2023-08-09 11:27:59.325063",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice Item",

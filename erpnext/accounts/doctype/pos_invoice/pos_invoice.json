@@ -219,7 +219,10 @@
   "commission_base_on",
   "earn_point",
   "spend_point",
-  "max_point"
+  "max_point",
+  "tax_rate",
+  "tax_name",
+  "total_tax_amount"
  ],
  "fields": [
   {
@@ -1023,8 +1026,7 @@
    "label": "Rounding Adjustment",
    "no_copy": 1,
    "options": "currency",
-   "print_hide": 1,
-   "read_only": 1
+   "print_hide": 1
   },
   {
    "bold": 1,
@@ -1805,6 +1807,24 @@
    "fieldname": "max_point",
    "fieldtype": "Float",
    "label": "Max Point"
+  },
+  {
+   "fieldname": "tax_rate",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Tax Rate"
+  },
+  {
+   "fieldname": "tax_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Tax Name"
+  },
+  {
+   "fieldname": "total_tax_amount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Total Tax Amount"
   }
  ],
  "icon": "fa fa-file-text",
@@ -1816,7 +1836,7 @@
    "link_fieldname": "pos_invoice"
   }
  ],
- "modified": "2023-06-06 08:39:08.818658",
+ "modified": "2023-08-11 09:34:27.539149",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",
