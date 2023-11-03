@@ -2114,10 +2114,11 @@
    "label": "Total Tax Amount"
   },
   {
-   "fieldname": "foc_item_tax",
-   "fieldtype": "Data",
-   "label": "FOC Item Tax"
-  }
+    "fieldname": "foc_item_tax",
+    "fieldtype": "Currency",
+    "hidden": 1,
+    "label": "FOC Item Tax"
+   }
  ],
  "icon": "fa fa-file-text",
  "idx": 181,

@@ -96,6 +96,7 @@
   "section_break_43",
   "base_total_taxes_and_charges",
   "total_tax_amount",
+  "foc_item_tax",
   "column_break_47",
   "total_taxes_and_charges",
   "loyalty_points_redemption",
@@ -222,8 +223,7 @@
   "spend_point",
   "max_point",
   "tax_rate",
-  "tax_name",
-  "foc_item_tax"
+  "tax_name"
  ],
  "fields": [
   {
@@ -1842,7 +1842,7 @@
    "link_fieldname": "pos_invoice"
   }
  ],
- "modified": "2023-11-03 09:57:26.222972",
+ "modified": "2023-11-03 10:24:12.705443",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",
