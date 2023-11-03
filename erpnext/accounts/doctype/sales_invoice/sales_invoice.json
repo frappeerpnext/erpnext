@@ -204,7 +204,7 @@
   "auto_repeat",
   "update_auto_repeat_reference",
   "against_income_account",
-  "data_199"
+  "foc_item_tax"
  ],
  "fields": [
   {
@@ -2114,8 +2114,10 @@
    "label": "Total Tax Amount"
   },
   {
-   "fieldname": "data_199",
-   "fieldtype": "Data"
+   "fieldname": "foc_item_tax",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "FOC Item Tax"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2128,7 +2130,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-11-03 09:03:43.464147",
+ "modified": "2023-11-03 09:58:27.811581",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",

@@ -208,9 +208,14 @@ class POSInvoiceMergeLog(Document):
 			invoice.redeem_loyalty_points = 1
 			invoice.loyalty_points = loyalty_points_sum
 			invoice.loyalty_amount = loyalty_amount_sum
+		foc_item_tax = 0
+		for a in items:
+			if a.is_foc == 1:
+				foc_item_tax  += a.item_tax
 		total_tax_amount = 0
 		for a in items:
 			total_tax_amount  += a.item_tax
+		invoice.set("foc_item_tax",foc_item_tax)
 		invoice.set("total_tax_amount",total_tax_amount)
 		invoice.set("items", items)
 		invoice.set("payments", payments)

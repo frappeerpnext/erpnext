@@ -222,7 +222,8 @@
   "spend_point",
   "max_point",
   "tax_rate",
-  "tax_name"
+  "tax_name",
+  "foc_item_tax"
  ],
  "fields": [
   {
@@ -1824,6 +1825,12 @@
    "fieldname": "total_tax_amount",
    "fieldtype": "Currency",
    "label": "Total Tax Amount"
+  },
+  {
+   "fieldname": "foc_item_tax",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "FOC Item Tax"
   }
  ],
  "icon": "fa fa-file-text",
@@ -1835,7 +1842,7 @@
    "link_fieldname": "pos_invoice"
   }
  ],
- "modified": "2023-11-03 08:53:01.473929",
+ "modified": "2023-11-03 09:57:26.222972",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",
