@@ -9,6 +9,7 @@
   "customer_section",
   "title",
   "naming_series",
+  "document_number_prefix",
   "document_number",
   "customer",
   "customer_name",
@@ -97,6 +98,7 @@
   "taxes",
   "sec_tax_breakup",
   "other_charges_calculation",
+  "total_tax_amount",
   "section_break_43",
   "base_total_taxes_and_charges",
   "column_break_47",
@@ -202,7 +204,7 @@
   "auto_repeat",
   "update_auto_repeat_reference",
   "against_income_account",
-  "document_number_prefix"
+  "data_199"
  ],
  "fields": [
   {
@@ -928,7 +930,6 @@
    "collapsible": 1,
    "fieldname": "sec_tax_breakup",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "hide_days": 1,
    "hide_seconds": 1,
    "label": "Tax Breakup"
@@ -936,6 +937,7 @@
   {
    "fieldname": "other_charges_calculation",
    "fieldtype": "Long Text",
+   "hidden": 1,
    "hide_days": 1,
    "hide_seconds": 1,
    "label": "Taxes and Charges Calculation",
@@ -2094,17 +2096,26 @@
    "label": "Warehouse"
   },
   {
-   "default": "2022-.###########",
+   "default": "TI.####",
    "fieldname": "document_number_prefix",
    "fieldtype": "Select",
    "label": "Document Number Prefix",
-   "options": "2022-.###########"
+   "options": "#####\nTI.####"
   },
   {
    "allow_on_submit": 1,
    "fieldname": "document_number",
    "fieldtype": "Data",
    "label": "Document Number"
+  },
+  {
+   "fieldname": "total_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Total Tax Amount"
+  },
+  {
+   "fieldname": "data_199",
+   "fieldtype": "Data"
   }
  ],
  "icon": "fa fa-file-text",
@@ -2117,7 +2128,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-08-14 11:38:41.148380",
+ "modified": "2023-11-03 09:03:43.464147",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
