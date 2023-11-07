@@ -95,8 +95,6 @@
   "other_charges_calculation",
   "section_break_43",
   "base_total_taxes_and_charges",
-  "total_tax_amount",
-  "foc_item_tax",
   "column_break_47",
   "total_taxes_and_charges",
   "loyalty_points_redemption",
@@ -222,8 +220,11 @@
   "earn_point",
   "spend_point",
   "max_point",
+  "tax_name",
   "tax_rate",
-  "tax_name"
+  "total_tax_amount",
+  "total_tax_amount_after_discount",
+  "total_item_tax_discount"
  ],
  "fields": [
   {
@@ -1824,13 +1825,20 @@
   {
    "fieldname": "total_tax_amount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Tax Amount"
   },
   {
-   "fieldname": "foc_item_tax",
-   "fieldtype": "Currency",
+   "fieldname": "total_tax_amount_after_discount",
+   "fieldtype": "Float",
    "hidden": 1,
-   "label": "FOC Item Tax"
+   "label": "Total Tax Amount After Discount"
+  },
+  {
+   "fieldname": "total_item_tax_discount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Total Item Tax Discount"
   }
  ],
  "icon": "fa fa-file-text",
@@ -1842,7 +1850,7 @@
    "link_fieldname": "pos_invoice"
   }
  ],
- "modified": "2023-11-03 10:24:12.705443",
+ "modified": "2023-11-07 14:28:58.801451",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice",

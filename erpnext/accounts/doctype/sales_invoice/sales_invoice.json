@@ -98,8 +98,6 @@
   "taxes",
   "sec_tax_breakup",
   "other_charges_calculation",
-  "total_tax_amount",
-  "foc_item_tax",
   "section_break_43",
   "base_total_taxes_and_charges",
   "column_break_47",
@@ -204,7 +202,9 @@
   "column_break_140",
   "auto_repeat",
   "update_auto_repeat_reference",
-  "against_income_account"
+  "against_income_account",
+  "total_tax_amount",
+  "total_tax_amount_after_discount"
  ],
  "fields": [
   {
@@ -2111,14 +2111,15 @@
   {
    "fieldname": "total_tax_amount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Tax Amount"
   },
   {
-    "fieldname": "foc_item_tax",
-    "fieldtype": "Currency",
-    "hidden": 1,
-    "label": "FOC Item Tax"
-   }
+   "fieldname": "total_tax_amount_after_discount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Total Tax Amount After Discount"
+  }
  ],
  "icon": "fa fa-file-text",
  "idx": 181,
@@ -2130,7 +2131,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-11-03 10:20:44.699465",
+ "modified": "2023-11-07 14:34:03.961204",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
