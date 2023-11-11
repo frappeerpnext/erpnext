@@ -306,7 +306,8 @@
    "in_preview": 1,
    "label": "Image",
    "options": "image",
-   "print_hide": 1
+   "print_hide": 1,
+   "in_list_view":0
   },
   {
    "collapsible": 1,
@@ -1172,7 +1173,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-11 16:19:46.839101",
+ "modified": "2023-11-11 18:25:51.445465",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
