@@ -30,6 +30,7 @@
   "include_item_in_manufacturing",
   "opening_stock",
   "is_fixed_asset",
+  "include_vat",
   "auto_create_assets",
   "is_grouped_asset",
   "asset_category",
@@ -1159,13 +1160,19 @@
    "fieldname": "print_note_section",
    "fieldtype": "Section Break",
    "label": "Print Note"
+  },
+  {
+   "default": "0",
+   "fieldname": "include_vat",
+   "fieldtype": "Check",
+   "label": "Include VAT"
   }
  ],
  "icon": "fa fa-tag",
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-29 15:05:19.491979",
+ "modified": "2023-11-11 16:19:46.839101",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",
