@@ -117,7 +117,7 @@
   "tax_rate",
   "tax_amount",
   "tax_amount_after_discount",
-  "include_tax"
+  "include_vat"
  ],
  "fields": [
   {
@@ -931,7 +931,7 @@
   },
   {
    "default": "0",
-   "fieldname": "include_tax",
+   "fieldname": "include_vat",
    "fieldtype": "Check",
    "hidden": 1,
    "label": "Include VAT"
@@ -939,7 +939,7 @@
  ],
  "istable": 1,
  "links": [],
- "modified": "2023-11-11 16:20:23.186874",
+ "modified": "2023-11-12 20:06:44.039209",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice Item",
