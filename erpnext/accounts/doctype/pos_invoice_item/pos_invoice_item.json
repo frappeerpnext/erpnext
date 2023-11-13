@@ -116,8 +116,7 @@
   "allow_get_point",
   "tax_rate",
   "tax_amount",
-  "tax_amount_after_discount",
-  "include_vat"
+  "tax_amount_after_discount"
  ],
  "fields": [
   {
@@ -928,18 +927,11 @@
    "fieldtype": "Float",
    "hidden": 1,
    "label": "Tax Amount After Discount"
-  },
-  {
-   "default": "0",
-   "fieldname": "include_vat",
-   "fieldtype": "Check",
-   "hidden": 1,
-   "label": "Include Vat"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2023-11-13 18:17:21.457739",
+ "modified": "2023-11-13 18:27:33.116952",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Invoice Item",
