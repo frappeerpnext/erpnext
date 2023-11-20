@@ -160,16 +160,14 @@ class POSInvoiceMergeLog(Document):
 						i.net_amount = i.amount
 						i.base_amount = i.base_amount + item.base_net_amount
 						i.base_net_amount = i.base_amount
-						i.item_tax = i.item_tax + item.tax_amount
-						i.item_tax_after_discount = i.item_tax_after_discount + item.tax_amount_after_discount
+						i.item_tax = i.item_tax + (item.tax_amount or 0)
 				if not found:
 					item.rate = item.net_rate
 					item.amount = item.net_amount
 					item.base_amount = item.base_net_amount
 					item.price_list_rate = 0
 					item.is_foc = item.is_foc
-					item.item_tax = item.tax_amount
-					item.item_tax_after_discount = item.tax_amount_after_discount
+					item.item_tax = (item.tax_amount or 0)
 					si_item = map_child_doc(item, invoice, {"doctype": "Sales Invoice Item"})
 					items.append(si_item)
 
@@ -210,19 +208,10 @@ class POSInvoiceMergeLog(Document):
 			invoice.redeem_loyalty_points = 1
 			invoice.loyalty_points = loyalty_points_sum
 			invoice.loyalty_amount = loyalty_amount_sum
-		foc_item_tax = 0
-		for a in items:
-			if a.is_foc == 1:
-				foc_item_tax  += a.item_tax
 		total_tax_amount = 0
 		for a in items:
 			total_tax_amount  += a.item_tax
-		item_tax_after_discount = 0
-		for a in items:
-			item_tax_after_discount  += a.item_tax_after_discount
-		invoice.set("foc_item_tax",foc_item_tax)
 		invoice.set("total_tax_amount",total_tax_amount)
-		invoice.set("total_tax_amount_after_discount",item_tax_after_discount)
 		invoice.set("items", items)
 		invoice.set("payments", payments)
 		invoice.set("taxes", taxes)
