@@ -28,8 +28,10 @@ class POSInvoice(SalesInvoice):
 
 	def after_insert(self):
 		try:
-			frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
-			frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
+			if self.earn_point > 0:
+				frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
+			if self.spend_point > 0:
+				frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
 		except:
 			frappe.msgprint("error")
 
