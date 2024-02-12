@@ -3,7 +3,7 @@
 
 
 import json
-
+from frappe.model.naming import make_autoname
 import frappe
 from frappe import _, msgprint
 from frappe.desk.notifications import clear_doctype_notifications
@@ -49,6 +49,11 @@ class PurchaseOrder(BuyingController):
 	def onload(self):
 		supplier_tds = frappe.db.get_value("Supplier", self.supplier, "tax_withholding_category")
 		self.set_onload("supplier_tds", supplier_tds)
+	
+	def after_insert(self):
+		if not self.document_number:
+			document_number = make_autoname(self.document_number_prefix + ".#####", "", self)
+			frappe.db.set_value('Purchase Order', self.name, 'document_number', document_number, update_modified=False)
 
 	def validate(self):
 		super(PurchaseOrder, self).validate()
