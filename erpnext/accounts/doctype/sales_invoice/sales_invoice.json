@@ -2096,6 +2096,7 @@
    "label": "Warehouse"
   },
   {
+   "allow_on_submit": 1,
    "default": "TI.####",
    "fieldname": "document_number_prefix",
    "fieldtype": "Select",
@@ -2131,7 +2132,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2023-11-07 14:34:03.961204",
+ "modified": "2024-02-21 10:47:17.983340",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
