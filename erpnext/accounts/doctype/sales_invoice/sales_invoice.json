@@ -2101,7 +2101,7 @@
    "fieldname": "document_number_prefix",
    "fieldtype": "Select",
    "label": "Document Number Prefix",
-   "options": "#####\nTI.####"
+   "options": "#####\nTI.####\n2022-.###########"
   },
   {
    "allow_on_submit": 1,
@@ -2132,7 +2132,7 @@
    "link_fieldname": "consolidated_invoice"
   }
  ],
- "modified": "2024-02-21 10:47:17.983340",
+ "modified": "2024-02-21 11:10:26.355789",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Sales Invoice",
