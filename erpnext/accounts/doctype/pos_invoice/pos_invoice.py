@@ -150,7 +150,13 @@ class POSInvoice(SalesInvoice):
 		# update to ticket sold for module eticket have only
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			remove_ticket_from_tickets_sold(self)
-
+		try:
+			if self.earn_point > 0:
+				frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
+			if self.spend_point > 0:
+				frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
+		except:
+			frappe.msgprint("error")
 
 	def check_phone_payments(self):
 		for pay in self.payments:
