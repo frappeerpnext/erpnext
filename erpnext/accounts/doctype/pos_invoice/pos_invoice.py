@@ -26,6 +26,15 @@ class POSInvoice(SalesInvoice):
 	def __init__(self, *args, **kwargs):
 		super(POSInvoice, self).__init__(*args, **kwargs)
 
+	def after_insert(self):
+		try:
+			if self.earn_point > 0:
+				frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
+			if self.spend_point > 0:
+				frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
+		except:
+			frappe.msgprint("error")
+
 	def validate(self):
 		if self.is_new():
 			if self.id:
@@ -94,13 +103,7 @@ class POSInvoice(SalesInvoice):
 			from erpnext.accounts.doctype.pricing_rule.utils import update_coupon_code_count
 
 			update_coupon_code_count(self.coupon_code, "used")
-		try:
-			if self.earn_point > 0:
-				frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
-			if self.spend_point > 0:
-				frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
-		except:
-			frappe.msgprint("error")
+		
 		# update to ticket sold for module eticket have only
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			add_ticket_to_ticket_sold_list(self)
