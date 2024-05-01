@@ -26,15 +26,6 @@ class POSInvoice(SalesInvoice):
 	def __init__(self, *args, **kwargs):
 		super(POSInvoice, self).__init__(*args, **kwargs)
 
-	def after_insert(self):
-		try:
-			if self.earn_point > 0:
-				frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
-			if self.spend_point > 0:
-				frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
-		except:
-			frappe.msgprint("error")
-
 	def validate(self):
 		if self.is_new():
 			if self.id:
@@ -101,9 +92,15 @@ class POSInvoice(SalesInvoice):
 		
 		if self.coupon_code:
 			from erpnext.accounts.doctype.pricing_rule.utils import update_coupon_code_count
-
 			update_coupon_code_count(self.coupon_code, "used")
-		
+
+		doc = frappe.get_doc("Customer",self.customer)
+		if self.earn_point > 0 and doc.allow_earn_point == 1:
+			doc.earn_point = doc.earn_point + self.earn_point
+		if self.spend_point > 0 and doc.allow_earn_point == 1:
+			doc.earn_point = doc.earn_point - self.spend_point
+		doc.save()
+
 		# update to ticket sold for module eticket have only
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			add_ticket_to_ticket_sold_list(self)
@@ -150,13 +147,13 @@ class POSInvoice(SalesInvoice):
 		# update to ticket sold for module eticket have only
 		if frappe.db.exists("Module Def","E Ticket Management"):
 			remove_ticket_from_tickets_sold(self)
-		try:
-			if self.earn_point > 0:
-				frappe.db.sql("update `tabCustomer` set earn_point = earn_point - {0} where name = '{1}' and allow_earn_point = 1".format(self.earn_point,self.customer))
-			if self.spend_point > 0:
-				frappe.db.sql("update `tabCustomer` set earn_point = earn_point + {0} where name = '{1}' and allow_earn_point = 1".format(self.spend_point,self.customer))
-		except:
-			frappe.msgprint("error")
+
+		doc = frappe.get_doc("Customer",self.customer)
+		if self.earn_point > 0 and doc.allow_earn_point == 1:
+			doc.earn_point = doc.earn_point - self.earn_point
+		if self.spend_point > 0 and doc.allow_earn_point == 1:
+			doc.earn_point = doc.earn_point + self.spend_point
+		doc.save()
 
 	def check_phone_payments(self):
 		for pay in self.payments:
