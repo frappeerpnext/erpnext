@@ -61,6 +61,22 @@ frappe.ui.form.on("Item", {
 				frappe.set_route("query-report", "Stock Projected Qty");
 			}, __("View"));
 		}
+		var childTableField = 'item_defaults';
+
+		// Iterate over each row in the child table
+		frm.doc[childTableField].forEach(function(row) {
+		// Check your condition for making the row read-only
+		if (row.company === 'EST Computer') {
+			// Set the row field as read-only
+			console.log('=>',frm.doc.name, frm.doc.parent,frm.doc)
+			console.log(frappe.meta.get_docfield('Item Default', 'item_defaults', frm.doc.name, frm.doc.parent))//.read_only = 1;
+		}
+		});
+
+		// Refresh the form to apply the read-only changes
+		frm.refresh_fields();
+				
+			
 
 
 		if (frm.doc.is_fixed_asset) {
@@ -237,6 +253,12 @@ frappe.ui.form.on("Item", {
 
 	has_variants: function(frm) {
 		erpnext.item.toggle_attributes(frm);
+	},
+	cost_2_kh: function(frm) {
+		frm.set_value("cost_2",frm.doc.cost_2_kh / buying_exchange_rate);
+   },
+   cost_2: function(frm) {
+		frm.set_value("cost_2_kh",frm.doc.cost_2 * buying_exchange_rate);
 	},
 	cost_kh: function(frm) {
 		

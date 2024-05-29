@@ -180,8 +180,16 @@ erpnext.selling.SellingController = class SellingController extends erpnext.Tran
 					this.frm.doc.grand_total
 				)
 			);
-		}else {
+		}else if(this.frm.doc.commission_base_on=="Profit Cost 1") {
 			amount_eligible_for_commission = this.frm.doc.profit_amount;
+			this.frm.set_value(
+				"amount_eligible_for_commission", flt(
+					this.frm.doc.profit_amount
+				)
+			);
+		}
+		else{
+			amount_eligible_for_commission = this.frm.doc.profit_amount_2;
 			this.frm.set_value(
 				"amount_eligible_for_commission", flt(
 					this.frm.doc.profit_amount
@@ -283,8 +291,10 @@ erpnext.selling.SellingController = class SellingController extends erpnext.Tran
 			))} ${__("cannot be greater than 100")}`);
 		}
 
-		if (this.frm.doc.commission_base_on =="Profit"){ 
+		if (this.frm.doc.commission_base_on =="Profit Cost 1"){ 
 			this.frm.doc.amount_eligible_for_commission = this.frm.doc.profit_amount; 
+		}else if (this.frm.doc.commission_base_on =="Profit Cost 2"){ 
+			this.frm.doc.amount_eligible_for_commission = this.frm.doc.profit_amount_2; 
 		}else {
 			this.frm.doc.amount_eligible_for_commission = this.frm.doc.items.reduce(
 				(sum, item) => item.grant_commission ? sum + item.base_net_amount : sum, 0

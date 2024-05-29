@@ -101,7 +101,7 @@ class SalesInvoice(SellingController):
 
 		if not self.is_pos:
 			self.so_dn_required()
-		frappe.enqueue('erpnext.accounts.doctype.sales_invoice.sales_invoice.update_item_tax', data=self)
+		
 		self.set_tax_withholding()
 		self.validate_proj_cust()
 		self.validate_pos_return()
@@ -187,6 +187,15 @@ class SalesInvoice(SellingController):
 		#update total discount
 		for d in self.items:
 			d.total_discount_amount = d.qty * d.discount_amount
+
+		#update profit_amount
+		total_profit_1 = 0
+		total_profit_2 = 0
+		for d in self.items:
+			total_profit_1 += (d.net_rate*d.qty - d.incoming_rate*d.qty)
+			total_profit_2 += (d.net_rate*d.qty - d.cost_2*d.qty)
+		self.profit_amount = total_profit_1
+		self.profit_amount_2 = total_profit_2
 
 	def validate_fixed_asset(self):
 		for d in self.get("items"):
@@ -2714,10 +2723,3 @@ def update_item_sub_total(self):
 		item.sub_total = item.base_price_list_rate * item.qty
 	self.sub_total = sum(c.sub_total for c in self.items)
 
-def update_item_tax(data):
-	total_tax_amount = data.total_taxes_and_charges
-	sub_total = data.net_total
-	tax_percent = total_tax_amount/sub_total
-	sql = "update `tabSales Invoice Item` set item_tax = net_amount*{0} where parent='{1}'".format(tax_percent,data.name)
-	frappe.db.sql(sql)
-	frappe.db.commit()
