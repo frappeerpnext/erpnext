@@ -81,28 +81,32 @@ frappe.query_reports["Accounts Payable"] = {
 			"label": __("Ageing Range 1"),
 			"fieldtype": "Int",
 			"default": "30",
-			"reqd": 1
+			"reqd": 1,
+			"hidden": 1
 		},
 		{
 			"fieldname": "range2",
 			"label": __("Ageing Range 2"),
 			"fieldtype": "Int",
 			"default": "60",
-			"reqd": 1
+			"reqd": 1,
+			"hidden": 1
 		},
 		{
 			"fieldname": "range3",
 			"label": __("Ageing Range 3"),
 			"fieldtype": "Int",
 			"default": "90",
-			"reqd": 1
+			"reqd": 1,
+			"hidden": 1
 		},
 		{
 			"fieldname": "range4",
 			"label": __("Ageing Range 4"),
 			"fieldtype": "Int",
 			"default": "120",
-			"reqd": 1
+			"reqd": 1,
+			"hidden": 1
 		},
 		{
 			"fieldname": "payment_terms_template",
@@ -129,6 +133,11 @@ frappe.query_reports["Accounts Payable"] = {
 		{
 			"fieldname": "show_remarks",
 			"label": __("Show Remarks"),
+			"fieldtype": "Check",
+		},
+		{
+			"fieldname": "show_all",
+			"label": __("Show All"),
 			"fieldtype": "Check",
 		},
 		{

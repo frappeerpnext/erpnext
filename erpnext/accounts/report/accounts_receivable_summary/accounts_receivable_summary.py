@@ -33,13 +33,12 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 		self.data = []
 
 		self.receivables = ReceivablePayableReport(self.filters).run(args)[1]
-
 		self.get_party_total(args)
 
 		party_advance_amount = (
 			get_partywise_advanced_payment_amount(
 				self.party_type,
-				self.filters.report_date,
+				self.filters.start_date,
 				self.filters.show_future_payments,
 				self.filters.company,
 			)
@@ -47,11 +46,9 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 		)
 
 		if self.filters.show_gl_balance:
-			gl_balance_map = get_gl_balance(self.filters.report_date)
+			gl_balance_map = get_gl_balance(self.filters.start_date)
 
 		for party, party_dict in self.party_total.items():
-			if party_dict.outstanding == 0:
-				continue
 
 			row = frappe._dict()
 
@@ -194,12 +191,12 @@ class AccountsReceivableSummary(ReceivablePayableReport):
 		self.add_column(label="Total Amount Due", fieldname="total_due")
 
 
-def get_gl_balance(report_date):
+def get_gl_balance(start_date):
 	return frappe._dict(
 		frappe.db.get_all(
 			"GL Entry",
 			fields=["party", "sum(debit -  credit)"],
-			filters={"posting_date": ("<=", report_date), "is_cancelled": 0},
+			filters={"posting_date": ("<=", start_date), "is_cancelled": 0},
 			group_by="party",
 			as_list=1,
 		)

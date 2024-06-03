@@ -256,7 +256,24 @@ class ReceivablePayableReport(object):
 							self.append_row(row)
 					else:
 						self.append_row(row)
+			elif(self.filters.show_all):
+				if self.is_invoice(row) and self.filters.based_on_payment_terms:
+					# is an invoice, allocate based on fifo
+					# adds a list `payment_terms` which contains new rows for each term
+					self.allocate_outstanding_based_on_payment_terms(row)
 
+					if row.payment_terms:
+						# make separate rows for each payment term
+						for d in row.payment_terms:
+							if d.outstanding > 0:
+								self.append_row(d)
+
+						# if there is overpayment, add another row
+						self.allocate_extra_payments_or_credits(row)
+					else:
+						self.append_row(row)
+				else:
+					self.append_row(row)
 			else:
 				if (abs(row.outstanding) > 1.0 / 10**self.currency_precision) and (
 					abs(row.outstanding_in_account_currency) > 1.0 / 10**self.currency_precision
@@ -286,12 +303,12 @@ class ReceivablePayableReport(object):
 			self.append_subtotal_row(self.previous_party)
 			if self.data:
 				self.data.append(self.total_row_map.get("Total"))
-
+		self.data = list(filter(lambda x: (x.paid > 0 or x.invoiced>0), self.data))
 	def append_row(self, row):
 		self.allocate_future_payments(row)
 		self.set_invoice_details(row)
 		self.set_party_details(row)
-
+		self.set_ageing(row)
 		if self.filters.get("group_by_party"):
 			self.update_sub_total_row(row, row.party)
 			if self.previous_party and (self.previous_party != row.party):
@@ -360,8 +377,8 @@ class ReceivablePayableReport(object):
 				"""
 				select name, due_date, po_no
 				from `tabSales Invoice`
-				where {0} between '{1}' and '{2}'
-			""".format("posting_date" if self.filters.ageing_based_on == "Posting Date" else "due_date",self.filters.start_date,self.filters.end_date),
+				where {0} <= '{1}'
+			""".format("posting_date" if self.filters.ageing_based_on == "Posting Date" else "due_date",self.filters.start_date),
 				as_dict=1,
 			)
 			for d in si_list:
@@ -387,8 +404,8 @@ class ReceivablePayableReport(object):
 				"""
 				select name, due_date, bill_no, bill_date
 				from `tabPurchase Invoice`
-				where {0} between '{1}' and '{2}'
-			""".format("posting_date" if self.filters.ageing_based_on == "Posting Date" else "due_date",self.filters.start_date,self.filters.end_date),
+				where {0} <= '{1}'
+			""".format("posting_date" if self.filters.ageing_based_on == "Posting Date" else "due_date",self.filters.start_date),
 				as_dict=1,
 			):
 				self.invoice_details.setdefault(pi.name, pi)
@@ -398,8 +415,8 @@ class ReceivablePayableReport(object):
 			"""
 			select name, due_date, bill_no, bill_date
 			from `tabJournal Entry`
-			where {0} between '{1}' and '{2}'
-		""".format("posting_date" if self.filters.ageing_based_on == "Posting Date" else "due_date",self.filters.start_date,self.filters.end_date),
+			where {0} <= '{1}'
+		""".format("posting_date" if self.filters.ageing_based_on == "Posting Date" else "due_date",self.filters.start_date),
 			as_dict=1,
 		)
 
@@ -537,9 +554,9 @@ class ReceivablePayableReport(object):
 				(ref.parent = payment_entry.name)
 			where
 				payment_entry.docstatus < 2
-				and payment_entry.posting_date between '{0}' and '{1}'
-				and payment_entry.party_type = '{2}'
-			""".format(self.filters.start_date,self.filters.end_date, self.party_type),
+				and payment_entry.posting_date <= '{0}'
+				and payment_entry.party_type = '{1}'
+			""".format(self.filters.start_date, self.party_type),
 			as_dict=1,
 		)
 
@@ -568,12 +585,12 @@ class ReceivablePayableReport(object):
 				(jea.parent = je.name)
 			where
 				je.docstatus < 2
-				and je.posting_date between '{1}' and '{2}'
-				and jea.party_type = '{3}'
+				and je.posting_date <= '{1}'
+				and jea.party_type = '{2}'
 				and jea.reference_name is not null and jea.reference_name != ''
 			group by je.name, jea.reference_name
 			having future_amount > 0
-			""".format(amount_field,self.filters.start_date,self.filters.end_date, self.party_type),
+			""".format(amount_field,self.filters.start_date, self.party_type),
 			as_dict=1,
 		)
 
@@ -622,15 +639,15 @@ class ReceivablePayableReport(object):
 		if self.filters.show_future_payments:
 			self.qb_selection_filter.append(
 				(
-					self.ple.posting_date.between(self.filters.start_date,self.filters.end_date)
+					self.ple.posting_date.lte(self.filters.start_date)
 					| (
 						(self.ple.voucher_no == self.ple.against_voucher_no)
-						& (Date(self.ple.creation).between(self.filters.start_date,self.filters.end_date))
+						& (Date(self.ple.creation).lte(self.filters.start_date))
 					)
 				)
 			)
 		else:
-			self.qb_selection_filter.append(self.ple.posting_date.between(self.filters.start_date,self.filters.end_date))
+			self.qb_selection_filter.append(self.ple.posting_date.lte(self.filters.start_date))
 		self.qb_selection_filter.append(self.ple.docstatus == 1)
 
 		ple = qb.DocType("Payment Ledger Entry")
@@ -937,3 +954,37 @@ class ReceivablePayableReport(object):
 		self.columns.append(
 			dict(label=label, fieldname=fieldname, fieldtype=fieldtype, options=options, width=width)
 		)
+	
+	def set_ageing(self, row):
+		if self.filters.ageing_based_on == "Due Date":
+			entry_date = row.due_date or row.posting_date
+		elif self.filters.ageing_based_on == "Supplier Invoice Date":
+			entry_date = row.bill_date
+		else:
+			entry_date = row.posting_date
+
+		self.get_ageing_data(entry_date, row)
+
+		# ageing buckets should not have amounts if due date is not reached
+		if getdate(entry_date) > getdate(self.filters.report_date):
+			row.range1 = row.range2 = row.range3 = row.range4 = row.range5 = 0.0
+
+		row.total_due = row.range1 + row.range2 + row.range3 + row.range4 + row.range5
+
+	def get_ageing_data(self, entry_date, row):
+		
+		row.range1 = row.range2 = row.range3 = row.range4 = row.range5 = 0.0
+		if not (self.age_as_on and entry_date):
+			return
+		row.age = (getdate(self.age_as_on) - getdate(entry_date)).days or 0
+		index = None
+		if not (self.filters.range1 and self.filters.range2 and self.filters.range3 and self.filters.range4):
+			self.filters.range1, self.filters.range2, self.filters.range3, self.filters.range4 = (30,60,90,120,)
+		for i, days in enumerate([self.filters.range1, self.filters.range2, self.filters.range3, self.filters.range4]):
+			if cint(row.age) <= cint(days):
+				index = i
+				break
+
+		if index is None:
+			index = 4
+		row["range" + str(index + 1)] = row.invoiced
