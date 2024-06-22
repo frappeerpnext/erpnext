@@ -56,6 +56,7 @@
   "delete_item_require_password",
   "delete_item_require_note",
   "add_sale_item_foc_require_password",
+  "change_quantity_require_password",
   "column_break_44",
   "number_of_receipt_copies",
   "document_naming_code",
@@ -675,6 +676,12 @@
    "fieldname": "account_head_name",
    "fieldtype": "Data",
    "label": "Account Head Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "change_quantity_require_password",
+   "fieldtype": "Check",
+   "label": "Change Quantity Require Password"
   }
  ],
  "icon": "icon-cog",
@@ -702,7 +709,7 @@
    "link_fieldname": "pos_profile"
   }
  ],
- "modified": "2023-08-10 17:17:13.165965",
+ "modified": "2024-06-22 15:31:39.677826",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "POS Profile",
